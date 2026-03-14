@@ -3,7 +3,7 @@
     "list_name": "Japan",
     "source": "Google Maps saved list",
     "scraped_at": "2026-03-14",
-    "total": 52,
+    "total": 53,
     "notes": "Scraped from public Google Maps list. Fields marked place_id/coordinates/photo_url are empty — to be filled via Google Places API."
   },
   "places": [
@@ -670,26 +670,6 @@
         "Saturday: 10:00 AM – 10:00 PM",
         "Sunday: 10:00 AM – 10:00 PM"
       ]
-    },
-    {
-      "id": 30,
-      "name": "Sotetsu Fresa Inn Nihombashi-Ningyocho",
-      "category": "hotel",
-      "type": "3-star hotel",
-      "rating": 4.1,
-      "review_count": 869,
-      "neighborhood": "Ningyocho",
-      "notes": "",
-      "place_id": "ChIJ4Sf9p1qJGGAREAW_aBht-CA",
-      "coordinates": {
-        "lat": 35.6833539,
-        "lng": 139.78238199999998
-      },
-      "photo_url": "/images/places/ChIJ4Sf9p1qJGGAREAW_aBht-CA.jpg",
-      "maps_search": "Sotetsu Fresa Inn Nihombashi-Ningyocho Tokyo",
-      "address": "Japan, 〒103-0014 Tokyo, Chuo City, Nihonbashikakigarachō, 1-chōme−15−４ 相鉄フレッサイン日本橋人形町",
-      "website": "https://sotetsu-hotels.com/fresa-inn/ningyocho/",
-      "opening_hours": []
     },
     {
       "id": 31,
@@ -1405,6 +1385,62 @@
         "Friday: 10:00 AM – 6:00 PM",
         "Saturday: 10:00 AM – 6:00 PM",
         "Sunday: 10:00 AM – 6:00 PM"
+      ]
+    },
+    {
+      "id": 59,
+      "name": "Tsukishima Monja Okoge Shibuya",
+      "category": "food",
+      "type": "",
+      "rating": 4.9,
+      "review_count": 25839,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJoSq01FyNGGARuu4izIPSdRs",
+      "coordinates": {
+        "lat": 35.660449299999996,
+        "lng": 139.699402
+      },
+      "photo_url": "/images/places/ChIJoSq01FyNGGARuu4izIPSdRs.jpg",
+      "maps_search": "Tsukishima Monja Okoge Shibuya Tokyo",
+      "address": "Japan, 〒150-0042 Tokyo, Shibuya, Udagawachō, 24−８ Gintei Bldg., 1F, 2F & 3F",
+      "website": "https://tabelog.com/tokyo/A1303/A130301/13243695/",
+      "opening_hours": [
+        "Monday: 10:45 AM – 11:00 PM",
+        "Tuesday: 10:45 AM – 11:00 PM",
+        "Wednesday: 10:45 AM – 11:00 PM",
+        "Thursday: 10:45 AM – 11:00 PM",
+        "Friday: 10:45 AM – 11:00 PM",
+        "Saturday: 10:30 AM – 11:00 PM",
+        "Sunday: 10:30 AM – 11:00 PM"
+      ]
+    },
+    {
+      "id": 60,
+      "name": "Shinjuku Takano Fruits Parlor",
+      "category": "food",
+      "type": "",
+      "rating": 4.1,
+      "review_count": 3386,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJPwGlGtqMGGARS67p3v_g9XQ",
+      "coordinates": {
+        "lat": 35.6918323,
+        "lng": 139.7019469
+      },
+      "photo_url": "/images/places/ChIJPwGlGtqMGGARS67p3v_g9XQ.jpg",
+      "maps_search": "Shinjuku Takano Fruits Parlor Tokyo",
+      "address": "Japan, 〒160-0022 Tokyo, Shinjuku City, Shinjuku, 3-chōme−26−１１ ５Ｆ",
+      "website": "https://takano.jp/parlour/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
       ]
     }
   ],

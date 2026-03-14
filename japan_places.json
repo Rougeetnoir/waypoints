@@ -3,7 +3,7 @@
     "list_name": "Japan",
     "source": "Google Maps saved list",
     "scraped_at": "2026-03-14",
-    "total": 52,
+    "total": 53,
     "notes": "Scraped from public Google Maps list. Fields marked place_id/coordinates/photo_url are empty — to be filled via Google Places API."
   },
   "places": [
@@ -17,7 +17,10 @@
       "neighborhood": "Hamamatsucho",
       "notes": "2026-5-16-20",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Section L Hamamatsucho Tokyo"
     },
@@ -31,7 +34,10 @@
       "neighborhood": "",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Raffine Neo Running Style Tokyo"
     },
@@ -45,7 +51,10 @@
       "neighborhood": "Koenji",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Koenji Pal Shopping Street Tokyo"
     },
@@ -59,7 +68,10 @@
       "neighborhood": "Koenji",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Shinkoenji-dori Shopping Street Tokyo"
     },
@@ -73,7 +85,10 @@
       "neighborhood": "Odaiba",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Unicorn Gundam Odaiba Tokyo"
     },
@@ -87,7 +102,10 @@
       "neighborhood": "Kameido",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Kameido Tenjin Shrine Tokyo"
     },
@@ -101,7 +119,10 @@
       "neighborhood": "Kichijoji",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Inokashira Park Kichijoji Tokyo"
     },
@@ -115,7 +136,10 @@
       "neighborhood": "Toyosu",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "teamLab Planets TOKYO DMM"
     },
@@ -129,7 +153,10 @@
       "neighborhood": "Nishi-Azabu",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Gonpachi Nishi-Azabu Tokyo"
     },
@@ -143,7 +170,10 @@
       "neighborhood": "Kichijoji",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "LIGHT UP COFFEE Kichijoji Tokyo"
     },
@@ -157,7 +187,10 @@
       "neighborhood": "",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "andoh coffee Tokyo"
     },
@@ -171,7 +204,10 @@
       "neighborhood": "Kichijoji",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Ishii Sports Kichijoji Tokyo"
     },
@@ -185,7 +221,10 @@
       "neighborhood": "Kichijoji",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "L-Breath Kichijoji Tokyo"
     },
@@ -199,7 +238,10 @@
       "neighborhood": "Kichijoji",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Satou Kichijoji Steak House Tokyo"
     },
@@ -213,7 +255,10 @@
       "neighborhood": "",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Joto Curry Tokyo"
     },
@@ -227,7 +272,10 @@
       "neighborhood": "Marunouchi",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "OVERRIDE Marunouchi KITTE Tokyo"
     },
@@ -241,7 +289,10 @@
       "neighborhood": "Ginza",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "いさみや 銀座本店 Tokyo"
     },
@@ -255,7 +306,10 @@
       "neighborhood": "Kawaguchiko",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Fuji Yurari Hot Spring Kawaguchiko"
     },
@@ -269,7 +323,10 @@
       "neighborhood": "",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Katsuo Shokudo Tokyo"
     },
@@ -283,7 +340,10 @@
       "neighborhood": "",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "焼肉 豪じ Tokyo"
     },
@@ -297,7 +357,10 @@
       "neighborhood": "",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Parfaiteria bel Tokyo"
     },
@@ -311,7 +374,10 @@
       "neighborhood": "Shinjuku",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "KEEN GARAGE Shinjuku Tokyo"
     },
@@ -325,7 +391,10 @@
       "neighborhood": "Shinjuku",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "LUMINE EST Shinjuku Tokyo"
     },
@@ -339,23 +408,12 @@
       "neighborhood": "",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Alpen Tokyo sporting goods"
-    },
-    {
-      "id": 30,
-      "name": "Sotetsu Fresa Inn Nihombashi-Ningyocho",
-      "category": "hotel",
-      "type": "3-star hotel",
-      "rating": 4.1,
-      "review_count": 869,
-      "neighborhood": "Ningyocho",
-      "notes": "",
-      "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
-      "photo_url": "",
-      "maps_search": "Sotetsu Fresa Inn Nihombashi-Ningyocho Tokyo"
     },
     {
       "id": 31,
@@ -367,7 +425,10 @@
       "neighborhood": "Imperial Palace",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Otemon Gate Imperial Palace Tokyo"
     },
@@ -381,7 +442,10 @@
       "neighborhood": "Imperial Palace",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Sakuradamon Gate Tokyo"
     },
@@ -395,7 +459,10 @@
       "neighborhood": "Shinjuku",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "NEWoMan Shinjuku Tokyo"
     },
@@ -409,7 +476,10 @@
       "neighborhood": "Shinjuku",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "BILLY'S ENT Shinjuku Tokyo"
     },
@@ -423,7 +493,10 @@
       "neighborhood": "Akasaka",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Hotel Monterey Akasaka Tokyo"
     },
@@ -437,7 +510,10 @@
       "neighborhood": "Marunouchi",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "KITTE Marunouchi Tokyo"
     },
@@ -451,7 +527,10 @@
       "neighborhood": "Daikanyama",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "LE LABO Daikanyama Tokyo"
     },
@@ -465,7 +544,10 @@
       "neighborhood": "Ginza",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "LE LABO Ginza Six Tokyo"
     },
@@ -479,7 +561,10 @@
       "neighborhood": "Asakusa",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Kappabashi Kitchen Supply Town Tokyo"
     },
@@ -493,7 +578,10 @@
       "neighborhood": "",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Ainz Tulpe Tokyo"
     },
@@ -507,7 +595,10 @@
       "neighborhood": "",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Daikoku Drug Tokyo"
     },
@@ -521,7 +612,10 @@
       "neighborhood": "Ginza",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Matsuya Ginza Tokyo"
     },
@@ -535,7 +629,10 @@
       "neighborhood": "Asakusa",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Tokyo Skytree"
     },
@@ -549,7 +646,10 @@
       "neighborhood": "Minato",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Tokyo Tower"
     },
@@ -563,7 +663,10 @@
       "neighborhood": "Shinjuku",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "KOMEHYO Shinjuku Men Tokyo"
     },
@@ -577,7 +680,10 @@
       "neighborhood": "Shimokitazawa",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Treasure Factory Style Shimokitazawa Tokyo"
     },
@@ -591,7 +697,10 @@
       "neighborhood": "Shimokitazawa",
       "notes": "Temporarily closed",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Ichiran Shimokitazawa Tokyo"
     },
@@ -605,7 +714,10 @@
       "neighborhood": "Shibuya",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Ebisu Shibuya Tokyo"
     },
@@ -619,7 +731,10 @@
       "neighborhood": "Shibuya",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Daikanyama Tokyo"
     },
@@ -633,7 +748,10 @@
       "neighborhood": "Shimokitazawa",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "WEGO Shimokitazawa Tokyo"
     },
@@ -647,7 +765,10 @@
       "neighborhood": "Shimokitazawa",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "KINJI Shimokitazawa Tokyo"
     },
@@ -661,7 +782,10 @@
       "neighborhood": "Kawagoe",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Koedo Kurari Kawagoe Saitama"
     },
@@ -675,7 +799,10 @@
       "neighborhood": "Shimokitazawa",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Harajuku Chicago Shimokitazawa Tokyo"
     },
@@ -689,7 +816,10 @@
       "neighborhood": "Shimokitazawa",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Flipper's Shimokitazawa Tokyo"
     },
@@ -703,7 +833,10 @@
       "neighborhood": "Shimokitazawa",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "NeRoLi herb Shimokitazawa Tokyo"
     },
@@ -717,7 +850,10 @@
       "neighborhood": "Shimokitazawa",
       "notes": "",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Shimokita garage department Shimokitazawa Tokyo"
     },
@@ -731,9 +867,46 @@
       "neighborhood": "Mitaka",
       "notes": "Ticket required in advance",
       "place_id": "",
-      "coordinates": { "lat": null, "lng": null },
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
       "photo_url": "",
       "maps_search": "Ghibli Museum Mitaka"
+    },
+    {
+      "id": 59,
+      "name": "Tsukishima Monja Okoge Shibuya",
+      "category": "food",
+      "type": "",
+      "rating": null,
+      "review_count": null,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "photo_url": "",
+      "maps_search": "Tsukishima Monja Okoge Shibuya Tokyo"
+    },
+    {
+      "id": 60,
+      "name": "Shinjuku Takano Fruits Parlor",
+      "category": "food",
+      "type": "",
+      "rating": null,
+      "review_count": null,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "photo_url": "",
+      "maps_search": "Shinjuku Takano Fruits Parlor Tokyo"
     }
   ],
   "categories": {
