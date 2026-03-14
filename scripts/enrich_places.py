@@ -158,17 +158,39 @@ def enrich(place: dict) -> dict:
 
 def main():
     with open(INPUT_FILE, encoding="utf-8") as f:
-        data = json.load(f)
+        source = json.load(f)
 
-    places = data["places"]
+    cache: dict[int, dict] = {}
+    if OUTPUT_FILE.exists():
+        with open(OUTPUT_FILE, encoding="utf-8") as f:
+            cached = json.load(f)
+        cache = {p["id"]: p for p in cached.get("places", [])}
+        print(f"Loaded cache: {len(cache)} previously enriched places")
+
+    places = source["places"]
     total = len(places)
-    print(f"\nEnriching {total} places...\n")
+    new_count = sum(1 for p in places if p["id"] not in cache or not cache[p["id"]].get("place_id"))
+    print(f"\nTotal: {total} places | New/unenriched: {new_count}\n")
 
     enriched = []
+    api_calls = 0
     for i, place in enumerate(places):
+        if place["id"] in cache and cache[place["id"]].get("place_id"):
+            merged = {**place, **{k: v for k, v in cache[place["id"]].items() if k not in place or not place[k]}}
+            merged["place_id"] = cache[place["id"]]["place_id"]
+            merged["coordinates"] = cache[place["id"]].get("coordinates", place.get("coordinates"))
+            merged["photo_url"] = cache[place["id"]].get("photo_url", "")
+            merged["address"] = cache[place["id"]].get("address", "")
+            merged["website"] = cache[place["id"]].get("website", "")
+            merged["opening_hours"] = cache[place["id"]].get("opening_hours", [])
+            print(f"  [{place['id']:02d}] {place['name']} → cached ✓")
+            enriched.append(merged)
+            continue
+
         try:
             enriched_place = enrich(place)
             enriched.append(enriched_place)
+            api_calls += 1
         except requests.HTTPError as e:
             print(f"       ✗ HTTP error: {e}")
             enriched.append(place)
@@ -176,15 +198,15 @@ def main():
             print(f"       ✗ unexpected error: {e}")
             enriched.append(place)
 
-        if i < total - 1:
+        if api_calls > 0 and i < total - 1:
             time.sleep(0.3)
 
-    data["places"] = enriched
+    source["places"] = enriched
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(source, f, ensure_ascii=False, indent=2)
 
     succeeded = sum(1 for p in enriched if p.get("place_id"))
-    print(f"\nDone. {succeeded}/{total} places enriched → {OUTPUT_FILE}")
+    print(f"\nDone. {succeeded}/{total} enriched ({api_calls} new API calls) → {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
