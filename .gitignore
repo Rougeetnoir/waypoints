@@ -1,5 +1,6 @@
 .env
 venv/
+.windsurf/
 node_modules/
 dist/
 .astro/
