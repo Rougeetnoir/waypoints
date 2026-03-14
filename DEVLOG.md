@@ -130,21 +130,72 @@ gh api repos/Rougeetnoir/waypoints/pages --method POST -f 'source[branch]=main' 
 
 ---
 
+## 阶段八：效率工具 v2（incremental enrich + CLI + update.sh）
+
+**痛点**：每次更新需要手动跑3条命令，且 enrich 每次都会重复调用全部52个地点的 API。
+
+**三个改动**：
+
+1. **`enrich_places.py` 改为增量模式** — 读取 `data/places_enriched.json` 作为缓存，只对新增地点（没有 `place_id` 的）调用 API，已有地点直接跳过。`places_enriched.json` 同步提交到 git，换电脑不需要重新 enrich。
+
+2. **新增 `scripts/manage.py` CLI** — `add`（交互式填字段）/ `delete`（按名称或 id）/ `list`（可按分类筛选）/ `search`（搜索名称/街区/备注）
+
+3. **新增 `update.sh` 一键脚本** — 封装 enrich → build → git commit → push，一行命令完成全部发布流程：
+   ```bash
+   ./update.sh "add teamLab back"
+   ```
+
+---
+
+## 阶段九：本地 Admin UI（Flask + 浏览器操作）
+
+**需求**：想在浏览器里直接管理地点，不想每次都开终端编辑 JSON。
+
+**方案**：本地 Flask 服务器（`localhost:5001`），静态站点结构不变。
+
+**实现**（`scripts/admin.py`）：
+
+| 功能 | 实现 |
+|------|------|
+| 密码登录 | `.env` 里 `ADMIN_PASSWORD`，Flask session |
+| 地点列表 | 卡片式网格，复用主站设计语言 |
+| 删除 | 卡片右上角 × 图标，确认弹窗 |
+| 改分类 | category 下拉菜单，失焦自动 PATCH |
+| 改备注/名称/街区 | 内联编辑，失焦自动保存 |
+| 添加新地点 | 粘贴 Google Maps URL → 自动提取名称 → 填分类 → POST |
+| Build & Deploy | SSE 实时流式日志，后台跑 enrich + build + push |
+
+```bash
+venv/bin/python scripts/admin.py
+# 浏览器打开 http://localhost:5001
+```
+
+**技术细节**：
+- REST API：`GET/POST /api/places`、`PATCH /api/places/<id>`、`DELETE /api/places/<id>`
+- Deploy 端点：`POST /api/deploy` → 后台线程 + `queue.Queue` + SSE 流式输出
+- Google Maps URL 解析：正则提取 `/maps/place/{name}/` 中的地点名和 `ChIJ...` place_id
+
+---
+
 ## 最终项目结构
 
 ```
 waypoints/
-  japan_places.json          # 52个精选地点（手动整理 + 清理）
+  japan_places.json          # 精选地点（持续更新）
   scripts/
-    enrich_places.py         # Places API 数据丰富脚本
-    build_site.py            # 静态站点生成脚本（含完整 CSS/JS）
-  data/places_enriched.json  # API丰富后的数据（本地生成，gitignored）
+    enrich_places.py         # Places API 数据丰富（增量模式）
+    build_site.py            # 静态站点生成（含完整 CSS/JS）
+    manage.py                # CLI 地点管理工具
+    admin.py                 # 本地 Admin UI（Flask）
+  data/
+    places_enriched.json     # API 丰富后数据缓存（已 git 追踪）
   docs/                      # 构建产物 → GitHub Pages
-    index.html               # 43KB 单文件站点
-    images/places/           # 52张本地照片（7.8MB）
-  .env                       # API Key（gitignored）
+    index.html
+    images/places/           # 本地照片
+  update.sh                  # 一键发布脚本
+  .env                       # API Key + Admin 密码（gitignored）
   .env.example
-  requirements.txt           # requests, python-dotenv
+  requirements.txt           # requests, python-dotenv, flask
   README.md
   DEVLOG.md                  # 本文件
 ```
@@ -157,6 +208,7 @@ waypoints/
 - **Places API (New) vs 旧版**：两者是不同 SKU，要开启正确的那个
 - **静态优先**：不用 Astro/Next.js，纯 Python 生成 HTML，零构建依赖，GitHub Pages 原生支持
 - **照片本地化**：Places API 照片 URL 会过期，构建时下载到本地是正确做法
+- **增量 enrich**：把 `places_enriched.json` 当 cache 提交到 git，是避免重复 API 调用的关键
 - **设计原则**：frontend-design skill 的核心是"bold aesthetic direction" — 确定一个方向，彻底执行，而非折中
 
 ---
