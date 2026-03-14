@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A personal guide to my favorite places in Japan.">
+  <title>Waypoints — Japan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Cormorant:wght@700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F4F0E8;--surface:#FDFAF6;--ink:#1A1714;--ink-mid:#5C5650;
+  --ink-light:#9C958E;--accent:#C8251F;--border:#E0D8CC;
+  --font-d:'Cormorant',serif;--font-b:'Cormorant Garamond',serif;
+  --font-m:'DM Mono',monospace;--t:.22s ease;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-b);
+  font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.35}
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--bg);
+  border-bottom:1px solid var(--border);padding:.85rem 2rem;
+  display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-family:var(--font-m);font-size:.7rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);text-decoration:none}
+.nav-right{font-family:var(--font-m);font-size:.65rem;color:var(--ink-light)}
+/* HERO */
+.hero{padding:3.5rem 2rem 2.5rem;max-width:1400px;margin:0 auto;
+  border-bottom:1px solid var(--border)}
+.hero-eye{font-family:var(--font-m);font-size:.65rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-light);margin-bottom:.4rem}
+.hero-title{font-family:var(--font-d);font-weight:700;
+  font-size:clamp(5.5rem,16vw,15rem);letter-spacing:-.025em;
+  line-height:.88;color:var(--ink);margin-bottom:1.2rem}
+.hero-title em{color:var(--accent);font-style:normal}
+.hero-sub{font-family:var(--font-b);font-weight:300;font-style:italic;
+  font-size:clamp(1rem,1.8vw,1.3rem);color:var(--ink-mid);max-width:38ch}
+/* FILTERS */
+.filters-wrap{position:sticky;top:47px;z-index:90;background:var(--bg);
+  border-bottom:1px solid var(--border)}
+.filters{max-width:1400px;margin:0 auto;padding:.65rem 2rem;
+  display:flex;gap:.45rem;overflow-x:auto;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter-btn{flex-shrink:0;font-family:var(--font-m);font-size:.65rem;
+  letter-spacing:.06em;padding:.3rem .8rem;border:1px solid var(--border);
+  border-radius:100px;background:transparent;color:var(--ink-mid);
+  cursor:pointer;transition:all var(--t);white-space:nowrap}
+.filter-btn:hover{border-color:var(--ink);color:var(--ink)}
+.filter-btn.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.count{opacity:.55;margin-left:.25em}
+/* GRID */
+.grid-wrap{max-width:1400px;margin:0 auto;padding:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+@media(max-width:1200px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.grid{grid-template-columns:repeat(2,1fr)}.grid-wrap{padding:.75rem}}
+@media(max-width:400px){.grid{grid-template-columns:1fr}}
+/* CARD */
+.place-card{background:var(--surface);border:1px solid var(--border);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform var(--t),box-shadow var(--t)}
+.place-card:hover{transform:translateY(-4px);
+  box-shadow:0 10px 28px rgba(26,23,20,.09)}
+.place-card.hidden{display:none!important}
+.card-photo{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--border)}
+.card-photo img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .45s ease}
+.place-card:hover .card-photo img{transform:scale(1.04)}
+.photo-ph{width:100%;height:100%;display:flex;align-items:center;
+  justify-content:center;font-size:3rem;background:var(--border)}
+.card-tag{position:absolute;bottom:.7rem;left:.7rem;font-family:var(--font-m);
+  font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(26,23,20,.88);color:var(--bg);
+  padding:.22rem .6rem;border-radius:2px;backdrop-filter:blur(4px)}
+.card-body{padding:.75rem .85rem .9rem;display:flex;flex-direction:column;
+  gap:.25rem;flex:1}
+.card-name{font-family:var(--font-b);font-weight:600;font-size:.95rem;
+  line-height:1.3;color:var(--ink)}
+.card-meta{font-family:var(--font-m);font-size:.55rem;letter-spacing:.06em;
+  color:var(--ink-light);text-transform:uppercase}
+.card-rating{display:flex;align-items:center;gap:.3rem}
+.stars{color:var(--accent);font-size:.75rem;letter-spacing:-.05em}
+.rnum{font-family:var(--font-m);font-size:.6rem;color:var(--ink)}
+.rcnt{font-family:var(--font-m);font-size:.55rem;color:var(--ink-light)}
+.card-notes{font-style:italic;font-size:.8rem;color:var(--ink-mid);
+  margin-top:auto;padding-top:.25rem;border-top:1px solid var(--border)}
+.maps-icon{display:inline-flex;align-items:center;justify-content:center;
+  width:1.1em;height:1.1em;margin-left:.3em;vertical-align:middle;
+  color:var(--ink-light);opacity:.6;transition:opacity var(--t);flex-shrink:0}
+.maps-icon:hover{opacity:1;color:var(--accent)}
+.maps-icon svg{width:100%;height:100%}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
+  text-align:center;font-family:var(--font-m);font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light)}
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero{animation:up .55s ease both}
+.place-card{animation:up .45s ease both}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-brand" href="#">Waypoints</a>
+    <span class="nav-right">Japan · 52 places</span>
+  </nav>
+  <section class="hero">
+    <p class="hero-eye">Personal City Guide</p>
+    <h1 class="hero-title">TO<em>KY</em>O</h1>
+    <p class="hero-sub">A curated collection of places I love — restaurants, cafés, shops, and hidden corners across the city.</p>
+  </section>
+  <div class="filters-wrap">
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All<span class="count">52</span></button>
+      <button class="filter-btn" data-filter="food">🍜 Food<span class="count">8</span></button>
+      <button class="filter-btn" data-filter="cafe">☕ Cafe<span class="count">3</span></button>
+      <button class="filter-btn" data-filter="shopping">🛍️ Shopping<span class="count">20</span></button>
+      <button class="filter-btn" data-filter="vintage">👗 Vintage<span class="count">4</span></button>
+      <button class="filter-btn" data-filter="sightseeing">🏛️ Sightseeing<span class="count">10</span></button>
+      <button class="filter-btn" data-filter="hotel">🏨 Hotel<span class="count">3</span></button>
+      <button class="filter-btn" data-filter="spa">♨️ Spa<span class="count">2</span></button>
+      <button class="filter-btn" data-filter="neighborhood">📍 Neighborhood<span class="count">2</span></button>
+    </div>
+  </div>
+  <div class="grid-wrap">
+    <div class="grid">
+      
+    <article class="place-card" data-category="hotel">
+      <div class="card-photo"><img src="images/places/ChIJMaPOWLyLGGARFOVqlEWmQU8.jpg" alt="Section L Hamamatsucho" loading="lazy"><span class="card-tag">🏨 hotel</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Section L Hamamatsucho<a href="https://www.google.com/maps/place/?q=place_id:ChIJMaPOWLyLGGARFOVqlEWmQU8" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Hamamatsucho · Extended stay hotel</div><div class="card-rating"><span class="stars">★★★★★</span><span class="rnum">4.7</span><span class="rcnt"> (66)</span></div><p class="card-notes">2026-5-16-20</p>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="spa">
+      <div class="card-photo"><img src="images/places/ChIJgepJJO6LGGARV9GPnmgvL7E.jpg" alt="Raffine Neo Running Style" loading="lazy"><span class="card-tag">♨️ spa</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Raffine Neo Running Style<a href="https://www.google.com/maps/place/?q=place_id:ChIJgepJJO6LGGARV9GPnmgvL7E" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Foot care</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.2</span><span class="rcnt"> (368)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJ35Bjcn3yGGARkjlKvKP4SWA.jpg" alt="Koenji Pal Shopping Street" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Koenji Pal Shopping Street<a href="https://www.google.com/maps/place/?q=place_id:ChIJ35Bjcn3yGGARkjlKvKP4SWA" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Koenji · Market / Shopping street</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.1</span><span class="rcnt"> (116)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJ14NLjn3yGGAR8iXQTRvmipM.jpg" alt="Shinkoenji-dori Shopping Street Promotion Union" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Shinkoenji-dori Shopping Street Promotion Union<a href="https://www.google.com/maps/place/?q=place_id:ChIJ14NLjn3yGGAR8iXQTRvmipM" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Koenji · Shopping street</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.3</span><span class="rcnt"> (4)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJF6xTyvmJGGARU8t5NIqkNeI.jpg" alt="Unicorn Gundam" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Unicorn Gundam<a href="https://www.google.com/maps/place/?q=place_id:ChIJF6xTyvmJGGARU8t5NIqkNeI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Odaiba · Tourist attraction</div><div class="card-rating"><span class="stars">★★★★★</span><span class="rnum">4.6</span><span class="rcnt"> (28,075)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJsYT-eNGIGGARrtlQxrayK0M.jpg" alt="Kameido Tenjin Shrine" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Kameido Tenjin Shrine<a href="https://www.google.com/maps/place/?q=place_id:ChIJsYT-eNGIGGARrtlQxrayK0M" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Kameido · Shinto shrine</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.2</span><span class="rcnt"> (9,377)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJLWaVdDXuGGART_Pg1R3CZ4A.jpg" alt="Inokashira Park" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Inokashira Park<a href="https://www.google.com/maps/place/?q=place_id:ChIJLWaVdDXuGGART_Pg1R3CZ4A" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Kichijoji · Park</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.4</span><span class="rcnt"> (13,301)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJSeco5wiJGGARItbTS8lQ5G0.jpg" alt="teamLab Planets TOKYO DMM" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">teamLab Planets TOKYO DMM<a href="https://www.google.com/maps/place/?q=place_id:ChIJSeco5wiJGGARItbTS8lQ5G0" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Toyosu · Modern art museum</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.5</span><span class="rcnt"> (49,537)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="food">
+      <div class="card-photo"><img src="images/places/ChIJEwlemnqLGGARhwMuRpwpkBI.jpg" alt="Gonpachi Nishi-Azabu" loading="lazy"><span class="card-tag">🍜 food</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Gonpachi Nishi-Azabu<a href="https://www.google.com/maps/place/?q=place_id:ChIJEwlemnqLGGARhwMuRpwpkBI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Nishi-Azabu · Izakaya</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.2</span><span class="rcnt"> (7,652)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="cafe">
+      <div class="card-photo"><img src="images/places/ChIJe-TeakzuGGAR7ZrlpUdY69g.jpg" alt="LIGHT UP COFFEE" loading="lazy"><span class="card-tag">☕ cafe</span></div>
+      <div class="card-body">
+        <h3 class="card-name">LIGHT UP COFFEE<a href="https://www.google.com/maps/place/?q=place_id:ChIJe-TeakzuGGAR7ZrlpUdY69g" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Kichijoji · Coffee store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.4</span><span class="rcnt"> (586)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="cafe">
+      <div class="card-photo"><img src="images/places/ChIJsVS_UR3vGGARPwNQXIrgCiw.jpg" alt="andoh coffee" loading="lazy"><span class="card-tag">☕ cafe</span></div>
+      <div class="card-body">
+        <h3 class="card-name">andoh coffee<a href="https://www.google.com/maps/place/?q=place_id:ChIJsVS_UR3vGGARPwNQXIrgCiw" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Coffee roastery</div><div class="card-rating"><span class="stars">★★★★★</span><span class="rnum">4.6</span><span class="rcnt"> (99)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJf7a7MkbuGGARStMrfqCB-wQ.jpg" alt="Ishii Sports Kichijoji store" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Ishii Sports Kichijoji store<a href="https://www.google.com/maps/place/?q=place_id:ChIJf7a7MkbuGGARStMrfqCB-wQ" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Kichijoji · Outdoor sports store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.8</span><span class="rcnt"> (489)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJw84Z1kfuGGARbVChsJKNMPg.jpg" alt="L-Breath Kichijoji" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">L-Breath Kichijoji<a href="https://www.google.com/maps/place/?q=place_id:ChIJw84Z1kfuGGARbVChsJKNMPg" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Kichijoji · Outdoor sports store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.8</span><span class="rcnt"> (512)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="food">
+      <div class="card-photo"><img src="images/places/ChIJaW5hxEDvGGARybZcAlw9SrQ.jpg" alt="Satou Kichijoji Steak House" loading="lazy"><span class="card-tag">🍜 food</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Satou Kichijoji Steak House<a href="https://www.google.com/maps/place/?q=place_id:ChIJaW5hxEDvGGARybZcAlw9SrQ" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Kichijoji · Steak</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.5</span><span class="rcnt"> (131)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="food">
+      <div class="card-photo"><img src="images/places/ChIJw7WmnVmLGGAR4Wsx5HEgkok.jpg" alt="Joto Curry" loading="lazy"><span class="card-tag">🍜 food</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Joto Curry<a href="https://www.google.com/maps/place/?q=place_id:ChIJw7WmnVmLGGAR4Wsx5HEgkok" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Japanese Curry</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.4</span><span class="rcnt"> (1,642)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJicJRNfqLGGARNGjsR4YYRoQ.jpg" alt="OVERRIDE 丸の内 KITTE" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">OVERRIDE 丸の内 KITTE<a href="https://www.google.com/maps/place/?q=place_id:ChIJicJRNfqLGGARNGjsR4YYRoQ" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Marunouchi · Hat shop</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.4</span><span class="rcnt"> (15)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJOTomjuaLGGARuDO6i8ce8hA.jpg" alt="いさみや 銀座本店" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">いさみや 銀座本店<a href="https://www.google.com/maps/place/?q=place_id:ChIJOTomjuaLGGARuDO6i8ce8hA" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Ginza · Children's clothing store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.9</span><span class="rcnt"> (109)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="spa">
+      <div class="card-photo"><img src="images/places/ChIJ0-FaM23gG2ARDFben2v-Hsc.jpg" alt="Onsen - Fuji Yurari Hot Spring" loading="lazy"><span class="card-tag">♨️ spa</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Onsen - Fuji Yurari Hot Spring<a href="https://www.google.com/maps/place/?q=place_id:ChIJ0-FaM23gG2ARDFben2v-Hsc" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Kawaguchiko · Day spa / Onsen</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.1</span><span class="rcnt"> (5,801)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="food">
+      <div class="card-photo"><img src="images/places/ChIJ5VahuViLGGARdhxzaSEMQ6w.jpg" alt="Katsuo Shokudo" loading="lazy"><span class="card-tag">🍜 food</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Katsuo Shokudo<a href="https://www.google.com/maps/place/?q=place_id:ChIJ5VahuViLGGARdhxzaSEMQ6w" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Breakfast restaurant</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.1</span><span class="rcnt"> (694)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="food">
+      <div class="card-photo"><img src="images/places/ChIJnz4efCpdGGARAh_AS6Z-4sI.jpg" alt="焼肉 豪じ" loading="lazy"><span class="card-tag">🍜 food</span></div>
+      <div class="card-body">
+        <h3 class="card-name">焼肉 豪じ<a href="https://www.google.com/maps/place/?q=place_id:ChIJnz4efCpdGGARAh_AS6Z-4sI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Yakiniku</div><div class="card-rating"><span class="stars">★★★★★</span><span class="rnum">4.7</span><span class="rcnt"> (81)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="food">
+      <div class="card-photo"><img src="images/places/ChIJLYBZsFeLGGARXVSJXBBVeWc.jpg" alt="Parfaiteria bel" loading="lazy"><span class="card-tag">🍜 food</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Parfaiteria bel<a href="https://www.google.com/maps/place/?q=place_id:ChIJLYBZsFeLGGARXVSJXBBVeWc" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Dessert / Parfait</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.0</span><span class="rcnt"> (727)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJPaf2cwCNGGARe3KSU_p8GyI.jpg" alt="KEEN GARAGE SHINJUKU" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">KEEN GARAGE SHINJUKU<a href="https://www.google.com/maps/place/?q=place_id:ChIJPaf2cwCNGGARe3KSU_p8GyI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shinjuku · Shoe store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.5</span><span class="rcnt"> (17)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJ_TibA9qMGGARNYmVIFyGU9k.jpg" alt="LUMINE EST Shinjuku" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">LUMINE EST Shinjuku<a href="https://www.google.com/maps/place/?q=place_id:ChIJ_TibA9qMGGARNYmVIFyGU9k" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shinjuku · Shopping mall</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.8</span><span class="rcnt"> (11,727)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJ_VYfhdSNGGARpG4sfHX889w.jpg" alt="Sports wear Disc. Alpen Tokyo" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Sports wear Disc. Alpen Tokyo<a href="https://www.google.com/maps/place/?q=place_id:ChIJ_VYfhdSNGGARpG4sfHX889w" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Sporting goods store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.1</span><span class="rcnt"> (2,684)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="hotel">
+      <div class="card-photo"><img src="images/places/ChIJ4Sf9p1qJGGAREAW_aBht-CA.jpg" alt="Sotetsu Fresa Inn Nihombashi-Ningyocho" loading="lazy"><span class="card-tag">🏨 hotel</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Sotetsu Fresa Inn Nihombashi-Ningyocho<a href="https://www.google.com/maps/place/?q=place_id:ChIJ4Sf9p1qJGGAREAW_aBht-CA" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Ningyocho · 3-star hotel</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.1</span><span class="rcnt"> (869)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJ7-cJ_wiMGGAR_wayVide6uo.jpg" alt="Ōte-mon Gate (Gate to the East Gardens)" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Ōte-mon Gate (Gate to the East Gardens)<a href="https://www.google.com/maps/place/?q=place_id:ChIJ7-cJ_wiMGGAR_wayVide6uo" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Imperial Palace · Historical landmark</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.4</span><span class="rcnt"> (618)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJs0NXE76LGGARlTz2BYUVO-4.jpg" alt="Sakurada-mon Gate" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Sakurada-mon Gate<a href="https://www.google.com/maps/place/?q=place_id:ChIJs0NXE76LGGARlTz2BYUVO-4" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Imperial Palace · Historical landmark</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.5</span><span class="rcnt"> (505)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJ9TsfyNqMGGAR-KTtGjzQRtI.jpg" alt="NEWoMan Shinjuku" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">NEWoMan Shinjuku<a href="https://www.google.com/maps/place/?q=place_id:ChIJ9TsfyNqMGGAR-KTtGjzQRtI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shinjuku · Shopping mall</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.8</span><span class="rcnt"> (4,486)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJcTrPWNqMGGARC40MUiaSAcw.jpg" alt="BILLY'S ENT 新宿店" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">BILLY'S ENT 新宿店<a href="https://www.google.com/maps/place/?q=place_id:ChIJcTrPWNqMGGARC40MUiaSAcw" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shinjuku · Shoe store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.8</span><span class="rcnt"> (82)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="hotel">
+      <div class="card-photo"><img src="images/places/ChIJCV-IMH6MGGAR2n7SEK0AMTI.jpg" alt="Hotel Monterey Akasaka" loading="lazy"><span class="card-tag">🏨 hotel</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Hotel Monterey Akasaka<a href="https://www.google.com/maps/place/?q=place_id:ChIJCV-IMH6MGGAR2n7SEK0AMTI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Akasaka · 4-star hotel</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.2</span><span class="rcnt"> (1,418)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJdUbpSvqLGGARCmbc6R7hZJ8.jpg" alt="KITTE Marunouchi" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">KITTE Marunouchi<a href="https://www.google.com/maps/place/?q=place_id:ChIJdUbpSvqLGGARCmbc6R7hZJ8" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Marunouchi · Shopping mall</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.1</span><span class="rcnt"> (12,209)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJ7aW7w0WLGGARmjwTSTXf9sU.jpg" alt="LE LABO Daikanyama Store" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">LE LABO Daikanyama Store<a href="https://www.google.com/maps/place/?q=place_id:ChIJ7aW7w0WLGGARmjwTSTXf9sU" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Daikanyama · Perfume store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.4</span><span class="rcnt"> (318)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJMapDROaLGGARrmYecHqJKsg.jpg" alt="LE LABO Ginza Six Store" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">LE LABO Ginza Six Store<a href="https://www.google.com/maps/place/?q=place_id:ChIJMapDROaLGGARrmYecHqJKsg" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Ginza · Perfume store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.2</span><span class="rcnt"> (271)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJXYV-6JWOGGAR85vIZbM1RCE.jpg" alt="Kappabashi Kitchen Supply Town" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Kappabashi Kitchen Supply Town<a href="https://www.google.com/maps/place/?q=place_id:ChIJXYV-6JWOGGAR85vIZbM1RCE" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Asakusa · Kitchen supply district</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.3</span><span class="rcnt"> (11,993)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJ2Ry8cNqMGGARvPoEDF20qlY.jpg" alt="Ainz & Tulpe" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Ainz & Tulpe<a href="https://www.google.com/maps/place/?q=place_id:ChIJ2Ry8cNqMGGARvPoEDF20qlY" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Cosmetics store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.9</span><span class="rcnt"> (564)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJZzaqB9GMGGARsUnZ_rlb_9Y.jpg" alt="Daikoku Drug" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Daikoku Drug<a href="https://www.google.com/maps/place/?q=place_id:ChIJZzaqB9GMGGARsUnZ_rlb_9Y" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Drug store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.1</span><span class="rcnt"> (188)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJ5UsboeaLGGARV2ODxt0ic1I.jpg" alt="Matsuya Ginza" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Matsuya Ginza<a href="https://www.google.com/maps/place/?q=place_id:ChIJ5UsboeaLGGARV2ODxt0ic1I" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Ginza · Department store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.0</span><span class="rcnt"> (12,095)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJ35ov0dCOGGARKvdDH7NPHX0.jpg" alt="Tokyo Skytree" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Tokyo Skytree<a href="https://www.google.com/maps/place/?q=place_id:ChIJ35ov0dCOGGARKvdDH7NPHX0" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Asakusa · Observation deck</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.4</span><span class="rcnt"> (112,188)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJCewJkL2LGGAR3Qmk0vCTGkg.jpg" alt="Tokyo Tower" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Tokyo Tower<a href="https://www.google.com/maps/place/?q=place_id:ChIJCewJkL2LGGAR3Qmk0vCTGkg" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Minato · Observation deck</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.5</span><span class="rcnt"> (94,252)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJK2jpINqMGGARsz4nu4kYF_w.jpg" alt="KOMEHYO SHINJUKU MEN" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">KOMEHYO SHINJUKU MEN<a href="https://www.google.com/maps/place/?q=place_id:ChIJK2jpINqMGGARsz4nu4kYF_w" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shinjuku · Secondhand luxury / handbags</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.5</span><span class="rcnt"> (430)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="vintage">
+      <div class="card-photo"><img src="images/places/ChIJDePlg2nzGGARofCnYZae0MI.jpg" alt="Treasure Factory Style Shimokitazawa" loading="lazy"><span class="card-tag">👗 vintage</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Treasure Factory Style Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJDePlg2nzGGARofCnYZae0MI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shimokitazawa · Used clothing store</div><div class="card-rating"><span class="stars">★★★★★</span><span class="rnum">4.6</span><span class="rcnt"> (630)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="food">
+      <div class="card-photo"><img src="images/places/ChIJF2KYfWnzGGARIKXShg9zVsU.jpg" alt="Ichiran Shimokitazawa" loading="lazy"><span class="card-tag">🍜 food</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Ichiran Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJF2KYfWnzGGARIKXShg9zVsU" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shimokitazawa · Ramen</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.9</span><span class="rcnt"> (590)</span></div><p class="card-notes">Temporarily closed</p>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="neighborhood">
+      <div class="card-photo"><img src="images/places/ChIJWRK3eBSLGGARCdO8OgKkE5w.jpg" alt="Ebisu" loading="lazy"><span class="card-tag">📍 neighborhood</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Ebisu<a href="https://www.google.com/maps/place/?q=place_id:ChIJWRK3eBSLGGARCdO8OgKkE5w" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shibuya · Neighborhood</div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="neighborhood">
+      <div class="card-photo"><img src="images/places/ChIJ68vK5kSLGGARoiBaKr3YZgU.jpg" alt="Daikanyamacho" loading="lazy"><span class="card-tag">📍 neighborhood</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Daikanyamacho<a href="https://www.google.com/maps/place/?q=place_id:ChIJ68vK5kSLGGARoiBaKr3YZgU" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shibuya · Neighborhood</div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="vintage">
+      <div class="card-photo"><img src="images/places/ChIJ923ya2vzGGARELac70tm-9A.jpg" alt="WEGO Shimokitazawa" loading="lazy"><span class="card-tag">👗 vintage</span></div>
+      <div class="card-body">
+        <h3 class="card-name">WEGO Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJ923ya2vzGGARELac70tm-9A" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shimokitazawa · Used clothing store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.7</span><span class="rcnt"> (156)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="vintage">
+      <div class="card-photo"><img src="images/places/ChIJ4c2l1WvzGGARYSNOYhVDEKk.jpg" alt="KINJI Shimokitazawaten" loading="lazy"><span class="card-tag">👗 vintage</span></div>
+      <div class="card-body">
+        <h3 class="card-name">KINJI Shimokitazawaten<a href="https://www.google.com/maps/place/?q=place_id:ChIJ4c2l1WvzGGARYSNOYhVDEKk" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shimokitazawa · Used clothing store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.7</span><span class="rcnt"> (66)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJVVVFv17aGGAR9Vh1Jo1q4qs.jpg" alt="Koedo Kurari" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Koedo Kurari<a href="https://www.google.com/maps/place/?q=place_id:ChIJVVVFv17aGGAR9Vh1Jo1q4qs" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Kawagoe · Tourist attraction</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">3.9</span><span class="rcnt"> (3,801)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="vintage">
+      <div class="card-photo"><img src="images/places/ChIJQeShDWnzGGARA5rH2wwnK4s.jpg" alt="Harajuku Chicago Shimokitazawa" loading="lazy"><span class="card-tag">👗 vintage</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Harajuku Chicago Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJQeShDWnzGGARA5rH2wwnK4s" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shimokitazawa · Used clothing store</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.0</span><span class="rcnt"> (143)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="food">
+      <div class="card-photo"><img src="images/places/ChIJXfBKDWvzGGARAYcIMEpXUlo.jpg" alt="Flipper's Shimokitazawa" loading="lazy"><span class="card-tag">🍜 food</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Flipper's Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJXfBKDWvzGGARAYcIMEpXUlo" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shimokitazawa · Pancake restaurant</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.4</span><span class="rcnt"> (1,426)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="cafe">
+      <div class="card-photo"><img src="images/places/ChIJTyq_cmnzGGAR-chummv7Hus.png" alt="NeRoLi herb" loading="lazy"><span class="card-tag">☕ cafe</span></div>
+      <div class="card-body">
+        <h3 class="card-name">NeRoLi herb<a href="https://www.google.com/maps/place/?q=place_id:ChIJTyq_cmnzGGAR-chummv7Hus" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shimokitazawa · Cafe</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.2</span><span class="rcnt"> (56)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="shopping">
+      <div class="card-photo"><img src="images/places/ChIJQx3MyhTzGGARtxwgu2Zn6_4.jpg" alt="Shimokita garage department" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Shimokita garage department<a href="https://www.google.com/maps/place/?q=place_id:ChIJQx3MyhTzGGARtxwgu2Zn6_4" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Shimokitazawa · Shopping complex</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.1</span><span class="rcnt"> (105)</span></div>
+      </div>
+    </article>
+
+    <article class="place-card" data-category="sightseeing">
+      <div class="card-photo"><img src="images/places/ChIJLYwD5TTuGGARBZKEP5BV4U0.jpg" alt="Ghibli Museum" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
+      <div class="card-body">
+        <h3 class="card-name">Ghibli Museum<a href="https://www.google.com/maps/place/?q=place_id:ChIJLYwD5TTuGGARBZKEP5BV4U0" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-meta">Mitaka · Art museum</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.5</span><span class="rcnt"> (18,719)</span></div><p class="card-notes">Ticket required in advance</p>
+      </div>
+    </article>
+    </div>
+  </div>
+  <footer>Waypoints · Built with love · 52 places in Japan</footer>
+  <script>
+const btns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.place-card');
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    cards.forEach(c => {
+      const show = f === 'all' || c.dataset.category === f;
+      c.classList.toggle('hidden', !show);
+    });
+  });
+});
+</script>
+</body>
+</html>

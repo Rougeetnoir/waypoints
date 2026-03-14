@@ -1,0 +1,10 @@
+.env
+venv/
+node_modules/
+dist/
+.astro/
+public/images/places/
+data/places_enriched.json
+__pycache__/
+*.pyc
+.DS_Store
