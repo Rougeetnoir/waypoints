@@ -18,19 +18,18 @@ PHOTOS_DST = OUTPUT_DIR / "images" / "places"
 CSS = """
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F4F0E8;--surface:#FDFAF6;--ink:#1A1714;--ink-mid:#5C5650;
-  --ink-light:#9C958E;--accent:#C8251F;--border:#E0D8CC;
+  --bg:#F7F3ED;--surface:#FEFCF9;--ink:#1A1612;--ink-mid:#5C5650;
+  --ink-light:#9C958E;--accent:#C4432A;--border:rgba(200,185,168,0.4);
   --font-d:'Cormorant',serif;--font-b:'Cormorant Garamond',serif;
-  --font-m:'DM Mono',monospace;--t:.22s ease;
+  --font-m:'DM Sans','Noto Sans JP',sans-serif;--t:.22s ease;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-b);
   font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity:.35}
+/* STICKY HEADER */
+.sticky-header{position:sticky;top:0;z-index:100;background:var(--bg)}
 /* NAV */
-.nav{position:sticky;top:0;z-index:100;background:var(--bg);
+.nav{background:var(--bg);
   border-bottom:1px solid var(--border);padding:.85rem 2rem;
   display:flex;justify-content:space-between;align-items:center}
 .nav-brand{font-family:var(--font-m);font-size:.7rem;letter-spacing:.18em;
@@ -48,7 +47,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 .hero-sub{font-family:var(--font-b);font-weight:300;font-style:italic;
   font-size:clamp(1rem,1.8vw,1.3rem);color:var(--ink-mid);max-width:38ch}
 /* FILTERS */
-.filters-wrap{position:sticky;top:47px;z-index:90;background:var(--bg);
+.filters-wrap{background:var(--bg);
   border-bottom:1px solid var(--border)}
 .filters{max-width:1400px;margin:0 auto;padding:.65rem 2rem;
   display:flex;gap:.45rem;overflow-x:auto;scrollbar-width:none}
@@ -61,7 +60,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 .filter-btn.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .count{opacity:.55;margin-left:.25em}
 /* GRID */
-.grid-wrap{max-width:1400px;margin:0 auto;padding:1.5rem}
+.grid-wrap{max-width:1400px;margin:0 auto;padding:1.5rem;background:var(--bg)}
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
 @media(max-width:1200px){.grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
@@ -106,9 +105,9 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
   text-align:center;font-family:var(--font-m);font-size:.6rem;
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light)}
 /* ANIMATIONS */
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.hero{animation:up .55s ease both}
-.place-card{animation:up .45s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.hero{animation:fadeIn .55s ease both}
+.place-card{animation:fadeIn .4s ease both}
 """
 
 JS = """
@@ -223,24 +222,26 @@ def build():
   <title>Waypoints — Japan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Cormorant:wght@700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Cormorant:wght@700&family=DM+Sans:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
   <style>{CSS}</style>
 </head>
 <body>
-  <nav class="nav">
-    <a class="nav-brand" href="#">Waypoints</a>
-    <span class="nav-right">Japan · {total} places</span>
-  </nav>
+  <div class="sticky-header">
+    <nav class="nav">
+      <a class="nav-brand" href="#">Waypoints</a>
+      <span class="nav-right">Japan · {total} places</span>
+    </nav>
+    <div class="filters-wrap">
+      <div class="filters">
+        {filters_html}
+      </div>
+    </div>
+  </div>
   <section class="hero">
     <p class="hero-eye">Personal City Guide</p>
     <h1 class="hero-title">TO<em>KY</em>O</h1>
     <p class="hero-sub">A curated collection of places I love — restaurants, cafés, shops, and hidden corners across the city.</p>
   </section>
-  <div class="filters-wrap">
-    <div class="filters">
-      {filters_html}
-    </div>
-  </div>
   <div class="grid-wrap">
     <div class="grid">
       {cards_html}
