@@ -3,7 +3,7 @@
     "list_name": "Japan",
     "source": "Google Maps saved list",
     "scraped_at": "2026-03-14",
-    "total": 53,
+    "total": 57,
     "notes": "Scraped from public Google Maps list. Fields marked place_id/coordinates/photo_url are empty — to be filled via Google Places API."
   },
   "places": [
@@ -907,6 +907,74 @@
       },
       "photo_url": "",
       "maps_search": "Shinjuku Takano Fruits Parlor Tokyo"
+    },
+    {
+      "id": 61,
+      "name": "SHIBIRE-NOODLES Rousokuya Omotesando Hills-ten",
+      "category": "food",
+      "type": "",
+      "rating": null,
+      "review_count": null,
+      "neighborhood": "",
+      "notes": "麻婆豆腐好吃;记得提前点好饭，不能加单；担担面没有麻婆豆腐面好吃",
+      "place_id": "",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "photo_url": "",
+      "maps_search": "SHIBIRE-NOODLES Rousokuya Omotesando Hills-ten Tokyo"
+    },
+    {
+      "id": 62,
+      "name": "Sushi Azabu 鮨麻布",
+      "category": "food",
+      "type": "",
+      "rating": null,
+      "review_count": null,
+      "neighborhood": "",
+      "notes": "需要提前订位，推荐4800JPY午市套餐。提前30天订。",
+      "place_id": "",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "photo_url": "",
+      "maps_search": "Sushi Azabu Tokyo"
+    },
+    {
+      "id": 63,
+      "name": "Yoroniku",
+      "category": "food",
+      "type": "",
+      "rating": null,
+      "review_count": null,
+      "neighborhood": "",
+      "notes": "烤肉，提前一个自然月预定。",
+      "place_id": "",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "photo_url": "",
+      "maps_search": "Yoroniku Tokyo"
+    },
+    {
+      "id": 64,
+      "name": "Yoroniku Ebisu",
+      "category": "food",
+      "type": "",
+      "rating": null,
+      "review_count": null,
+      "neighborhood": "",
+      "notes": "烤肉，提前一个自然月预定。",
+      "place_id": "",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "photo_url": "",
+      "maps_search": "Yoroniku Ebisu Tokyo"
     }
   ],
   "categories": {

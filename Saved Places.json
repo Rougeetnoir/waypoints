@@ -1,0 +1,775 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2025-02-12T15:57:33Z",
+        "google_maps_url": "http://maps.google.com/?q=110%E5%8F%B0%E5%8C%97%E5%B8%82%E4%BF%A1%E7%BE%A9%E5%8D%80%E5%85%89%E5%BE%A9%E5%8D%97%E8%B7%AF133%E8%99%9F&ftid=0x3442abc0ac49edb7:0xa99b97e9a3702ff2",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2022-03-02T12:18:49Z",
+        "google_maps_url": "http://maps.google.com/?q=22.194509,113.540148",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2021-08-08T11:29:31Z",
+        "google_maps_url": "http://maps.google.com/?q=24.645092,121.731602",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2020-01-08T07:09:30Z",
+        "google_maps_url": "http://maps.google.com/?q=22.866044,121.108286",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2019-05-27T10:41:19Z",
+        "google_maps_url": "http://maps.google.com/?q=22.315707,114.171820",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          114.1744899,
+          22.2996337
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2018-03-09T09:00:45Z",
+        "google_maps_url": "http://maps.google.com/?cid=18397850592337367585",
+        "location": {
+          "address": "Hong Kong, Tsim Sha Tsui, Hau Fook St, 8號8字樓H8大廈",
+          "country_code": "HK",
+          "name": "Market Hotpot"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          114.1689221,
+          22.3106914
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2018-03-09T09:00:07Z",
+        "google_maps_url": "http://maps.google.com/?cid=14438014671722087786",
+        "location": {
+          "address": "3 Public Square St, Yau Ma Tei, Hong Kong",
+          "country_code": "HK",
+          "name": "Broadway Cinematheque"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-04-01T01:34:02Z",
+        "google_maps_url": "http://maps.google.com/?q=%E6%BE%B3%E9%97%A8%E4%BA%9E%E5%A9%86%E4%BA%95%E5%89%8D%E5%9C%B0&ftid=0x34017af23a30defd:0xfd6a0e9d56ee96cc",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          113.5548706,
+          22.1916311
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-04-01T01:31:34Z",
+        "google_maps_url": "http://maps.google.com/?cid=5184002938674074902",
+        "location": {
+          "address": "203 Largo de Monte Carlo, Macao",
+          "country_code": "MO",
+          "name": "Sands Macao"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          113.5562757,
+          22.1927078
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-04-01T01:30:29Z",
+        "google_maps_url": "http://maps.google.com/?cid=2736825847335040577",
+        "location": {
+          "address": "Av. Dr. Sun Yat Sen, Macao",
+          "country_code": "MO",
+          "name": "Macau Fisherman's Wharf"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          113.5423396,
+          22.1939801
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-03-31T11:55:55Z",
+        "google_maps_url": "http://maps.google.com/?cid=2131059190715887333",
+        "location": {
+          "address": "MacaoAv. de Almeida Ribeiro, 41號, Edificio Pou Ka, 水坑尾",
+          "country_code": "MO",
+          "name": "潘威記"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          113.5410083,
+          22.1945142
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-03-31T11:53:13Z",
+        "google_maps_url": "http://maps.google.com/?cid=3150560511080930017",
+        "location": {
+          "address": "MacaoAv. de Almeida Ribeiro, 12C號號地下",
+          "country_code": "MO",
+          "name": "恆友魚蛋"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          113.5418541,
+          22.1918034
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-03-31T11:28:49Z",
+        "google_maps_url": "http://maps.google.com/?cid=3931884725836713897",
+        "location": {
+          "address": "66號 Patio do Cmte. Mata e Oliveira, Macao",
+          "country_code": "MO",
+          "name": "Margaret's Café e Nata"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          113.5448502,
+          22.1900469
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-03-31T11:10:36Z",
+        "google_maps_url": "http://maps.google.com/?cid=6688400112311780217",
+        "location": {
+          "address": "Av. de Lisboa, Macao",
+          "country_code": "MO",
+          "name": "Casino Lisboa"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          113.5407588,
+          22.1945377
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-03-31T11:04:45Z",
+        "google_maps_url": "http://maps.google.com/?cid=13701397668303648209",
+        "location": {
+          "address": "12-14 R. de São Domingos, Macao",
+          "country_code": "MO",
+          "name": "Bonjour"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5484579,
+          25.0437340
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-26T02:38:03Z",
+        "google_maps_url": "http://maps.google.com/?cid=7917002948974332405",
+        "location": {
+          "address": "106, Taiwan, Taipei City, Da’an District, 敦化南路1段158號",
+          "country_code": "TW",
+          "name": "SUGAR & SPICE Taipei Dunnan Store"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5614407,
+          25.0512434
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-26T02:36:26Z",
+        "google_maps_url": "http://maps.google.com/?cid=10686128220632957323",
+        "location": {
+          "address": "No. 88號, Section 5, Nanjing E Rd, Songshan District, Taipei City, Taiwan 105",
+          "country_code": "TW",
+          "name": "Chia Te Bakery"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5571641,
+          25.0578988
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-25T12:21:09Z",
+        "google_maps_url": "http://maps.google.com/?cid=13164802168439189630",
+        "location": {
+          "address": "105, Taiwan, Taipei City, Songshan District, Alley 4, Lane 36, Section 5, Minsheng E Rd, 1號1樓",
+          "country_code": "TW",
+          "name": "Sunny Hills Taipei Minsheng Park Store"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-19T11:51:44Z",
+        "google_maps_url": "http://maps.google.com/?q=103台北市大同區延平北路二段255號&ftid=0x3442a93fab5bcd97:0x497a6a8a9d52721",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.1230986,
+          22.7937365
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-19T11:12:15Z",
+        "google_maps_url": "http://maps.google.com/?cid=7701541427605191009",
+        "location": {
+          "address": "950, Taiwan, Taitung County, Taitung City, Lane 101, Yanwan Rd, 598 號",
+          "country_code": "TW",
+          "name": "Taitung Station"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          120.6835552,
+          24.1378278
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-15T06:46:56Z",
+        "google_maps_url": "http://maps.google.com/?cid=15042038957971567208",
+        "location": {
+          "address": "No. 20號, Zhongshan Rd, Central District, Taichung City, Taiwan 400",
+          "country_code": "TW",
+          "name": "Miyahara"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          120.6825714,
+          24.1344690
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-15T06:46:26Z",
+        "google_maps_url": "http://maps.google.com/?cid=8117210205982283530",
+        "location": {
+          "address": "No. 529號, Section 3, Fuxing Rd, South District, Taichung City, Taiwan 402",
+          "country_code": "TW",
+          "name": "Taichung Meatball"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-15T06:44:59Z",
+        "google_maps_url": "http://maps.google.com/?q=403台中市西區台灣大道二段405號&ftid=0x34693d9d1624dc8f:0x4ddceda011ec198a",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5661330,
+          25.0352373
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-14T10:14:38Z",
+        "google_maps_url": "http://maps.google.com/?cid=18172573345751046047",
+        "location": {
+          "address": "110, Taiwan, Taipei City, Xinyi District, Songshou Rd, 12號",
+          "country_code": "TW",
+          "name": "Club Myst"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.2130022,
+          23.0988065
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-13T14:09:59Z",
+        "google_maps_url": "http://maps.google.com/?cid=9677467830885727248",
+        "location": {
+          "address": "958, Taiwan, Taitung County, Chishang Township, 錦新三號道路",
+          "country_code": "TW",
+          "name": "Brown Boulevard"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-13T14:07:06Z",
+        "google_maps_url": "http://maps.google.com/?q=三仙台&ftid=0x346f7048cc0117e5:0x656dddb95ce96849",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.1932966,
+          22.7920746
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-13T14:06:42Z",
+        "google_maps_url": "http://maps.google.com/?cid=9685276521578510688",
+        "location": {
+          "address": "No. 305, Fugang St, Taitung City, Taitung County, Taiwan 950",
+          "name": "Fugang Fishing Harbor"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          120.5473767,
+          24.3125568
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-08T17:35:52Z",
+        "google_maps_url": "http://maps.google.com/?cid=207608892990589433",
+        "location": {
+          "address": "Meidi St, Qingshui District, Taichung City, Taiwan 436",
+          "country_code": "TW",
+          "name": "Gaomei Wetlands"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.1628284,
+          24.0585107
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-08T17:35:23Z",
+        "google_maps_url": "http://maps.google.com/?cid=7646243424994810396",
+        "location": {
+          "address": "5號, No. 186-1, Renhe Rd, Ren’ai Township, Nantou County, Taiwan 546",
+          "name": "Qingjing Farm"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5690053,
+          25.0324046
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-03T12:00:18Z",
+        "google_maps_url": "http://maps.google.com/?cid=7684582378631191299",
+        "location": {
+          "address": "110, Taiwan, Taipei City, Xinyi District, Section 5, Xinyi Rd, 124號126號1F",
+          "country_code": "TW",
+          "name": "WuPaoChun Bakery Taipei"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5612306,
+          25.0444858
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2015-01-03T11:59:48Z",
+        "google_maps_url": "http://maps.google.com/?cid=2407337564838380604",
+        "location": {
+          "address": "110, Taiwan, Taipei City, Xinyi District, Yanchang Rd, 88號台灣 3 樓",
+          "country_code": "TW",
+          "name": "Siidcha吾穀茶糧_誠品松菸店"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.9425546,
+          25.0171775
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-12-22T01:37:04Z",
+        "google_maps_url": "http://maps.google.com/?cid=9586054868161628410",
+        "location": {
+          "address": "No. 36號, Xinglong St, Gongliao District, New Taipei City, Taiwan 228",
+          "country_code": "TW",
+          "name": "Fulong Visitor Center"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.7570038,
+          24.7526264
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-12-22T00:58:26Z",
+        "google_maps_url": "http://maps.google.com/?cid=1288322334147357482",
+        "location": {
+          "address": "No. 240號, Section 1, Yixing Rd, Yilan City, Yilan County, Taiwan 260",
+          "country_code": "TW",
+          "name": "Jimmy Park"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.7722507,
+          24.6819306
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-12-22T00:57:38Z",
+        "google_maps_url": "http://maps.google.com/?cid=528896047753047288",
+        "location": {
+          "address": "No. 118號, Zhongzheng N Rd, Luodong Township, Yilan County, Taiwan 265",
+          "name": "Luodong Forestry Culture Park"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.7747138,
+          24.6779247
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-12-22T00:57:10Z",
+        "google_maps_url": "http://maps.google.com/?cid=515927104683881090",
+        "location": {
+          "address": "265, Taiwan, Yilan County, Luodong Township, Gongzheng Rd, 2號號",
+          "country_code": "TW",
+          "name": "Luodong Station"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5660665,
+          25.0353100
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-12-20T15:42:45Z",
+        "google_maps_url": "http://maps.google.com/?cid=3101851835920168246",
+        "location": {
+          "address": "110, Taiwan, Taipei City, Xinyi District, Songshou Rd, 12號5 樓",
+          "country_code": "TW",
+          "name": "The Chips 信義店"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5248566,
+          25.0442114
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-12-20T15:41:54Z",
+        "google_maps_url": "http://maps.google.com/?cid=9152984690465156979",
+        "location": {
+          "address": "100, Taiwan, Taipei City, Zhongzheng District, Section 1, Zhongxiao E Rd, 108號2樓",
+          "country_code": "TW",
+          "name": "Cube Brunch"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5515804,
+          25.0396179
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-12-20T15:40:44Z",
+        "google_maps_url": "http://maps.google.com/?cid=7720394176881652499",
+        "location": {
+          "address": "No. 23號, Lane 21, Section 1, Anhe Rd, Da’an District, Taipei City, Taiwan 106",
+          "country_code": "TW",
+          "name": "C25 Du Cafe"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5207436,
+          25.0532053
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-12-20T15:40:13Z",
+        "google_maps_url": "http://maps.google.com/?cid=6560687956764281902",
+        "location": {
+          "address": "No. 23-1號, Lane 16, Section 2, Zhongshan N Rd, Zhongshan District, Taipei City, Taiwan 104",
+          "country_code": "TW",
+          "name": "Jumane Cafe'"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5418960,
+          25.0522543
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-11-24T10:54:51Z",
+        "google_maps_url": "http://maps.google.com/?cid=11090895790021812619",
+        "location": {
+          "address": "10491, Taiwan, Taipei City, Zhongshan District, Section 3, Nanjing E Rd, 133號B2",
+          "country_code": "TW",
+          "name": "Ta Chien Cinema"
+        }
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-11-18T17:07:23Z",
+        "google_maps_url": "http://maps.google.com/?q=110台北市信義區信義路五段2號&ftid=0x3442abc9ff8bf12f:0x7b514dde604f3a5e",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0,
+          0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-11-06T02:26:18Z",
+        "google_maps_url": "http://maps.google.com/?q=100台北市中正區汀州路三段146號&ftid=0x3442a98b1fbbef73:0xd7558802e2ba7eed",
+        "Comment": "No location information is available for this saved place"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          121.5337206,
+          25.0139172
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "date": "2014-11-06T02:25:49Z",
+        "google_maps_url": "http://maps.google.com/?cid=7879051448466193641",
+        "location": {
+          "address": "No. 130, Section 3, Tingzhou Rd, Zhongzheng District, Taipei City, Taiwan 100",
+          "country_code": "TW",
+          "name": "公舘舊書城"
+        }
+      },
+      "type": "Feature"
+    }
+  ]
+}

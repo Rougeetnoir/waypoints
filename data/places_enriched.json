@@ -3,7 +3,7 @@
     "list_name": "Japan",
     "source": "Google Maps saved list",
     "scraped_at": "2026-03-14",
-    "total": 53,
+    "total": 57,
     "notes": "Scraped from public Google Maps list. Fields marked place_id/coordinates/photo_url are empty — to be filled via Google Places API."
   },
   "places": [
@@ -1441,6 +1441,118 @@
         "Friday: 11:00 AM – 8:00 PM",
         "Saturday: 11:00 AM – 8:00 PM",
         "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 61,
+      "name": "SHIBIRE-NOODLES Rousokuya Omotesando Hills-ten",
+      "category": "food",
+      "type": "",
+      "rating": 4,
+      "review_count": 512,
+      "neighborhood": "",
+      "notes": "麻婆豆腐好吃;记得提前点好饭，不能加单；担担面没有麻婆豆腐面好吃",
+      "place_id": "ChIJdxHrqiCNGGARn8UB_-VKmqw",
+      "coordinates": {
+        "lat": 35.6672698,
+        "lng": 139.7090285
+      },
+      "photo_url": "/images/places/ChIJdxHrqiCNGGARn8UB_-VKmqw.jpg",
+      "maps_search": "SHIBIRE-NOODLES Rousokuya Omotesando Hills-ten Tokyo",
+      "address": "Japan, 〒150-0001 Tokyo, Shibuya, Jingūmae, 4-chōme−12−１０ 本館 ３Ｆ",
+      "website": "https://www.instagram.com/rousokuya_omotesandohills/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 10:00 PM",
+        "Tuesday: 11:00 AM – 10:00 PM",
+        "Wednesday: 11:00 AM – 10:00 PM",
+        "Thursday: 11:00 AM – 10:00 PM",
+        "Friday: 11:00 AM – 10:00 PM",
+        "Saturday: 11:00 AM – 10:00 PM",
+        "Sunday: 11:00 AM – 10:00 PM"
+      ]
+    },
+    {
+      "id": 62,
+      "name": "Sushi Azabu 鮨麻布",
+      "category": "food",
+      "type": "",
+      "rating": 4.3,
+      "review_count": 188,
+      "neighborhood": "",
+      "notes": "需要提前订位，推荐4800JPY午市套餐。提前30天订。",
+      "place_id": "ChIJCfTo27qLGGAR3DrjadbjfL4",
+      "coordinates": {
+        "lat": 35.6609044,
+        "lng": 139.7404893
+      },
+      "photo_url": "/images/places/ChIJCfTo27qLGGAR3DrjadbjfL4.jpg",
+      "maps_search": "Sushi Azabu Tokyo",
+      "address": "Japan, 〒106-0041 Tokyo, Minato City, Azabudai, 1-chōme−3−１ 3F",
+      "website": "https://balconyby6th.com/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Tuesday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Wednesday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Thursday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Friday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Saturday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Sunday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM"
+      ]
+    },
+    {
+      "id": 63,
+      "name": "Yoroniku",
+      "category": "food",
+      "type": "",
+      "rating": 4.4,
+      "review_count": 1524,
+      "neighborhood": "",
+      "notes": "烤肉，提前一个自然月预定。",
+      "place_id": "ChIJVVUlOmSLGGARGqkXwDpR7PI",
+      "coordinates": {
+        "lat": 35.660246199999996,
+        "lng": 139.7175653
+      },
+      "photo_url": "/images/places/ChIJVVUlOmSLGGARGqkXwDpR7PI.jpg",
+      "maps_search": "Yoroniku Tokyo",
+      "address": "Japan, 〒107-0062 Tokyo, Minato City, Minamiaoyama, 6-chōme−6−２２ LunaRossa南青山 B1",
+      "website": "https://s.tabelog.com/tokyo/A1306/A130602/13042979/top_amp/",
+      "opening_hours": [
+        "Monday: 5:00 PM – 12:00 AM",
+        "Tuesday: 5:00 PM – 12:00 AM",
+        "Wednesday: 5:00 PM – 12:00 AM",
+        "Thursday: 5:00 PM – 12:00 AM",
+        "Friday: 5:00 PM – 12:00 AM",
+        "Saturday: 5:00 PM – 12:00 AM",
+        "Sunday: 5:00 PM – 12:00 AM"
+      ]
+    },
+    {
+      "id": 64,
+      "name": "Yoroniku Ebisu",
+      "category": "food",
+      "type": "",
+      "rating": 4.6,
+      "review_count": 980,
+      "neighborhood": "",
+      "notes": "烤肉，提前一个自然月预定。",
+      "place_id": "ChIJI5iLqGqLGGARqF9I9Ccnh3E",
+      "coordinates": {
+        "lat": 35.646357099999996,
+        "lng": 139.71180569999999
+      },
+      "photo_url": "/images/places/ChIJI5iLqGqLGGARqF9I9Ccnh3E.jpg",
+      "maps_search": "Yoroniku Ebisu Tokyo",
+      "address": "Japan, 〒150-0013 Tokyo, Shibuya, Ebisu, 1-chōme−11−５ GEMS恵比寿 8F",
+      "website": "http://yoroniku-ebisu.com/",
+      "opening_hours": [
+        "Monday: 5:00 PM – 12:00 AM",
+        "Tuesday: 5:00 PM – 12:00 AM",
+        "Wednesday: 5:00 PM – 12:00 AM",
+        "Thursday: 5:00 PM – 12:00 AM",
+        "Friday: 5:00 PM – 12:00 AM",
+        "Saturday: 5:00 PM – 12:00 AM",
+        "Sunday: 5:00 PM – 12:00 AM"
       ]
     }
   ],
