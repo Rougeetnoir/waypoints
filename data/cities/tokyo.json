@@ -1,0 +1,1573 @@
+{
+  "meta": {
+    "list_name": "Japan",
+    "source": "Google Maps saved list",
+    "scraped_at": "2026-03-14",
+    "total": 57,
+    "notes": "Scraped from public Google Maps list. Fields marked place_id/coordinates/photo_url are empty — to be filled via Google Places API.",
+    "city": "Tokyo",
+    "city_key": "tokyo"
+  },
+  "places": [
+    {
+      "id": 1,
+      "name": "Section L Hamamatsucho",
+      "category": "hotel",
+      "type": "Extended stay hotel",
+      "rating": 4.7,
+      "review_count": 66,
+      "neighborhood": "Hamamatsucho",
+      "notes": "2026-5-16-20",
+      "place_id": "ChIJMaPOWLyLGGARFOVqlEWmQU8",
+      "coordinates": {
+        "lat": 35.6581173,
+        "lng": 139.75656859999998
+      },
+      "photo_url": "/images/places/ChIJMaPOWLyLGGARFOVqlEWmQU8.jpg",
+      "maps_search": "Section L Hamamatsucho Tokyo",
+      "address": "Japan, 〒105-0013 Tokyo, Minato City, Hamamatsuchō, 1-chōme−16−１１ ビーサイト浜松町",
+      "website": "https://www.section-l.co/hamamatsucho",
+      "opening_hours": []
+    },
+    {
+      "id": 2,
+      "name": "Raffine Neo Running Style",
+      "category": "spa",
+      "type": "Foot care",
+      "rating": 4.2,
+      "review_count": 368,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJgepJJO6LGGARV9GPnmgvL7E",
+      "coordinates": {
+        "lat": 35.6741095,
+        "lng": 139.7595648
+      },
+      "photo_url": "/images/places/ChIJgepJJO6LGGARV9GPnmgvL7E.jpg",
+      "maps_search": "Raffine Neo Running Style Tokyo",
+      "address": "Japan, 〒100-0006 Tokyo, Chiyoda City, Yūrakuchō, 1-chōme−1−番2号 東京ミッドタウン日比谷 駐輪場",
+      "website": "https://www.raffine-rs.com/shop-neo?utm_source=gmb&utm_medium=500",
+      "opening_hours": [
+        "Monday: 7:00 AM – 10:00 PM",
+        "Tuesday: 7:00 AM – 10:00 PM",
+        "Wednesday: 7:00 AM – 10:00 PM",
+        "Thursday: 7:00 AM – 10:00 PM",
+        "Friday: 7:00 AM – 10:00 PM",
+        "Saturday: 7:00 AM – 8:00 PM",
+        "Sunday: 7:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Koenji Pal Shopping Street",
+      "category": "shopping",
+      "type": "Market / Shopping street",
+      "rating": 4.1,
+      "review_count": 116,
+      "neighborhood": "Koenji",
+      "notes": "",
+      "place_id": "ChIJ35Bjcn3yGGARkjlKvKP4SWA",
+      "coordinates": {
+        "lat": 35.705030799999996,
+        "lng": 139.64920899999998
+      },
+      "photo_url": "/images/places/ChIJ35Bjcn3yGGARkjlKvKP4SWA.jpg",
+      "maps_search": "Koenji Pal Shopping Street Tokyo",
+      "address": "4 Chome-25 Koenjiminami, Suginami City, Tokyo 166-0003, Japan",
+      "website": "http://www.koenji-pal.jp/",
+      "opening_hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Shinkoenji-dori Shopping Street Promotion Union",
+      "category": "shopping",
+      "type": "Shopping street",
+      "rating": 4.3,
+      "review_count": 4,
+      "neighborhood": "Koenji",
+      "notes": "",
+      "place_id": "ChIJ14NLjn3yGGAR8iXQTRvmipM",
+      "coordinates": {
+        "lat": 35.7060278,
+        "lng": 139.6496958
+      },
+      "photo_url": "/images/places/ChIJ14NLjn3yGGAR8iXQTRvmipM.jpg",
+      "maps_search": "Shinkoenji-dori Shopping Street Tokyo",
+      "address": "2-chōme-7-13 Kōenjikita, Suginami City, Tokyo 166-0002, Japan",
+      "website": "https://www.kouenji.or.jp/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 5:00 PM",
+        "Tuesday: 11:00 AM – 5:00 PM",
+        "Wednesday: 11:00 AM – 5:00 PM",
+        "Thursday: 11:00 AM – 5:00 PM",
+        "Friday: 11:00 AM – 5:00 PM",
+        "Saturday: Closed",
+        "Sunday: Closed"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Unicorn Gundam",
+      "category": "sightseeing",
+      "type": "Tourist attraction",
+      "rating": 4.6,
+      "review_count": 28075,
+      "neighborhood": "Odaiba",
+      "notes": "",
+      "place_id": "ChIJF6xTyvmJGGARU8t5NIqkNeI",
+      "coordinates": {
+        "lat": 35.624451,
+        "lng": 139.7754917
+      },
+      "photo_url": "/images/places/ChIJF6xTyvmJGGARU8t5NIqkNeI.jpg",
+      "maps_search": "Unicorn Gundam Odaiba Tokyo",
+      "address": "Japan, 〒135-0064 Tokyo, Koto City, Aomi, 1-chōme−1−１０ ダイバーシティ東京プラザ内 2Fフェスティバル広場",
+      "website": "https://www.unicorn-gundam-statue.jp/",
+      "opening_hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Kameido Tenjin Shrine",
+      "category": "sightseeing",
+      "type": "Shinto shrine",
+      "rating": 4.2,
+      "review_count": 9377,
+      "neighborhood": "Kameido",
+      "notes": "",
+      "place_id": "ChIJsYT-eNGIGGARrtlQxrayK0M",
+      "coordinates": {
+        "lat": 35.7030288,
+        "lng": 139.82066179999998
+      },
+      "photo_url": "/images/places/ChIJsYT-eNGIGGARrtlQxrayK0M.jpg",
+      "maps_search": "Kameido Tenjin Shrine Tokyo",
+      "address": "3-chōme-6-1 Kameido, Koto City, Tokyo 136-0071, Japan",
+      "website": "http://kameidotenjin-sha.jp/",
+      "opening_hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Inokashira Park",
+      "category": "sightseeing",
+      "type": "Park",
+      "rating": 4.4,
+      "review_count": 13301,
+      "neighborhood": "Kichijoji",
+      "notes": "",
+      "place_id": "ChIJLWaVdDXuGGART_Pg1R3CZ4A",
+      "coordinates": {
+        "lat": 35.699747599999995,
+        "lng": 139.57370179999998
+      },
+      "photo_url": "/images/places/ChIJLWaVdDXuGGART_Pg1R3CZ4A.jpg",
+      "maps_search": "Inokashira Park Kichijoji Tokyo",
+      "address": "1-chōme-18-31 Gotenyama, Musashino, Tokyo 180-0005, Japan",
+      "website": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/seibuk/inokashira/index.html",
+      "opening_hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "teamLab Planets TOKYO DMM",
+      "category": "sightseeing",
+      "type": "Modern art museum",
+      "rating": 4.5,
+      "review_count": 49537,
+      "neighborhood": "Toyosu",
+      "notes": "",
+      "place_id": "ChIJSeco5wiJGGARItbTS8lQ5G0",
+      "coordinates": {
+        "lat": 35.6491207,
+        "lng": 139.7897739
+      },
+      "photo_url": "/images/places/ChIJSeco5wiJGGARItbTS8lQ5G0.jpg",
+      "maps_search": "teamLab Planets TOKYO DMM",
+      "address": "6-chōme-1-16 Toyosu, Koto City, Tokyo 135-0061, Japan",
+      "website": "https://www.teamlab.art/jp/e/planets/",
+      "opening_hours": [
+        "Monday: 8:30 AM – 10:00 PM",
+        "Tuesday: 8:30 AM – 10:00 PM",
+        "Wednesday: 8:30 AM – 10:00 PM",
+        "Thursday: 8:30 AM – 10:00 PM",
+        "Friday: 8:30 AM – 10:00 PM",
+        "Saturday: 8:30 AM – 10:00 PM",
+        "Sunday: 8:30 AM – 10:00 PM"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Gonpachi Nishi-Azabu",
+      "category": "food",
+      "type": "Izakaya",
+      "rating": 4.2,
+      "review_count": 7652,
+      "neighborhood": "Nishi-Azabu",
+      "notes": "",
+      "place_id": "ChIJEwlemnqLGGARhwMuRpwpkBI",
+      "coordinates": {
+        "lat": 35.6601742,
+        "lng": 139.7235797
+      },
+      "photo_url": "/images/places/ChIJEwlemnqLGGARhwMuRpwpkBI.jpg",
+      "maps_search": "Gonpachi Nishi-Azabu Tokyo",
+      "address": "1-chōme-13-11 Nishiazabu, Minato City, Tokyo 106-0031, Japan",
+      "website": "https://gonpachi.jp/nishi-azabu/",
+      "opening_hours": [
+        "Monday: 11:30 AM – 3:30 AM",
+        "Tuesday: 11:30 AM – 3:30 AM",
+        "Wednesday: 11:30 AM – 3:30 AM",
+        "Thursday: 11:30 AM – 3:30 AM",
+        "Friday: 11:30 AM – 3:30 AM",
+        "Saturday: 11:30 AM – 3:30 AM",
+        "Sunday: 11:30 AM – 3:30 AM"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "LIGHT UP COFFEE",
+      "category": "cafe",
+      "type": "Coffee store",
+      "rating": 4.4,
+      "review_count": 586,
+      "neighborhood": "Kichijoji",
+      "notes": "",
+      "place_id": "ChIJe-TeakzuGGAR7ZrlpUdY69g",
+      "coordinates": {
+        "lat": 35.7054544,
+        "lng": 139.5725176
+      },
+      "photo_url": "/images/places/ChIJe-TeakzuGGAR7ZrlpUdY69g.jpg",
+      "maps_search": "LIGHT UP COFFEE Kichijoji Tokyo",
+      "address": "4-chōme-13-15 Kichijōji Honchō, Musashino, Tokyo 180-0004, Japan",
+      "website": "https://lightupcoffee.com/",
+      "opening_hours": [
+        "Monday: 9:00 AM – 7:00 PM",
+        "Tuesday: 9:00 AM – 7:00 PM",
+        "Wednesday: 9:00 AM – 7:00 PM",
+        "Thursday: 9:00 AM – 7:00 PM",
+        "Friday: 9:00 AM – 7:00 PM",
+        "Saturday: 9:00 AM – 7:00 PM",
+        "Sunday: 9:00 AM – 7:00 PM"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "andoh coffee",
+      "category": "cafe",
+      "type": "Coffee roastery",
+      "rating": 4.6,
+      "review_count": 99,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJsVS_UR3vGGARPwNQXIrgCiw",
+      "coordinates": {
+        "lat": 35.7080306,
+        "lng": 139.57737559999998
+      },
+      "photo_url": "/images/places/ChIJsVS_UR3vGGARPwNQXIrgCiw.jpg",
+      "maps_search": "andoh coffee Tokyo",
+      "address": "2-chōme-29-13 Kichijōji Honchō, Musashino, Tokyo 180-0004, Japan",
+      "website": "https://andohcoffee.com/",
+      "opening_hours": [
+        "Monday: 9:00 AM – 6:00 PM",
+        "Tuesday: 9:00 AM – 6:00 PM",
+        "Wednesday: 9:00 AM – 6:00 PM",
+        "Thursday: 9:00 AM – 6:00 PM",
+        "Friday: 9:00 AM – 6:00 PM",
+        "Saturday: 9:00 AM – 6:00 PM",
+        "Sunday: 9:00 AM – 6:00 PM"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Ishii Sports Kichijoji store",
+      "category": "shopping",
+      "type": "Outdoor sports store",
+      "rating": 3.8,
+      "review_count": 489,
+      "neighborhood": "Kichijoji",
+      "notes": "",
+      "place_id": "ChIJf7a7MkbuGGARStMrfqCB-wQ",
+      "coordinates": {
+        "lat": 35.7050635,
+        "lng": 139.57963469999999
+      },
+      "photo_url": "/images/places/ChIJf7a7MkbuGGARStMrfqCB-wQ.jpg",
+      "maps_search": "Ishii Sports Kichijoji Tokyo",
+      "address": "Coppice, Building B, ４F, 1-chōme-11-5 Kichijōji Honchō, Musashino, Tokyo 180-0004, Japan",
+      "website": "https://www.ishii-sports.com/shop/kichijouji/",
+      "opening_hours": [
+        "Monday: 10:00 AM – 9:00 PM",
+        "Tuesday: 10:00 AM – 9:00 PM",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 10:00 AM – 9:00 PM",
+        "Saturday: 10:00 AM – 9:00 PM",
+        "Sunday: 10:00 AM – 9:00 PM"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "L-Breath Kichijoji",
+      "category": "shopping",
+      "type": "Outdoor sports store",
+      "rating": 3.8,
+      "review_count": 512,
+      "neighborhood": "Kichijoji",
+      "notes": "",
+      "place_id": "ChIJw84Z1kfuGGARbVChsJKNMPg",
+      "coordinates": {
+        "lat": 35.7035901,
+        "lng": 139.578451
+      },
+      "photo_url": "/images/places/ChIJw84Z1kfuGGARbVChsJKNMPg.jpg",
+      "maps_search": "L-Breath Kichijoji Tokyo",
+      "address": "1-chōme-3-2 Kichijōji Honchō, Musashino, Tokyo 180-0004, Japan",
+      "website": "https://store.lbreath.supersports.com/23249?utm_source=google&utm_medium=google_map&utm_campaign=tech_04",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Satou Kichijoji Steak House",
+      "category": "food",
+      "type": "Steak",
+      "rating": 4.5,
+      "review_count": 131,
+      "neighborhood": "Kichijoji",
+      "notes": "",
+      "place_id": "ChIJaW5hxEDvGGARybZcAlw9SrQ",
+      "coordinates": {
+        "lat": 35.7039637,
+        "lng": 139.5790243
+      },
+      "photo_url": "/images/places/ChIJaW5hxEDvGGARybZcAlw9SrQ.jpg",
+      "maps_search": "Satou Kichijoji Steak House Tokyo",
+      "address": "Japan, 〒180-0004 Tokyo, Musashino, Kichijōji Honchō, 1-chōme−1−８ 吉祥寺さとう ２Ｆ",
+      "website": "https://www.shop-satou.com/kichijoji.html",
+      "opening_hours": [
+        "Monday: 11:00 AM – 2:30 PM, 5:00 – 8:00 PM",
+        "Tuesday: 11:00 AM – 2:30 PM, 5:00 – 8:00 PM",
+        "Wednesday: 11:00 AM – 2:30 PM, 5:00 – 8:00 PM",
+        "Thursday: 11:00 AM – 2:30 PM, 5:00 – 8:00 PM",
+        "Friday: 11:00 AM – 2:30 PM, 5:00 – 8:00 PM",
+        "Saturday: 11:00 AM – 2:30 PM, 5:00 – 8:00 PM",
+        "Sunday: 11:00 AM – 2:30 PM, 5:00 – 8:00 PM"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Joto Curry",
+      "category": "food",
+      "type": "Japanese Curry",
+      "rating": 4.4,
+      "review_count": 1642,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJw7WmnVmLGGAR4Wsx5HEgkok",
+      "coordinates": {
+        "lat": 35.6571334,
+        "lng": 139.70380079999998
+      },
+      "photo_url": "/images/places/ChIJw7WmnVmLGGAR4Wsx5HEgkok.jpg",
+      "maps_search": "Joto Curry Tokyo",
+      "address": "Japan, 〒150-0002 Tokyo, Shibuya, 3-chōme−18−７ 東一号館ビル １Ｆ",
+      "website": "https://www.tokumasa.net/jyoutoucurry_tokyo01",
+      "opening_hours": [
+        "Monday: 11:00 AM – 10:00 PM",
+        "Tuesday: 11:00 AM – 10:00 PM",
+        "Wednesday: 11:00 AM – 10:00 PM",
+        "Thursday: 11:00 AM – 10:00 PM",
+        "Friday: 11:00 AM – 10:00 PM",
+        "Saturday: 11:00 AM – 9:00 PM",
+        "Sunday: 11:00 AM – 9:00 PM"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "OVERRIDE 丸の内 KITTE",
+      "category": "shopping",
+      "type": "Hat shop",
+      "rating": 4.4,
+      "review_count": 15,
+      "neighborhood": "Marunouchi",
+      "notes": "",
+      "place_id": "ChIJicJRNfqLGGARNGjsR4YYRoQ",
+      "coordinates": {
+        "lat": 35.6798882,
+        "lng": 139.76519389999999
+      },
+      "photo_url": "/images/places/ChIJicJRNfqLGGARNGjsR4YYRoQ.jpg",
+      "maps_search": "OVERRIDE Marunouchi KITTE Tokyo",
+      "address": "Japan, 〒100-0005 Tokyo, Chiyoda City, Marunouchi, 2-chōme−7−２ 7-2 KITTE 3F",
+      "website": "https://overridehat.com/shop/override_marunouchi-kitte/?utm_source=gmb&utm_medium=info&utm_campaign=marunouchi-kitte",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "いさみや 銀座本店",
+      "category": "shopping",
+      "type": "Children's clothing store",
+      "rating": 3.9,
+      "review_count": 109,
+      "neighborhood": "Ginza",
+      "notes": "",
+      "place_id": "ChIJOTomjuaLGGARuDO6i8ce8hA",
+      "coordinates": {
+        "lat": 35.671611,
+        "lng": 139.7656563
+      },
+      "photo_url": "/images/places/ChIJOTomjuaLGGARuDO6i8ce8hA.jpg",
+      "maps_search": "いさみや 銀座本店 Tokyo",
+      "address": "4-chōme-6-16 Ginza, Chuo City, Tokyo 104-0061, Japan",
+      "website": "http://www.ginza-isamiya.com/",
+      "opening_hours": [
+        "Monday: 10:00 AM – 7:30 PM",
+        "Tuesday: 10:00 AM – 7:30 PM",
+        "Wednesday: 10:00 AM – 7:30 PM",
+        "Thursday: 10:00 AM – 7:30 PM",
+        "Friday: 10:00 AM – 7:30 PM",
+        "Saturday: 10:00 AM – 7:30 PM",
+        "Sunday: 10:00 AM – 7:30 PM"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Onsen - Fuji Yurari Hot Spring",
+      "category": "spa",
+      "type": "Day spa / Onsen",
+      "rating": 4.1,
+      "review_count": 5801,
+      "neighborhood": "Kawaguchiko",
+      "notes": "",
+      "place_id": "ChIJ0-FaM23gG2ARDFben2v-Hsc",
+      "coordinates": {
+        "lat": 35.4761278,
+        "lng": 138.6915967
+      },
+      "photo_url": "/images/places/ChIJ0-FaM23gG2ARDFben2v-Hsc.jpg",
+      "maps_search": "Fuji Yurari Hot Spring Kawaguchiko",
+      "address": "8532-5, Narusawa, Minamitsuru District, Yamanashi 401-0320, Japan",
+      "website": "https://www.fuji-yurari.jp/?utm_source=google&utm_medium=maps",
+      "opening_hours": [
+        "Monday: 10:00 AM – 9:00 PM",
+        "Tuesday: 10:00 AM – 9:00 PM",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 10:00 AM – 9:00 PM",
+        "Saturday: 10:00 AM – 10:00 PM",
+        "Sunday: 10:00 AM – 10:00 PM"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Katsuo Shokudo",
+      "category": "food",
+      "type": "Breakfast restaurant",
+      "rating": 4.1,
+      "review_count": 694,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJ5VahuViLGGARdhxzaSEMQ6w",
+      "coordinates": {
+        "lat": 35.6541103,
+        "lng": 139.7021029
+      },
+      "photo_url": "/images/places/ChIJ5VahuViLGGARdhxzaSEMQ6w.jpg",
+      "maps_search": "Katsuo Shokudo Tokyo",
+      "address": "Japan, 〒150-0032 Tokyo, Shibuya, Uguisudanichō, 7−１２ GranDuo渋谷 B1",
+      "website": "https://www.katsuoshokudo.jp/",
+      "opening_hours": [
+        "Monday: 8:30 AM – 1:00 PM",
+        "Tuesday: 8:30 AM – 1:00 PM",
+        "Wednesday: Closed",
+        "Thursday: Closed",
+        "Friday: 8:30 AM – 1:00 PM",
+        "Saturday: 8:30 AM – 1:00 PM",
+        "Sunday: 8:30 AM – 1:00 PM"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "焼肉 豪じ",
+      "category": "food",
+      "type": "Yakiniku",
+      "rating": 4.7,
+      "review_count": 81,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJnz4efCpdGGARAh_AS6Z-4sI",
+      "coordinates": {
+        "lat": 35.445516,
+        "lng": 139.6380959
+      },
+      "photo_url": "/images/places/ChIJnz4efCpdGGARAh_AS6Z-4sI.jpg",
+      "maps_search": "焼肉 豪じ Tokyo",
+      "address": "Japan, 〒231-0014 Kanagawa, Yokohama, Naka Ward, Tokiwachō, 2-chōme−１０ 伸光ビル 1F",
+      "website": "https://www.hotpepper.jp/strJ001261078/amp/",
+      "opening_hours": [
+        "Monday: 5:00 – 11:00 PM",
+        "Tuesday: 5:00 – 11:00 PM",
+        "Wednesday: 5:00 – 11:00 PM",
+        "Thursday: 5:00 – 11:00 PM",
+        "Friday: 5:00 – 11:00 PM",
+        "Saturday: 5:00 – 11:00 PM",
+        "Sunday: Closed"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Parfaiteria bel",
+      "category": "food",
+      "type": "Dessert / Parfait",
+      "rating": 4.0,
+      "review_count": 727,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJLYBZsFeLGGARXVSJXBBVeWc",
+      "coordinates": {
+        "lat": 35.6576097,
+        "lng": 139.6993349
+      },
+      "photo_url": "/images/places/ChIJLYBZsFeLGGARXVSJXBBVeWc.jpg",
+      "maps_search": "Parfaiteria bel Tokyo",
+      "address": "Japan, 〒150-0043 Tokyo, Shibuya, Dōgenzaka, 1-chōme−7−１０ 渋谷道玄坂一丁目ビル 3F",
+      "website": "https://yoru-parfait-gaku.com/",
+      "opening_hours": [
+        "Monday: 5:00 PM – 12:00 AM",
+        "Tuesday: 5:00 PM – 12:00 AM",
+        "Wednesday: 5:00 PM – 12:00 AM",
+        "Thursday: 5:00 PM – 12:00 AM",
+        "Friday: 5:00 PM – 1:00 AM",
+        "Saturday: 3:00 PM – 1:00 AM",
+        "Sunday: 3:00 PM – 12:00 AM"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "KEEN GARAGE SHINJUKU",
+      "category": "shopping",
+      "type": "Shoe store",
+      "rating": 3.5,
+      "review_count": 17,
+      "neighborhood": "Shinjuku",
+      "notes": "",
+      "place_id": "ChIJPaf2cwCNGGARe3KSU_p8GyI",
+      "coordinates": {
+        "lat": 35.689203899999995,
+        "lng": 139.69914699999998
+      },
+      "photo_url": "/images/places/ChIJPaf2cwCNGGARe3KSU_p8GyI.jpg",
+      "maps_search": "KEEN GARAGE Shinjuku Tokyo",
+      "address": "Japan, 〒160-0023 Tokyo, Shinjuku City, Nishishinjuku, 1-chōme−1−５ ルミネ新宿 ルミネ 5F",
+      "website": "https://www.keenfootwear.jp/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 9:00 PM",
+        "Tuesday: 11:00 AM – 9:00 PM",
+        "Wednesday: 11:00 AM – 9:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 11:00 AM – 9:00 PM",
+        "Sunday: 11:00 AM – 9:00 PM"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "LUMINE EST Shinjuku",
+      "category": "shopping",
+      "type": "Shopping mall",
+      "rating": 3.8,
+      "review_count": 11727,
+      "neighborhood": "Shinjuku",
+      "notes": "",
+      "place_id": "ChIJ_TibA9qMGGARNYmVIFyGU9k",
+      "coordinates": {
+        "lat": 35.691250499999995,
+        "lng": 139.70114189999998
+      },
+      "photo_url": "/images/places/ChIJ_TibA9qMGGARNYmVIFyGU9k.jpg",
+      "maps_search": "LUMINE EST Shinjuku Tokyo",
+      "address": "3-chōme-38-1 Shinjuku, Shinjuku City, Tokyo 160-0022, Japan",
+      "website": "http://www.lumine.ne.jp/est/?utm_source=google&utm_medium=google_map&utm_campaign=t_map_02",
+      "opening_hours": [
+        "Monday: 11:00 AM – 9:00 PM",
+        "Tuesday: 11:00 AM – 9:00 PM",
+        "Wednesday: 11:00 AM – 9:00 PM",
+        "Thursday: 11:00 AM – 9:00 PM",
+        "Friday: 11:00 AM – 9:00 PM",
+        "Saturday: 10:30 AM – 9:00 PM",
+        "Sunday: 10:30 AM – 9:00 PM"
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Sports wear Disc. Alpen Tokyo",
+      "category": "shopping",
+      "type": "Sporting goods store",
+      "rating": 4.1,
+      "review_count": 2684,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJ_VYfhdSNGGARpG4sfHX889w",
+      "coordinates": {
+        "lat": 35.693391399999996,
+        "lng": 139.70071679999998
+      },
+      "photo_url": "/images/places/ChIJ_VYfhdSNGGARpG4sfHX889w.jpg",
+      "maps_search": "Alpen Tokyo sporting goods",
+      "address": "3-chōme-23-7 Shinjuku, Shinjuku City, Tokyo 160-0022, Japan",
+      "website": "https://store.alpen-group.jp/Form/RealShop/ShopDetail.aspx?rsid=5200",
+      "opening_hours": [
+        "Monday: 11:00 AM – 10:00 PM",
+        "Tuesday: 11:00 AM – 10:00 PM",
+        "Wednesday: 11:00 AM – 10:00 PM",
+        "Thursday: 11:00 AM – 10:00 PM",
+        "Friday: 11:00 AM – 10:00 PM",
+        "Saturday: 10:00 AM – 10:00 PM",
+        "Sunday: 10:00 AM – 10:00 PM"
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Ōte-mon Gate (Gate to the East Gardens)",
+      "category": "sightseeing",
+      "type": "Historical landmark",
+      "rating": 4.4,
+      "review_count": 618,
+      "neighborhood": "Imperial Palace",
+      "notes": "",
+      "place_id": "ChIJ7-cJ_wiMGGAR_wayVide6uo",
+      "coordinates": {
+        "lat": 35.6861142,
+        "lng": 139.76025310000003
+      },
+      "photo_url": "/images/places/ChIJ7-cJ_wiMGGAR_wayVide6uo.jpg",
+      "maps_search": "Otemon Gate Imperial Palace Tokyo",
+      "address": "1-1 Chiyoda, Chiyoda City, Tokyo 100-0001, Japan",
+      "website": "http://www.kunaicho.go.jp/event/higashigyoen/gyoen-map.html",
+      "opening_hours": [
+        "Monday: Closed",
+        "Tuesday: 9:00 AM – 4:30 PM",
+        "Wednesday: 9:00 AM – 4:30 PM",
+        "Thursday: 9:00 AM – 4:30 PM",
+        "Friday: Closed",
+        "Saturday: 9:00 AM – 4:30 PM",
+        "Sunday: 9:00 AM – 4:30 PM"
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Sakurada-mon Gate",
+      "category": "sightseeing",
+      "type": "Historical landmark",
+      "rating": 4.5,
+      "review_count": 505,
+      "neighborhood": "Imperial Palace",
+      "notes": "",
+      "place_id": "ChIJs0NXE76LGGARlTz2BYUVO-4",
+      "coordinates": {
+        "lat": 35.6785627,
+        "lng": 139.75394219999998
+      },
+      "photo_url": "/images/places/ChIJs0NXE76LGGARlTz2BYUVO-4.jpg",
+      "maps_search": "Sakuradamon Gate Tokyo",
+      "address": "1-1 Kōkyogaien, Chiyoda City, Tokyo 100-0002, Japan",
+      "website": "https://www.env.go.jp/garden/kokyogaien/english/sakurada-mon_gate.html",
+      "opening_hours": [
+        "Monday: Open 24 hours",
+        "Tuesday: Open 24 hours",
+        "Wednesday: Open 24 hours",
+        "Thursday: Open 24 hours",
+        "Friday: Open 24 hours",
+        "Saturday: Open 24 hours",
+        "Sunday: Open 24 hours"
+      ]
+    },
+    {
+      "id": 33,
+      "name": "NEWoMan Shinjuku",
+      "category": "shopping",
+      "type": "Shopping mall",
+      "rating": 3.8,
+      "review_count": 4486,
+      "neighborhood": "Shinjuku",
+      "notes": "",
+      "place_id": "ChIJ9TsfyNqMGGAR-KTtGjzQRtI",
+      "coordinates": {
+        "lat": 35.6887045,
+        "lng": 139.7018443
+      },
+      "photo_url": "/images/places/ChIJ9TsfyNqMGGAR-KTtGjzQRtI.jpg",
+      "maps_search": "NEWoMan Shinjuku Tokyo",
+      "address": "4-chōme-1-6 Shinjuku, Shinjuku City, Tokyo 160-0022, Japan",
+      "website": "https://www.newoman.jp/shinjuku/?utm_source=google&utm_medium=google_map&utm_campaign=t_map_06",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:30 PM",
+        "Tuesday: 11:00 AM – 8:30 PM",
+        "Wednesday: 11:00 AM – 8:30 PM",
+        "Thursday: 11:00 AM – 8:30 PM",
+        "Friday: 11:00 AM – 8:30 PM",
+        "Saturday: 11:00 AM – 8:30 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "BILLY'S ENT 新宿店",
+      "category": "shopping",
+      "type": "Shoe store",
+      "rating": 3.8,
+      "review_count": 82,
+      "neighborhood": "Shinjuku",
+      "notes": "",
+      "place_id": "ChIJcTrPWNqMGGARC40MUiaSAcw",
+      "coordinates": {
+        "lat": 35.6905804,
+        "lng": 139.70298219999998
+      },
+      "photo_url": "/images/places/ChIJcTrPWNqMGGARC40MUiaSAcw.jpg",
+      "maps_search": "BILLY'S ENT Shinjuku Tokyo",
+      "address": "3-chōme-34-12 Shinjuku, Shinjuku City, Tokyo 160-0022, Japan",
+      "website": "http://www.billys-tokyo.net/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Hotel Monterey Akasaka",
+      "category": "hotel",
+      "type": "4-star hotel",
+      "rating": 4.2,
+      "review_count": 1418,
+      "neighborhood": "Akasaka",
+      "notes": "",
+      "place_id": "ChIJCV-IMH6MGGAR2n7SEK0AMTI",
+      "coordinates": {
+        "lat": 35.6755584,
+        "lng": 139.73272369999998
+      },
+      "photo_url": "/images/places/ChIJCV-IMH6MGGAR2n7SEK0AMTI.jpg",
+      "maps_search": "Hotel Monterey Akasaka Tokyo",
+      "address": "4-chōme-9-24 Akasaka, Minato City, Tokyo 107-0052, Japan",
+      "website": "https://www.hotelmonterey.co.jp/akasaka/?utm_source=google&utm_medium=mybusiness&utm_campaign=website_monaka",
+      "opening_hours": []
+    },
+    {
+      "id": 36,
+      "name": "KITTE Marunouchi",
+      "category": "shopping",
+      "type": "Shopping mall",
+      "rating": 4.1,
+      "review_count": 12209,
+      "neighborhood": "Marunouchi",
+      "notes": "",
+      "place_id": "ChIJdUbpSvqLGGARCmbc6R7hZJ8",
+      "coordinates": {
+        "lat": 35.6797983,
+        "lng": 139.764865
+      },
+      "photo_url": "/images/places/ChIJdUbpSvqLGGARCmbc6R7hZJ8.jpg",
+      "maps_search": "KITTE Marunouchi Tokyo",
+      "address": "2-chōme-7-2 Marunouchi, Chiyoda City, Tokyo 100-0005, Japan",
+      "website": "https://marunouchi.jp-kitte.jp/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 10:00 PM",
+        "Tuesday: 11:00 AM – 10:00 PM",
+        "Wednesday: 11:00 AM – 10:00 PM",
+        "Thursday: 11:00 AM – 10:00 PM",
+        "Friday: 11:00 AM – 10:00 PM",
+        "Saturday: 11:00 AM – 10:00 PM",
+        "Sunday: 11:00 AM – 10:00 PM"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "LE LABO Daikanyama Store",
+      "category": "shopping",
+      "type": "Perfume store",
+      "rating": 4.4,
+      "review_count": 318,
+      "neighborhood": "Daikanyama",
+      "notes": "",
+      "place_id": "ChIJ7aW7w0WLGGARmjwTSTXf9sU",
+      "coordinates": {
+        "lat": 35.6474848,
+        "lng": 139.7029106
+      },
+      "photo_url": "/images/places/ChIJ7aW7w0WLGGARmjwTSTXf9sU.jpg",
+      "maps_search": "LE LABO Daikanyama Tokyo",
+      "address": "1-chōme-35-2 Ebisunishi, Shibuya, Tokyo 150-0021, Japan",
+      "website": "http://www.lelabofragrances.jp/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "LE LABO Ginza Six Store",
+      "category": "shopping",
+      "type": "Perfume store",
+      "rating": 4.2,
+      "review_count": 271,
+      "neighborhood": "Ginza",
+      "notes": "",
+      "place_id": "ChIJMapDROaLGGARrmYecHqJKsg",
+      "coordinates": {
+        "lat": 35.6699984,
+        "lng": 139.7643721
+      },
+      "photo_url": "/images/places/ChIJMapDROaLGGARrmYecHqJKsg.jpg",
+      "maps_search": "LE LABO Ginza Six Tokyo",
+      "address": "Japan, 〒104-0061 Tokyo, Chuo City, Ginza, 6-chōme−10−１ 1F",
+      "website": "https://www.lelabofragrances.jp/",
+      "opening_hours": [
+        "Monday: 10:30 AM – 8:30 PM",
+        "Tuesday: 10:30 AM – 8:30 PM",
+        "Wednesday: 10:30 AM – 8:30 PM",
+        "Thursday: 10:30 AM – 8:30 PM",
+        "Friday: 10:30 AM – 8:30 PM",
+        "Saturday: 10:30 AM – 8:30 PM",
+        "Sunday: 10:30 AM – 8:30 PM"
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Kappabashi Kitchen Supply Town",
+      "category": "shopping",
+      "type": "Kitchen supply district",
+      "rating": 4.3,
+      "review_count": 11993,
+      "neighborhood": "Asakusa",
+      "notes": "",
+      "place_id": "ChIJXYV-6JWOGGAR85vIZbM1RCE",
+      "coordinates": {
+        "lat": 35.7105797,
+        "lng": 139.7879645
+      },
+      "photo_url": "/images/places/ChIJXYV-6JWOGGAR85vIZbM1RCE.jpg",
+      "maps_search": "Kappabashi Kitchen Supply Town Tokyo",
+      "address": "3-chōme-18-2 Matsugaya, Taito City, Tokyo 110-0036, Japan",
+      "website": "http://www.kappabashi.or.jp/",
+      "opening_hours": [
+        "Monday: 10:00 AM – 5:00 PM",
+        "Tuesday: 10:00 AM – 5:00 PM",
+        "Wednesday: 10:00 AM – 5:00 PM",
+        "Thursday: 10:00 AM – 5:00 PM",
+        "Friday: 10:00 AM – 5:00 PM",
+        "Saturday: 10:00 AM – 5:00 PM",
+        "Sunday: Closed"
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Ainz & Tulpe",
+      "category": "shopping",
+      "type": "Cosmetics store",
+      "rating": 3.9,
+      "review_count": 564,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJ2Ry8cNqMGGARvPoEDF20qlY",
+      "coordinates": {
+        "lat": 35.6905484,
+        "lng": 139.7017888
+      },
+      "photo_url": "/images/places/ChIJ2Ry8cNqMGGARvPoEDF20qlY.jpg",
+      "maps_search": "Ainz Tulpe Tokyo",
+      "address": "Japan, 〒160-0022 Tokyo, Shinjuku City, Shinjuku, 3-chōme−36−１０ ミラザ新宿ビル B1F〜2F",
+      "website": "https://ainz-tulpe.jp/shop/13010",
+      "opening_hours": [
+        "Monday: 10:00 AM – 10:00 PM",
+        "Tuesday: 10:00 AM – 10:00 PM",
+        "Wednesday: 10:00 AM – 10:00 PM",
+        "Thursday: 10:00 AM – 10:00 PM",
+        "Friday: 10:00 AM – 10:00 PM",
+        "Saturday: 10:00 AM – 10:00 PM",
+        "Sunday: 10:00 AM – 10:00 PM"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Daikoku Drug",
+      "category": "shopping",
+      "type": "Drug store",
+      "rating": 4.1,
+      "review_count": 188,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJZzaqB9GMGGARsUnZ_rlb_9Y",
+      "coordinates": {
+        "lat": 35.6889147,
+        "lng": 139.69859259999998
+      },
+      "photo_url": "/images/places/ChIJZzaqB9GMGGARsUnZ_rlb_9Y.jpg",
+      "maps_search": "Daikoku Drug Tokyo",
+      "address": "Ogawa Building, 1-chōme-18-1 Nishishinjuku, Shinjuku City, Tokyo 160-0023, Japan",
+      "website": "https://daikokudrug.com/store/353/",
+      "opening_hours": [
+        "Monday: 8:05 AM – 10:50 PM",
+        "Tuesday: 8:05 AM – 10:50 PM",
+        "Wednesday: 8:05 AM – 10:50 PM",
+        "Thursday: 8:05 AM – 10:50 PM",
+        "Friday: 8:05 AM – 10:50 PM",
+        "Saturday: 9:05 AM – 10:50 PM",
+        "Sunday: 9:05 AM – 10:50 PM"
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Matsuya Ginza",
+      "category": "shopping",
+      "type": "Department store",
+      "rating": 4.0,
+      "review_count": 12095,
+      "neighborhood": "Ginza",
+      "notes": "",
+      "place_id": "ChIJ5UsboeaLGGARV2ODxt0ic1I",
+      "coordinates": {
+        "lat": 35.6722621,
+        "lng": 139.7666526
+      },
+      "photo_url": "/images/places/ChIJ5UsboeaLGGARV2ODxt0ic1I.jpg",
+      "maps_search": "Matsuya Ginza Tokyo",
+      "address": "3-chōme-6-1 Ginza, Chuo City, Tokyo 104-8130, Japan",
+      "website": "http://www.matsuya.com/m_ginza/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 7:30 PM"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Tokyo Skytree",
+      "category": "sightseeing",
+      "type": "Observation deck",
+      "rating": 4.4,
+      "review_count": 112188,
+      "neighborhood": "Asakusa",
+      "notes": "",
+      "place_id": "ChIJ35ov0dCOGGARKvdDH7NPHX0",
+      "coordinates": {
+        "lat": 35.7100627,
+        "lng": 139.81070040000003
+      },
+      "photo_url": "/images/places/ChIJ35ov0dCOGGARKvdDH7NPHX0.jpg",
+      "maps_search": "Tokyo Skytree",
+      "address": "1-chōme-1-2 Oshiage, Sumida City, Tokyo 131-0045, Japan",
+      "website": "https://www.tokyo-skytree.jp/?utm_source=google&utm_medium=maps",
+      "opening_hours": [
+        "Monday: 10:00 AM – 10:00 PM",
+        "Tuesday: 10:00 AM – 10:00 PM",
+        "Wednesday: 10:00 AM – 10:00 PM",
+        "Thursday: 10:00 AM – 10:00 PM",
+        "Friday: 10:00 AM – 10:00 PM",
+        "Saturday: 9:00 AM – 10:00 PM",
+        "Sunday: 9:00 AM – 10:00 PM"
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Tokyo Tower",
+      "category": "sightseeing",
+      "type": "Observation deck",
+      "rating": 4.5,
+      "review_count": 94252,
+      "neighborhood": "Minato",
+      "notes": "",
+      "place_id": "ChIJCewJkL2LGGAR3Qmk0vCTGkg",
+      "coordinates": {
+        "lat": 35.6585805,
+        "lng": 139.7454329
+      },
+      "photo_url": "/images/places/ChIJCewJkL2LGGAR3Qmk0vCTGkg.jpg",
+      "maps_search": "Tokyo Tower",
+      "address": "4-chōme-2-8 Shibakōen, Minato City, Tokyo 105-0011, Japan",
+      "website": "https://www.tokyotower.co.jp/",
+      "opening_hours": [
+        "Monday: 9:00 AM – 11:00 PM",
+        "Tuesday: 9:00 AM – 11:00 PM",
+        "Wednesday: 9:00 AM – 11:00 PM",
+        "Thursday: 9:00 AM – 11:00 PM",
+        "Friday: 9:00 AM – 11:00 PM",
+        "Saturday: 9:00 AM – 11:00 PM",
+        "Sunday: 9:00 AM – 11:00 PM"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "KOMEHYO SHINJUKU MEN",
+      "category": "shopping",
+      "type": "Secondhand luxury / handbags",
+      "rating": 4.5,
+      "review_count": 430,
+      "neighborhood": "Shinjuku",
+      "notes": "",
+      "place_id": "ChIJK2jpINqMGGARsz4nu4kYF_w",
+      "coordinates": {
+        "lat": 35.6926651,
+        "lng": 139.7029153
+      },
+      "photo_url": "/images/places/ChIJK2jpINqMGGARsz4nu4kYF_w.jpg",
+      "maps_search": "KOMEHYO Shinjuku Men Tokyo",
+      "address": "Japan, 〒160-0022 Tokyo, Shinjuku City, Shinjuku, 3-chōme−19−７ らんざんビル B1F～4F",
+      "website": "https://komehyo.jp/kaitori/shop/shinjuku-annex?utm_source=gbp&utm_medium=shop&utm_id=shinjuku-annex",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Treasure Factory Style Shimokitazawa",
+      "category": "vintage",
+      "type": "Used clothing store",
+      "rating": 4.6,
+      "review_count": 630,
+      "neighborhood": "Shimokitazawa",
+      "notes": "",
+      "place_id": "ChIJDePlg2nzGGARofCnYZae0MI",
+      "coordinates": {
+        "lat": 35.6602457,
+        "lng": 139.6684277
+      },
+      "photo_url": "/images/places/ChIJDePlg2nzGGARofCnYZae0MI.jpg",
+      "maps_search": "Treasure Factory Style Shimokitazawa Tokyo",
+      "address": "Japan, 〒155-0031 Tokyo, Setagaya City, Kitazawa, 2-chōme−3−９ Style下北沢 1F‎",
+      "website": "https://www.tf-style.com/shop/352/?utm_source=google&utm_medium=maps",
+      "opening_hours": [
+        "Monday: 10:00 AM – 9:00 PM",
+        "Tuesday: 10:00 AM – 9:00 PM",
+        "Wednesday: 10:00 AM – 9:00 PM",
+        "Thursday: 10:00 AM – 9:00 PM",
+        "Friday: 10:00 AM – 9:00 PM",
+        "Saturday: 10:00 AM – 9:00 PM",
+        "Sunday: 10:00 AM – 9:00 PM"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Ichiran Shimokitazawa",
+      "category": "food",
+      "type": "Ramen",
+      "rating": 3.9,
+      "review_count": 590,
+      "neighborhood": "Shimokitazawa",
+      "notes": "Temporarily closed",
+      "place_id": "ChIJF2KYfWnzGGARIKXShg9zVsU",
+      "coordinates": {
+        "lat": 35.660249,
+        "lng": 139.667577
+      },
+      "photo_url": "/images/places/ChIJF2KYfWnzGGARIKXShg9zVsU.jpg",
+      "maps_search": "Ichiran Shimokitazawa Tokyo",
+      "address": "Japan, 〒155-0031 Tokyo, Setagaya City, Kitazawa, 2-chōme−14−１０ 阿部ビル 1F",
+      "website": "https://ichiran.com/shop/tokyo/shimokitazawa/",
+      "opening_hours": []
+    },
+    {
+      "id": 48,
+      "name": "Ebisu",
+      "category": "neighborhood",
+      "type": "Neighborhood",
+      "rating": null,
+      "review_count": null,
+      "neighborhood": "Shibuya",
+      "notes": "",
+      "place_id": "ChIJWRK3eBSLGGARCdO8OgKkE5w",
+      "coordinates": {
+        "lat": 35.6461371,
+        "lng": 139.7153917
+      },
+      "photo_url": "/images/places/ChIJWRK3eBSLGGARCdO8OgKkE5w.jpg",
+      "maps_search": "Ebisu Shibuya Tokyo",
+      "address": "Ebisu, Shibuya, Tokyo 150-0013, Japan",
+      "website": "",
+      "opening_hours": []
+    },
+    {
+      "id": 49,
+      "name": "Daikanyamacho",
+      "category": "neighborhood",
+      "type": "Neighborhood",
+      "rating": null,
+      "review_count": null,
+      "neighborhood": "Shibuya",
+      "notes": "",
+      "place_id": "ChIJ68vK5kSLGGARoiBaKr3YZgU",
+      "coordinates": {
+        "lat": 35.6505465,
+        "lng": 139.7042207
+      },
+      "photo_url": "/images/places/ChIJ68vK5kSLGGARoiBaKr3YZgU.jpg",
+      "maps_search": "Daikanyama Tokyo",
+      "address": "Daikanyamacho, Shibuya, Tokyo 150-0034, Japan",
+      "website": "",
+      "opening_hours": []
+    },
+    {
+      "id": 50,
+      "name": "WEGO Shimokitazawa",
+      "category": "vintage",
+      "type": "Used clothing store",
+      "rating": 3.7,
+      "review_count": 156,
+      "neighborhood": "Shimokitazawa",
+      "notes": "",
+      "place_id": "ChIJ923ya2vzGGARELac70tm-9A",
+      "coordinates": {
+        "lat": 35.6629991,
+        "lng": 139.6665418
+      },
+      "photo_url": "/images/places/ChIJ923ya2vzGGARELac70tm-9A.jpg",
+      "maps_search": "WEGO Shimokitazawa Tokyo",
+      "address": "Japan, 〒155-0031 Tokyo, Setagaya City, Kitazawa, 2-chōme−29−３ オークプラザ 1F",
+      "website": "https://www.instagram.com/wego_shimokita/",
+      "opening_hours": [
+        "Monday: 12:00 – 7:00 PM",
+        "Tuesday: 12:00 – 7:00 PM",
+        "Wednesday: 12:00 – 7:00 PM",
+        "Thursday: 12:00 – 7:00 PM",
+        "Friday: 12:00 – 7:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 51,
+      "name": "KINJI Shimokitazawaten",
+      "category": "vintage",
+      "type": "Used clothing store",
+      "rating": 3.7,
+      "review_count": 66,
+      "neighborhood": "Shimokitazawa",
+      "notes": "",
+      "place_id": "ChIJ4c2l1WvzGGARYSNOYhVDEKk",
+      "coordinates": {
+        "lat": 35.660632,
+        "lng": 139.6680285
+      },
+      "photo_url": "/images/places/ChIJ4c2l1WvzGGARYSNOYhVDEKk.jpg",
+      "maps_search": "KINJI Shimokitazawa Tokyo",
+      "address": "Japan, 〒155-0031 Tokyo, Setagaya City, Kitazawa, 2-chōme−13−１１ Ｆａｂｕｌｏｕｓ下北沢",
+      "website": "",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 52,
+      "name": "Koedo Kurari",
+      "category": "sightseeing",
+      "type": "Tourist attraction",
+      "rating": 3.9,
+      "review_count": 3801,
+      "neighborhood": "Kawagoe",
+      "notes": "",
+      "place_id": "ChIJVVVFv17aGGAR9Vh1Jo1q4qs",
+      "coordinates": {
+        "lat": 35.9162702,
+        "lng": 139.4834306
+      },
+      "photo_url": "/images/places/ChIJVVVFv17aGGAR9Vh1Jo1q4qs.jpg",
+      "maps_search": "Koedo Kurari Kawagoe Saitama",
+      "address": "1-chōme-10-1 Shintomichō, Kawagoe, Saitama 350-0043, Japan",
+      "website": "https://www.machikawa.co.jp/",
+      "opening_hours": [
+        "Monday: 10:00 AM – 6:00 PM",
+        "Tuesday: 10:00 AM – 6:00 PM",
+        "Wednesday: 10:00 AM – 6:00 PM",
+        "Thursday: 10:00 AM – 6:00 PM",
+        "Friday: 10:00 AM – 6:00 PM",
+        "Saturday: 10:00 AM – 6:00 PM",
+        "Sunday: 10:00 AM – 6:00 PM"
+      ]
+    },
+    {
+      "id": 53,
+      "name": "Harajuku Chicago Shimokitazawa",
+      "category": "vintage",
+      "type": "Used clothing store",
+      "rating": 4.0,
+      "review_count": 143,
+      "neighborhood": "Shimokitazawa",
+      "notes": "",
+      "place_id": "ChIJQeShDWnzGGARA5rH2wwnK4s",
+      "coordinates": {
+        "lat": 35.6590071,
+        "lng": 139.6676807
+      },
+      "photo_url": "/images/places/ChIJQeShDWnzGGARA5rH2wwnK4s.jpg",
+      "maps_search": "Harajuku Chicago Shimokitazawa Tokyo",
+      "address": "5-chōme-32-5 Daizawa, Setagaya City, Tokyo 155-0032, Japan",
+      "website": "https://www.chicago.co.jp/skz.html",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 54,
+      "name": "Flipper's Shimokitazawa",
+      "category": "food",
+      "type": "Pancake restaurant",
+      "rating": 4.4,
+      "review_count": 1426,
+      "neighborhood": "Shimokitazawa",
+      "notes": "",
+      "place_id": "ChIJXfBKDWvzGGARAYcIMEpXUlo",
+      "coordinates": {
+        "lat": 35.6627345,
+        "lng": 139.6669116
+      },
+      "photo_url": "/images/places/ChIJXfBKDWvzGGARAYcIMEpXUlo.jpg",
+      "maps_search": "Flipper's Shimokitazawa Tokyo",
+      "address": "Japan, 〒155-0031 Tokyo, Setagaya City, Kitazawa, 2-chōme−26−２０ 1F",
+      "website": "https://www.flavorworks.co.jp/brand/flippers.html",
+      "opening_hours": [
+        "Monday: 10:00 AM – 8:00 PM",
+        "Tuesday: 10:00 AM – 8:00 PM",
+        "Wednesday: 10:00 AM – 8:00 PM",
+        "Thursday: 10:00 AM – 8:00 PM",
+        "Friday: 10:00 AM – 8:00 PM",
+        "Saturday: 10:00 AM – 8:00 PM",
+        "Sunday: 10:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 55,
+      "name": "NeRoLi herb",
+      "category": "cafe",
+      "type": "Cafe",
+      "rating": 4.2,
+      "review_count": 56,
+      "neighborhood": "Shimokitazawa",
+      "notes": "",
+      "place_id": "ChIJTyq_cmnzGGAR-chummv7Hus",
+      "coordinates": {
+        "lat": 35.6649521,
+        "lng": 139.7098658
+      },
+      "photo_url": "/images/places/ChIJTyq_cmnzGGAR-chummv7Hus.png",
+      "maps_search": "NeRoLi herb Shimokitazawa Tokyo",
+      "address": "Japan, 〒107-0061 Tokyo, Minato City, Kitaaoyama, 3-chōme−9−２ ＡＱＵＡビル 1F",
+      "website": "http://neroliherb.com/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: Closed",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 56,
+      "name": "Shimokita garage department",
+      "category": "shopping",
+      "type": "Shopping complex",
+      "rating": 4.1,
+      "review_count": 105,
+      "neighborhood": "Shimokitazawa",
+      "notes": "",
+      "place_id": "ChIJQx3MyhTzGGARtxwgu2Zn6_4",
+      "coordinates": {
+        "lat": 35.664601399999995,
+        "lng": 139.66697729999999
+      },
+      "photo_url": "/images/places/ChIJQx3MyhTzGGARtxwgu2Zn6_4.jpg",
+      "maps_search": "Shimokita garage department Shimokitazawa Tokyo",
+      "address": "Japan, 〒155-0031 Tokyo, Setagaya City, Kitazawa, 3-chōme−31−１５ ＮＨ下北沢ビル 1F",
+      "website": "",
+      "opening_hours": []
+    },
+    {
+      "id": 58,
+      "name": "Ghibli Museum",
+      "category": "sightseeing",
+      "type": "Art museum",
+      "rating": 4.5,
+      "review_count": 18719,
+      "neighborhood": "Mitaka",
+      "notes": "Ticket required in advance",
+      "place_id": "ChIJLYwD5TTuGGARBZKEP5BV4U0",
+      "coordinates": {
+        "lat": 35.696238,
+        "lng": 139.5704317
+      },
+      "photo_url": "/images/places/ChIJLYwD5TTuGGARBZKEP5BV4U0.jpg",
+      "maps_search": "Ghibli Museum Mitaka",
+      "address": "1-chōme-1-83 Shimorenjaku, Mitaka, Tokyo 181-0013, Japan",
+      "website": "https://www.ghibli-museum.jp/",
+      "opening_hours": [
+        "Monday: 10:00 AM – 6:00 PM",
+        "Tuesday: Closed",
+        "Wednesday: 10:00 AM – 6:00 PM",
+        "Thursday: 10:00 AM – 6:00 PM",
+        "Friday: 10:00 AM – 6:00 PM",
+        "Saturday: 10:00 AM – 6:00 PM",
+        "Sunday: 10:00 AM – 6:00 PM"
+      ]
+    },
+    {
+      "id": 59,
+      "name": "Tsukishima Monja Okoge Shibuya",
+      "category": "food",
+      "type": "",
+      "rating": 4.9,
+      "review_count": 25839,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJoSq01FyNGGARuu4izIPSdRs",
+      "coordinates": {
+        "lat": 35.660449299999996,
+        "lng": 139.699402
+      },
+      "photo_url": "/images/places/ChIJoSq01FyNGGARuu4izIPSdRs.jpg",
+      "maps_search": "Tsukishima Monja Okoge Shibuya Tokyo",
+      "address": "Japan, 〒150-0042 Tokyo, Shibuya, Udagawachō, 24−８ Gintei Bldg., 1F, 2F & 3F",
+      "website": "https://tabelog.com/tokyo/A1303/A130301/13243695/",
+      "opening_hours": [
+        "Monday: 10:45 AM – 11:00 PM",
+        "Tuesday: 10:45 AM – 11:00 PM",
+        "Wednesday: 10:45 AM – 11:00 PM",
+        "Thursday: 10:45 AM – 11:00 PM",
+        "Friday: 10:45 AM – 11:00 PM",
+        "Saturday: 10:30 AM – 11:00 PM",
+        "Sunday: 10:30 AM – 11:00 PM"
+      ]
+    },
+    {
+      "id": 60,
+      "name": "Shinjuku Takano Fruits Parlor",
+      "category": "food",
+      "type": "",
+      "rating": 4.1,
+      "review_count": 3386,
+      "neighborhood": "",
+      "notes": "",
+      "place_id": "ChIJPwGlGtqMGGARS67p3v_g9XQ",
+      "coordinates": {
+        "lat": 35.6918323,
+        "lng": 139.7019469
+      },
+      "photo_url": "/images/places/ChIJPwGlGtqMGGARS67p3v_g9XQ.jpg",
+      "maps_search": "Shinjuku Takano Fruits Parlor Tokyo",
+      "address": "Japan, 〒160-0022 Tokyo, Shinjuku City, Shinjuku, 3-chōme−26−１１ ５Ｆ",
+      "website": "https://takano.jp/parlour/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 8:00 PM",
+        "Tuesday: 11:00 AM – 8:00 PM",
+        "Wednesday: 11:00 AM – 8:00 PM",
+        "Thursday: 11:00 AM – 8:00 PM",
+        "Friday: 11:00 AM – 8:00 PM",
+        "Saturday: 11:00 AM – 8:00 PM",
+        "Sunday: 11:00 AM – 8:00 PM"
+      ]
+    },
+    {
+      "id": 61,
+      "name": "SHIBIRE-NOODLES Rousokuya Omotesando Hills-ten",
+      "category": "food",
+      "type": "",
+      "rating": 4,
+      "review_count": 512,
+      "neighborhood": "",
+      "notes": "麻婆豆腐好吃;记得提前点好饭，不能加单；担担面没有麻婆豆腐面好吃",
+      "place_id": "ChIJdxHrqiCNGGARn8UB_-VKmqw",
+      "coordinates": {
+        "lat": 35.6672698,
+        "lng": 139.7090285
+      },
+      "photo_url": "/images/places/ChIJdxHrqiCNGGARn8UB_-VKmqw.jpg",
+      "maps_search": "SHIBIRE-NOODLES Rousokuya Omotesando Hills-ten Tokyo",
+      "address": "Japan, 〒150-0001 Tokyo, Shibuya, Jingūmae, 4-chōme−12−１０ 本館 ３Ｆ",
+      "website": "https://www.instagram.com/rousokuya_omotesandohills/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 10:00 PM",
+        "Tuesday: 11:00 AM – 10:00 PM",
+        "Wednesday: 11:00 AM – 10:00 PM",
+        "Thursday: 11:00 AM – 10:00 PM",
+        "Friday: 11:00 AM – 10:00 PM",
+        "Saturday: 11:00 AM – 10:00 PM",
+        "Sunday: 11:00 AM – 10:00 PM"
+      ]
+    },
+    {
+      "id": 62,
+      "name": "Sushi Azabu 鮨麻布",
+      "category": "food",
+      "type": "",
+      "rating": 4.3,
+      "review_count": 188,
+      "neighborhood": "",
+      "notes": "需要提前订位，推荐4800JPY午市套餐。提前30天订。",
+      "place_id": "ChIJCfTo27qLGGAR3DrjadbjfL4",
+      "coordinates": {
+        "lat": 35.6609044,
+        "lng": 139.7404893
+      },
+      "photo_url": "/images/places/ChIJCfTo27qLGGAR3DrjadbjfL4.jpg",
+      "maps_search": "Sushi Azabu Tokyo",
+      "address": "Japan, 〒106-0041 Tokyo, Minato City, Azabudai, 1-chōme−3−１ 3F",
+      "website": "https://balconyby6th.com/",
+      "opening_hours": [
+        "Monday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Tuesday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Wednesday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Thursday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Friday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Saturday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM",
+        "Sunday: 11:00 AM – 4:00 PM, 5:30 – 10:00 PM"
+      ]
+    },
+    {
+      "id": 63,
+      "name": "Yoroniku",
+      "category": "food",
+      "type": "",
+      "rating": 4.4,
+      "review_count": 1524,
+      "neighborhood": "",
+      "notes": "烤肉，提前一个自然月预定。",
+      "place_id": "ChIJVVUlOmSLGGARGqkXwDpR7PI",
+      "coordinates": {
+        "lat": 35.660246199999996,
+        "lng": 139.7175653
+      },
+      "photo_url": "/images/places/ChIJVVUlOmSLGGARGqkXwDpR7PI.jpg",
+      "maps_search": "Yoroniku Tokyo",
+      "address": "Japan, 〒107-0062 Tokyo, Minato City, Minamiaoyama, 6-chōme−6−２２ LunaRossa南青山 B1",
+      "website": "https://s.tabelog.com/tokyo/A1306/A130602/13042979/top_amp/",
+      "opening_hours": [
+        "Monday: 5:00 PM – 12:00 AM",
+        "Tuesday: 5:00 PM – 12:00 AM",
+        "Wednesday: 5:00 PM – 12:00 AM",
+        "Thursday: 5:00 PM – 12:00 AM",
+        "Friday: 5:00 PM – 12:00 AM",
+        "Saturday: 5:00 PM – 12:00 AM",
+        "Sunday: 5:00 PM – 12:00 AM"
+      ]
+    },
+    {
+      "id": 64,
+      "name": "Yoroniku Ebisu",
+      "category": "food",
+      "type": "",
+      "rating": 4.6,
+      "review_count": 980,
+      "neighborhood": "",
+      "notes": "烤肉，提前一个自然月预定。",
+      "place_id": "ChIJI5iLqGqLGGARqF9I9Ccnh3E",
+      "coordinates": {
+        "lat": 35.646357099999996,
+        "lng": 139.71180569999999
+      },
+      "photo_url": "/images/places/ChIJI5iLqGqLGGARqF9I9Ccnh3E.jpg",
+      "maps_search": "Yoroniku Ebisu Tokyo",
+      "address": "Japan, 〒150-0013 Tokyo, Shibuya, Ebisu, 1-chōme−11−５ GEMS恵比寿 8F",
+      "website": "http://yoroniku-ebisu.com/",
+      "opening_hours": [
+        "Monday: 5:00 PM – 12:00 AM",
+        "Tuesday: 5:00 PM – 12:00 AM",
+        "Wednesday: 5:00 PM – 12:00 AM",
+        "Thursday: 5:00 PM – 12:00 AM",
+        "Friday: 5:00 PM – 12:00 AM",
+        "Saturday: 5:00 PM – 12:00 AM",
+        "Sunday: 5:00 PM – 12:00 AM"
+      ]
+    }
+  ],
+  "categories": {
+    "food": "🍜",
+    "cafe": "☕",
+    "shopping": "🛍️",
+    "vintage": "👗",
+    "sightseeing": "🏛️",
+    "hotel": "🏨",
+    "spa": "♨️",
+    "transport": "🚂",
+    "neighborhood": "📍",
+    "other": "📌"
+  }
+}

@@ -4,7 +4,9 @@
     "source": "Google Maps saved list",
     "scraped_at": "2026-03-14",
     "total": 57,
-    "notes": "Scraped from public Google Maps list. Fields marked place_id/coordinates/photo_url are empty — to be filled via Google Places API."
+    "notes": "Scraped from public Google Maps list. Fields marked place_id/coordinates/photo_url are empty — to be filled via Google Places API.",
+    "city": "Tokyo",
+    "city_key": "tokyo"
   },
   "places": [
     {

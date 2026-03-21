@@ -10,10 +10,16 @@ import shutil
 from pathlib import Path
 from collections import Counter
 
-INPUT_FILE = Path("data/places_enriched.json")
+CITIES_DIR = Path("data/cities")
 PHOTOS_SRC = Path("public/images/places")
 OUTPUT_DIR = Path("docs")
 PHOTOS_DST = OUTPUT_DIR / "images" / "places"
+
+EMOJIS = {
+    "food": "🍜", "cafe": "☕", "shopping": "🛍", "vintage": "👗",
+    "sightseeing": "⛩", "hotel": "🏨", "spa": "♨️", "neighborhood": "🏘", "other": "📍",
+}
+CAT_ORDER = ["food", "cafe", "shopping", "vintage", "sightseeing", "hotel", "spa", "neighborhood", "other"]
 
 CSS = """
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -31,10 +37,19 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-b);
 /* NAV */
 .nav{background:var(--bg);
   border-bottom:1px solid var(--border);padding:.85rem 2rem;
-  display:flex;justify-content:space-between;align-items:center}
+  display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
 .nav-brand{font-family:var(--font-m);font-size:.7rem;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--ink);text-decoration:none}
-.nav-right{font-family:var(--font-m);font-size:.65rem;color:var(--ink-light)}
+  text-transform:uppercase;color:var(--ink);text-decoration:none;margin-right:.6rem}
+.city-switcher{display:flex;gap:.35rem;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.city-switcher::-webkit-scrollbar{display:none}
+.city-btn{flex-shrink:0;font-family:var(--font-m);font-size:.6rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.28rem .75rem;border:1px solid var(--border);
+  border-radius:100px;background:transparent;color:var(--ink-mid);
+  cursor:pointer;transition:all var(--t);white-space:nowrap}
+.city-btn:hover{border-color:var(--ink);color:var(--ink)}
+.city-btn.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.nav-right{font-family:var(--font-m);font-size:.65rem;color:var(--ink-light);
+  white-space:nowrap;margin-left:auto}
 /* HERO */
 .hero{padding:3.5rem 2rem 2.5rem;max-width:1400px;margin:0 auto;
   border-bottom:1px solid var(--border)}
@@ -110,22 +125,6 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
 .place-card{animation:fadeIn .4s ease both}
 """
 
-JS = """
-const btns = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.place-card');
-btns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const f = btn.dataset.filter;
-    btns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    cards.forEach(c => {
-      const show = f === 'all' || c.dataset.category === f;
-      c.classList.toggle('hidden', !show);
-    });
-  });
-});
-"""
-
 
 def stars(rating):
     if not rating:
@@ -134,7 +133,7 @@ def stars(rating):
     return "★" * n + "☆" * (5 - n)
 
 
-def card(p, emojis):
+def card_html(p, emojis, city_key):
     cat = p.get("category", "other")
     emoji = emojis.get(cat, "📍")
     name = p.get("name", "")
@@ -147,7 +146,7 @@ def card(p, emojis):
     pid = p.get("place_id", "")
     maps_url = f"https://www.google.com/maps/place/?q=place_id:{pid}" if pid else ""
 
-    photo_html = (
+    photo_block = (
         f'<img src="{photo}" alt="{name}" loading="lazy">'
         if photo else f'<div class="photo-ph">{emoji}</div>'
     )
@@ -172,54 +171,174 @@ def card(p, emojis):
         f'</svg></a>'
     ) if maps_url else ""
 
-    return f"""
-    <article class="place-card" data-category="{cat}">
-      <div class="card-photo">{photo_html}<span class="card-tag">{emoji} {cat}</span></div>
-      <div class="card-body">
-        <h3 class="card-name">{name}{link_icon}</h3>
-        {meta}{rating_html}{notes_html}
-      </div>
-    </article>"""
+    return (
+        f'\n    <article class="place-card" data-category="{cat}" data-city="{city_key}">'
+        f'\n      <div class="card-photo">{photo_block}'
+        f'<span class="card-tag">{emoji} {cat}</span></div>'
+        f'\n      <div class="card-body">'
+        f'\n        <h3 class="card-name">{name}{link_icon}</h3>'
+        f'\n        {meta}{rating_html}{notes_html}'
+        f'\n      </div>'
+        f'\n    </article>'
+    )
 
 
-def filters(places, emojis):
+def build_filter_btns(places, emojis):
     counts = Counter(p["category"] for p in places)
     total = len(places)
-    order = ["food", "cafe", "shopping", "vintage", "sightseeing", "hotel", "spa", "neighborhood", "other"]
-    btns = [f'<button class="filter-btn active" data-filter="all">All<span class="count">{total}</span></button>']
-    for cat in order:
+    btns = [f'<button class="filter-btn active" data-filter="all" onclick="filterCards(\'all\',this)">All<span class="count">{total}</span></button>']
+    for cat in CAT_ORDER:
         if cat in counts:
             e = emojis.get(cat, "📍")
-            btns.append(f'<button class="filter-btn" data-filter="{cat}">{e} {cat.title()}<span class="count">{counts[cat]}</span></button>')
+            btns.append(
+                f'<button class="filter-btn" data-filter="{cat}" onclick="filterCards(\'{cat}\',this)">'
+                f'{e} {cat.title()}<span class="count">{counts[cat]}</span></button>'
+            )
     return "\n      ".join(btns)
 
 
+def hero_parts(city_name: str) -> tuple[str, str]:
+    """Return (hero_title_html, hero_sub_text) for a city."""
+    name = city_name.upper()
+    mid = len(name) // 2
+    mid_chars = name[mid - 1: mid + 1] if len(name) >= 2 else name[0]
+    prefix = name[: max(0, mid - 1)]
+    suffix = name[mid + 1:]
+    title = f"{prefix}<em>{mid_chars}</em>{suffix}"
+    sub = f"A curated collection of places I love — restaurants, cafés, shops, and hidden corners across the city."
+    return title, sub
+
+
 def build():
-    with open(INPUT_FILE, encoding="utf-8") as f:
-        data = json.load(f)
-
-    places = data["places"]
-    emojis = data.get("categories", {})
-    total = len(places)
-
+    CITIES_DIR.mkdir(parents=True, exist_ok=True)
     OUTPUT_DIR.mkdir(exist_ok=True)
     PHOTOS_DST.mkdir(parents=True, exist_ok=True)
 
     if PHOTOS_SRC.exists():
+        copied = 0
         for img in PHOTOS_SRC.iterdir():
             shutil.copy2(img, PHOTOS_DST / img.name)
-        print(f"Copied {sum(1 for _ in PHOTOS_SRC.iterdir())} photos → {PHOTOS_DST}")
+            copied += 1
+        if copied:
+            print(f"Copied {copied} photos → {PHOTOS_DST}")
 
-    cards_html = "\n".join(card(p, emojis) for p in places)
-    filters_html = filters(places, emojis)
+    city_files = sorted(CITIES_DIR.glob("*.json"))
+    if not city_files:
+        print("No city JSON files found in data/cities/. Nothing to build.")
+        return
+
+    cities = []
+    all_cards = []
+    city_meta_js = {}
+
+    for cf in city_files:
+        with open(cf, encoding="utf-8") as f:
+            data = json.load(f)
+
+        places = data.get("places", [])
+        meta = data.get("meta", {})
+        city_key = meta.get("city_key") or cf.stem
+        city_name = meta.get("city") or city_key.title()
+        emojis = data.get("categories", EMOJIS)
+
+        counts = Counter(p.get("category", "other") for p in places)
+        city_meta_js[city_key] = {
+            "name": city_name,
+            "total": len(places),
+            "counts": dict(counts),
+        }
+        cities.append((city_key, city_name, len(places)))
+
+        for p in places:
+            all_cards.append(card_html(p, emojis, city_key))
+
+        print(f"  Loaded {len(places):3d} places ← {cf.name}")
+
+    first_key, first_name, first_total = cities[0]
+
+    city_btns = "\n      ".join(
+        f'<button class="city-btn{"  active" if i == 0 else ""}" '
+        f'data-city="{key}" onclick="switchCity(\'{key}\')">{name}</button>'
+        for i, (key, name, _) in enumerate(cities)
+    )
+
+    first_title, first_sub = hero_parts(first_name)
+
+    first_data = json.loads(open(city_files[0], encoding="utf-8").read())
+    initial_filters_html = build_filter_btns(
+        first_data.get("places", []),
+        first_data.get("categories", EMOJIS),
+    )
+
+    city_meta_json = json.dumps(city_meta_js, ensure_ascii=False)
+
+    js = f"""
+const CITY_META = {city_meta_json};
+const CAT_EMOJI = {json.dumps(EMOJIS)};
+const CAT_ORDER = {json.dumps(CAT_ORDER)};
+let activeCity = '{first_key}';
+let activeCat = 'all';
+
+function switchCity(key) {{
+  if (key === activeCity) return;
+  activeCity = key;
+  activeCat = 'all';
+
+  document.querySelectorAll('.city-btn').forEach(b => b.classList.toggle('active', b.dataset.city === key));
+
+  const meta = CITY_META[key];
+  const name = meta.name.toUpperCase();
+  const mid = Math.floor(name.length / 2);
+  const midChars = name.length >= 2 ? name.slice(Math.max(0, mid-1), mid+1) : name[0];
+  const prefix = name.slice(0, Math.max(0, mid-1));
+  const suffix = name.slice(mid+1);
+  document.getElementById('hero-title').innerHTML = prefix + '<em>' + midChars + '</em>' + suffix;
+
+  document.getElementById('nav-count').textContent = meta.name + ' · ' + meta.total + ' places';
+
+  rebuildFilters(key);
+
+  document.querySelectorAll('.place-card').forEach(c => {{
+    c.classList.toggle('hidden', c.dataset.city !== key);
+  }});
+}}
+
+function rebuildFilters(cityKey) {{
+  const meta = CITY_META[cityKey];
+  const counts = meta.counts;
+  const total = meta.total;
+  const wrap = document.getElementById('filter-list');
+  let html = '<button class="filter-btn active" data-filter="all" onclick="filterCards(\\'all\\',this)">All<span class="count">' + total + '</span></button>';
+  CAT_ORDER.forEach(cat => {{
+    if (counts[cat]) {{
+      const e = CAT_EMOJI[cat] || '📍';
+      html += '<button class="filter-btn" data-filter="' + cat + '" onclick="filterCards(\\'' + cat + '\\',this)">' + e + ' ' + cat.charAt(0).toUpperCase() + cat.slice(1) + '<span class="count">' + counts[cat] + '</span></button>';
+    }}
+  }});
+  wrap.innerHTML = html;
+}}
+
+function filterCards(f, btn) {{
+  activeCat = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.place-card').forEach(c => {{
+    if (c.dataset.city !== activeCity) {{ c.classList.add('hidden'); return; }}
+    c.classList.toggle('hidden', f !== 'all' && c.dataset.category !== f);
+  }});
+}}
+"""
+
+    cards_html = "\n".join(all_cards)
+    total_all = sum(t for _, _, t in cities)
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A personal guide to my favorite places in Japan.">
-  <title>Waypoints — Japan</title>
+  <meta name="description" content="A personal guide to my favorite places around the world.">
+  <title>Waypoints</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Cormorant:wght@700&family=DM+Sans:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
@@ -229,32 +348,37 @@ def build():
   <div class="sticky-header">
     <nav class="nav">
       <a class="nav-brand" href="#">Waypoints</a>
-      <span class="nav-right">Japan · {total} places</span>
+      <div class="city-switcher">
+        {city_btns}
+      </div>
+      <span class="nav-right" id="nav-count">{first_name} · {first_total} places</span>
     </nav>
     <div class="filters-wrap">
-      <div class="filters">
-        {filters_html}
+      <div class="filters" id="filter-list">
+        {initial_filters_html}
       </div>
     </div>
   </div>
   <section class="hero">
     <p class="hero-eye">Personal City Guide</p>
-    <h1 class="hero-title">TO<em>KY</em>O</h1>
-    <p class="hero-sub">A curated collection of places I love — restaurants, cafés, shops, and hidden corners across the city.</p>
+    <h1 class="hero-title" id="hero-title">{first_title}</h1>
+    <p class="hero-sub">{first_sub}</p>
   </section>
   <div class="grid-wrap">
     <div class="grid">
       {cards_html}
     </div>
   </div>
-  <footer>Waypoints · Built with love · {total} places in Japan</footer>
-  <script>{JS}</script>
+  <footer>Waypoints · Built with love · {total_all} places across {len(cities)} {'city' if len(cities) == 1 else 'cities'}</footer>
+  <script>
+    {js}
+  </script>
 </body>
 </html>"""
 
     out = OUTPUT_DIR / "index.html"
     out.write_text(html, encoding="utf-8")
-    print(f"Built → {out}  ({out.stat().st_size // 1024}KB)")
+    print(f"Built → {out}  ({out.stat().st_size // 1024}KB, {len(cities)} {'city' if len(cities) == 1 else 'cities'})")
 
 
 if __name__ == "__main__":

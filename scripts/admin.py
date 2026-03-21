@@ -23,22 +23,43 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET", os.urandom(24))
 
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "waypoints")
-DATA_FILE = Path("japan_places.json")
 CATEGORIES = ["food", "cafe", "shopping", "vintage", "sightseeing",
                "hotel", "spa", "neighborhood", "other"]
 ROOT = Path(__file__).parent.parent
+CITIES_SRC_DIR = ROOT / "cities"
+DEFAULT_CITY = "tokyo"
 
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
-def load_data():
-    with open(DATA_FILE, encoding="utf-8") as f:
+def cities_src_path(city_key: str) -> Path:
+    return CITIES_SRC_DIR / f"{city_key}_places.json"
+
+
+def list_cities() -> list[dict]:
+    CITIES_SRC_DIR.mkdir(parents=True, exist_ok=True)
+    result = []
+    for f in sorted(CITIES_SRC_DIR.glob("*_places.json")):
+        key = f.stem.replace("_places", "")
+        try:
+            data = json.loads(f.read_text(encoding="utf-8"))
+            name = data.get("meta", {}).get("city") or key.title()
+            count = len(data.get("places", []))
+            result.append({"key": key, "name": name, "count": count})
+        except Exception:
+            pass
+    return result
+
+
+def load_city_data(city_key: str) -> dict:
+    path = cities_src_path(city_key)
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
-def save_data(data):
+def save_city_data(city_key: str, data: dict):
     data["meta"]["total"] = len(data["places"])
-    with open(ROOT / DATA_FILE, "w", encoding="utf-8") as f:
+    with open(cities_src_path(city_key), "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
@@ -53,7 +74,7 @@ def require_auth(f):
     return decorated
 
 
-def parse_maps_url(url: str) -> dict:
+def parse_maps_url(url: str, city_name: str = "Tokyo") -> dict:
     result = {"name": "", "maps_search": "", "place_id": ""}
     m = re.search(r"ChIJ[A-Za-z0-9_\-]+", url)
     if m:
@@ -63,7 +84,7 @@ def parse_maps_url(url: str) -> dict:
     if nm:
         name = nm.group(1).replace("+", " ").strip()
         result["name"] = name
-        result["maps_search"] = f"{name} Tokyo"
+        result["maps_search"] = f"{name} {city_name}"
     return result
 
 
@@ -101,18 +122,60 @@ def admin_page():
 
 # ── REST API ──────────────────────────────────────────────────────────────────
 
+@app.route("/api/cities", methods=["GET"])
+@require_auth
+def api_get_cities():
+    return jsonify(list_cities())
+
+
+@app.route("/api/cities", methods=["POST"])
+@require_auth
+def api_create_city():
+    body = request.json or {}
+    city_name = (body.get("name") or "").strip()
+    if not city_name:
+        return jsonify({"error": "name is required"}), 400
+    city_key = re.sub(r"[^a-z0-9]+", "_", city_name.lower()).strip("_")
+    path = cities_src_path(city_key)
+    if path.exists():
+        return jsonify({"error": f"city '{city_key}' already exists"}), 409
+    CITIES_SRC_DIR.mkdir(parents=True, exist_ok=True)
+    template = {
+        "meta": {
+            "list_name": city_name,
+            "city": city_name,
+            "city_key": city_key,
+            "source": "manual",
+            "total": 0,
+        },
+        "places": [],
+    }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(template, f, ensure_ascii=False, indent=2)
+    return jsonify({"key": city_key, "name": city_name, "count": 0}), 201
+
+
 @app.route("/api/places", methods=["GET"])
 @require_auth
 def api_get_places():
-    return jsonify(load_data()["places"])
+    city_key = request.args.get("city", DEFAULT_CITY)
+    try:
+        return jsonify(load_city_data(city_key)["places"])
+    except FileNotFoundError:
+        return jsonify([]), 200
 
 
 @app.route("/api/places", methods=["POST"])
 @require_auth
 def api_add_place():
+    city_key = request.args.get("city", DEFAULT_CITY)
     body = request.json or {}
-    data = load_data()
+    try:
+        data = load_city_data(city_key)
+    except FileNotFoundError:
+        return jsonify({"error": f"city '{city_key}' not found"}), 404
     next_id = max((p["id"] for p in data["places"]), default=0) + 1
+    city_name = data.get("meta", {}).get("city", city_key.title())
     place = {
         "id": next_id,
         "name": (body.get("name") or "").strip(),
@@ -125,47 +188,62 @@ def api_add_place():
         "place_id": body.get("place_id", ""),
         "coordinates": {"lat": None, "lng": None},
         "photo_url": "",
-        "maps_search": body.get("maps_search", body.get("name", "")),
+        "maps_search": body.get("maps_search") or f"{body.get('name', '')} {city_name}",
     }
     if not place["name"]:
         return jsonify({"error": "name is required"}), 400
     data["places"].append(place)
-    save_data(data)
+    save_city_data(city_key, data)
     return jsonify(place), 201
 
 
 @app.route("/api/places/<int:pid>", methods=["PATCH"])
 @require_auth
 def api_update_place(pid):
+    city_key = request.args.get("city", DEFAULT_CITY)
     body = request.json or {}
-    data = load_data()
+    try:
+        data = load_city_data(city_key)
+    except FileNotFoundError:
+        return jsonify({"error": f"city '{city_key}' not found"}), 404
     place = next((p for p in data["places"] if p["id"] == pid), None)
     if not place:
         return jsonify({"error": "not found"}), 404
     for field in ("category", "notes", "neighborhood", "type", "name"):
         if field in body:
             place[field] = body[field]
-    save_data(data)
+    save_city_data(city_key, data)
     return jsonify(place)
 
 
 @app.route("/api/places/<int:pid>", methods=["DELETE"])
 @require_auth
 def api_delete_place(pid):
-    data = load_data()
+    city_key = request.args.get("city", DEFAULT_CITY)
+    try:
+        data = load_city_data(city_key)
+    except FileNotFoundError:
+        return jsonify({"error": f"city '{city_key}' not found"}), 404
     before = len(data["places"])
     data["places"] = [p for p in data["places"] if p["id"] != pid]
     if len(data["places"]) == before:
         return jsonify({"error": "not found"}), 404
-    save_data(data)
+    save_city_data(city_key, data)
     return jsonify({"ok": True})
 
 
 @app.route("/api/parse-url", methods=["POST"])
 @require_auth
 def api_parse_url():
-    url = (request.json or {}).get("url", "")
-    return jsonify(parse_maps_url(url))
+    body = request.json or {}
+    url = body.get("url", "")
+    city_key = body.get("city", DEFAULT_CITY)
+    try:
+        data = load_city_data(city_key)
+        city_name = data.get("meta", {}).get("city", city_key.title())
+    except FileNotFoundError:
+        city_name = city_key.title()
+    return jsonify(parse_maps_url(url, city_name))
 
 
 # ── deploy SSE ────────────────────────────────────────────────────────────────
@@ -265,9 +343,14 @@ ADMIN_HTML = """<!DOCTYPE html>
 :root{--bg:#F4F0E8;--sur:#FDFAF6;--ink:#1A1714;--mid:#5C5650;--lt:#9C958E;--acc:#C8251F;--bdr:#E0D8CC;--fm:'DM Mono',monospace;--fs:'Cormorant Garamond',serif;--t:.18s ease}
 body{background:var(--bg);color:var(--ink);font-family:var(--fs);font-size:16px;-webkit-font-smoothing:antialiased}
 /* NAV */
-.nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--bdr);padding:.8rem 1.5rem;display:flex;align-items:center;gap:1rem}
-.nav-brand{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);text-decoration:none;margin-right:auto}
-.nav-count{font-family:var(--fm);font-size:.6rem;color:var(--lt)}
+.nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--bdr);padding:.8rem 1.5rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.nav-brand{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);text-decoration:none;margin-right:.5rem}
+.city-tabs{display:flex;gap:.35rem;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.city-tabs::-webkit-scrollbar{display:none}
+.city-tab{flex-shrink:0;font-family:var(--fm);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.26rem .72rem;border:1px solid var(--bdr);border-radius:100px;background:transparent;color:var(--mid);cursor:pointer;transition:all var(--t);white-space:nowrap}
+.city-tab:hover{border-color:var(--ink);color:var(--ink)}
+.city-tab.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.nav-count{font-family:var(--fm);font-size:.6rem;color:var(--lt);white-space:nowrap}
 .btn{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .9rem;border:1px solid var(--bdr);background:transparent;color:var(--mid);cursor:pointer;transition:all var(--t);white-space:nowrap}
 .btn:hover{border-color:var(--ink);color:var(--ink)}
 .btn-primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
@@ -306,7 +389,6 @@ select.cat-sel:focus{border-color:var(--ink)}
 .rating{font-family:var(--fm);font-size:.58rem;color:var(--lt);flex-shrink:0}
 textarea.notes{font-family:var(--fs);font-style:italic;font-size:.82rem;color:var(--mid);background:transparent;border:none;border-top:1px solid var(--bdr);padding-top:.4rem;resize:none;width:100%;outline:none;line-height:1.5;min-height:3rem}
 textarea.notes::placeholder{color:var(--bdr)}
-.no-ph{color:var(--lt);font-family:var(--fm);font-size:.65rem}
 /* MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(26,23,20,.55);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
 .overlay.open{display:flex}
@@ -321,7 +403,6 @@ textarea.notes::placeholder{color:var(--bdr)}
 /* DEPLOY LOG */
 .log-wrap{background:#1A1714;border:1px solid #333;padding:1rem;margin-top:1rem;max-height:280px;overflow-y:auto;border-radius:2px}
 pre.log{font-family:var(--fm);font-size:.7rem;color:#d0cbc4;line-height:1.7;white-space:pre-wrap;word-break:break-all}
-.log-done{color:#6dbd6d}
 /* TOAST */
 .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--ink);color:var(--bg);font-family:var(--fm);font-size:.62rem;letter-spacing:.08em;padding:.6rem 1rem;border-radius:2px;opacity:0;transform:translateY(6px);transition:all .22s ease;pointer-events:none;z-index:999}
 .toast.show{opacity:1;transform:none}
@@ -332,8 +413,10 @@ pre.log{font-family:var(--fm);font-size:.7rem;color:#d0cbc4;line-height:1.7;whit
 <!-- NAV -->
 <nav class="nav">
   <a href="/admin" class="nav-brand">Waypoints / Admin</a>
+  <div class="city-tabs" id="city-tabs"></div>
   <span class="nav-count" id="count-label"></span>
   <button class="btn btn-primary" onclick="openAddModal()">+ Add Place</button>
+  <button class="btn" onclick="openNewCityModal()">+ City</button>
   <button class="btn btn-deploy" onclick="openDeployModal()">Build &amp; Deploy</button>
   <a href="/logout" class="btn">Logout</a>
 </nav>
@@ -346,7 +429,7 @@ pre.log{font-family:var(--fm);font-size:.7rem;color:#d0cbc4;line-height:1.7;whit
 <!-- GRID -->
 <div class="grid-wrap"><div class="grid" id="grid"></div></div>
 
-<!-- ADD MODAL -->
+<!-- ADD PLACE MODAL -->
 <div class="overlay" id="add-overlay">
   <div class="modal">
     <h2>Add Place</h2>
@@ -395,6 +478,21 @@ pre.log{font-family:var(--fm);font-size:.7rem;color:#d0cbc4;line-height:1.7;whit
   </div>
 </div>
 
+<!-- NEW CITY MODAL -->
+<div class="overlay" id="city-overlay">
+  <div class="modal">
+    <h2>New City</h2>
+    <div class="field">
+      <label>City Name *</label>
+      <input type="text" id="city-name" placeholder="e.g. Paris, New York, Kyoto">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeNewCityModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="submitNewCity()">Create City</button>
+    </div>
+  </div>
+</div>
+
 <!-- DEPLOY MODAL -->
 <div class="overlay" id="deploy-overlay">
   <div class="modal">
@@ -420,11 +518,38 @@ const CAT_EMOJI = {food:'🍜',cafe:'☕',shopping:'🛍',vintage:'👗',sightse
 const CAT_ORDER = ['food','cafe','shopping','vintage','sightseeing','hotel','spa','neighborhood','other'];
 let allPlaces = [];
 let activeCat = 'all';
+let activeCityKey = '';
+let allCities = [];
 let addParsed = {};
 
 // ── boot ─────────────────────────────────────────────────────────────────────
 async function boot() {
-  const res = await fetch('/api/places');
+  const res = await fetch('/api/cities');
+  allCities = await res.json();
+  if (!allCities.length) { document.getElementById('grid').innerHTML = '<p style="padding:2rem;font-family:var(--fm);font-size:.75rem;color:var(--lt)">No cities yet. Click + City to create one.</p>'; return; }
+  activeCityKey = allCities[0].key;
+  renderCityTabs();
+  await loadPlaces(activeCityKey);
+}
+
+// ── city tabs ─────────────────────────────────────────────────────────────────
+function renderCityTabs() {
+  const wrap = document.getElementById('city-tabs');
+  wrap.innerHTML = allCities.map(c =>
+    `<button class="city-tab${c.key===activeCityKey?' active':''}" onclick="switchAdminCity('${c.key}')">${c.name}</button>`
+  ).join('');
+}
+
+async function switchAdminCity(key) {
+  if (key === activeCityKey) return;
+  activeCityKey = key;
+  activeCat = 'all';
+  document.querySelectorAll('.city-tab').forEach(b => b.classList.toggle('active', b.textContent === allCities.find(c=>c.key===key)?.name));
+  await loadPlaces(key);
+}
+
+async function loadPlaces(cityKey) {
+  const res = await fetch(`/api/places?city=${cityKey}`);
   allPlaces = await res.json();
   renderFilters();
   renderGrid();
@@ -463,9 +588,7 @@ function cardHtml(p) {
     ? `<img src="/images/places/${p.photo_url.split('/').pop()}" loading="lazy" onerror="this.parentNode.innerHTML='<div class=card-photo-ph>${CAT_EMOJI[p.category]||'📍'}</div>'">`
     : `<div class="card-photo-ph">${CAT_EMOJI[p.category]||'📍'}</div>`;
   const rating = p.rating ? `<span class="rating">${p.rating}★</span>` : '';
-  const catOpts = ['food','cafe','shopping','vintage','sightseeing','hotel','spa','neighborhood','other']
-    .map(c => `<option value="${c}"${c===p.category?' selected':''}>${c}</option>`).join('');
-  const notes = (p.notes||'').replace(/"/g,'&quot;');
+  const catOpts = CAT_ORDER.map(c => `<option value="${c}"${c===p.category?' selected':''}>${c}</option>`).join('');
   return `<div class="card" data-id="${p.id}" data-cat="${p.category}">
   <div class="card-photo">${photo}
     <button class="del-btn" onclick="deletePlace(${p.id})" title="Delete">×</button>
@@ -484,13 +607,13 @@ function cardHtml(p) {
 
 // ── patch helpers ─────────────────────────────────────────────────────────────
 async function patchField(id, field, value) {
-  await fetch(`/api/places/${id}`, {
+  await fetch(`/api/places/${id}?city=${activeCityKey}`, {
     method:'PATCH', headers:{'Content-Type':'application/json'},
     body: JSON.stringify({[field]: value})
   });
   const idx = allPlaces.findIndex(p=>p.id===id);
   if (idx>-1) allPlaces[idx][field] = value;
-  if (field === 'category') { renderFilters(); }
+  if (field === 'category') renderFilters();
   toast('Saved');
 }
 
@@ -506,10 +629,12 @@ async function patchCat(id, sel) {
 async function deletePlace(id) {
   const p = allPlaces.find(p=>p.id===id);
   if (!p || !confirm(`Delete "${p.name}"?`)) return;
-  const res = await fetch(`/api/places/${id}`, {method:'DELETE'});
+  const res = await fetch(`/api/places/${id}?city=${activeCityKey}`, {method:'DELETE'});
   if (!res.ok) return toast('Error deleting');
   allPlaces = allPlaces.filter(p=>p.id!==id);
   document.querySelector(`.card[data-id="${id}"]`)?.remove();
+  const city = allCities.find(c=>c.key===activeCityKey);
+  if (city) city.count = allPlaces.length;
   renderFilters();
   document.getElementById('count-label').textContent = `${allPlaces.length} places`;
   toast('Deleted');
@@ -523,13 +648,12 @@ function openAddModal() {
   document.getElementById('add-overlay').classList.add('open');
   document.getElementById('add-url').focus();
 }
-function closeAddModal() {
-  document.getElementById('add-overlay').classList.remove('open');
-}
+function closeAddModal() { document.getElementById('add-overlay').classList.remove('open'); }
+
 async function parseUrl() {
   const url = document.getElementById('add-url').value.trim();
   if (!url.includes('google.com/maps') && !url.includes('maps.app.goo')) return;
-  const res = await fetch('/api/parse-url',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url})});
+  const res = await fetch('/api/parse-url',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url, city: activeCityKey})});
   addParsed = await res.json();
   if (addParsed.name && !document.getElementById('add-name').value) {
     document.getElementById('add-name').value = addParsed.name;
@@ -545,17 +669,44 @@ async function submitAdd() {
     neighborhood: document.getElementById('add-nbhd').value.trim(),
     type: document.getElementById('add-type').value.trim(),
     notes: document.getElementById('add-notes').value.trim(),
-    maps_search: document.getElementById('add-search').value.trim() || name + ' Tokyo',
+    maps_search: document.getElementById('add-search').value.trim(),
     place_id: addParsed.place_id || '',
   };
-  const res = await fetch('/api/places',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const res = await fetch(`/api/places?city=${activeCityKey}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
   if (!res.ok) { toast('Error adding place'); return; }
   const place = await res.json();
   allPlaces.push(place);
+  const city = allCities.find(c=>c.key===activeCityKey);
+  if (city) city.count++;
   closeAddModal();
   renderFilters();
   renderGrid();
   toast(`Added "${name}" — run Deploy to publish`);
+}
+
+// ── new city modal ────────────────────────────────────────────────────────────
+function openNewCityModal() {
+  document.getElementById('city-name').value = '';
+  document.getElementById('city-overlay').classList.add('open');
+  document.getElementById('city-name').focus();
+}
+function closeNewCityModal() { document.getElementById('city-overlay').classList.remove('open'); }
+
+async function submitNewCity() {
+  const name = document.getElementById('city-name').value.trim();
+  if (!name) { toast('City name is required'); return; }
+  const res = await fetch('/api/cities',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name})});
+  if (!res.ok) {
+    const err = await res.json();
+    toast(err.error || 'Error creating city'); return;
+  }
+  const city = await res.json();
+  allCities.push(city);
+  closeNewCityModal();
+  activeCityKey = city.key;
+  renderCityTabs();
+  await loadPlaces(city.key);
+  toast(`City "${city.name}" created — add places and Deploy to publish`);
 }
 
 // ── deploy modal ──────────────────────────────────────────────────────────────
@@ -566,9 +717,8 @@ function openDeployModal() {
   document.getElementById('deploy-btn').textContent='Deploy Now';
   document.getElementById('deploy-overlay').classList.add('open');
 }
-function closeDeployModal() {
-  document.getElementById('deploy-overlay').classList.remove('open');
-}
+function closeDeployModal() { document.getElementById('deploy-overlay').classList.remove('open'); }
+
 async function startDeploy() {
   const msg = document.getElementById('deploy-msg').value.trim() || 'admin update';
   document.getElementById('deploy-btn').disabled=true;
@@ -577,7 +727,6 @@ async function startDeploy() {
   const logEl = document.getElementById('deploy-log');
   logEl.textContent = '';
   const src = new EventSource('/api/deploy?_='+Date.now());
-  // POST first, then listen
   src.close();
   const res = await fetch('/api/deploy',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg})});
   const reader = res.body.getReader();
@@ -607,7 +756,6 @@ function toast(msg) {
   setTimeout(()=>el.classList.remove('show'), 2200);
 }
 
-// close modals on overlay click
 document.querySelectorAll('.overlay').forEach(o => o.addEventListener('click', e => { if(e.target===o) o.classList.remove('open'); }));
 
 boot();

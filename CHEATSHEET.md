@@ -27,10 +27,11 @@ venv/bin/python scripts/admin.py
 密码在 `.env` 文件里（`ADMIN_PASSWORD=...`）
 
 Admin UI 可以：
-- 浏览所有地点（按分类筛选）
-- 粘贴 Google Maps URL 添加新地点
+- 按城市切换浏览所有地点（按分类筛选）
+- 粘贴 Google Maps URL 添加新地点（归属当前城市）
+- 点击 **+ City** 新建城市
 - 删除、修改分类/备注/名称
-- 点击 **Build & Deploy** 一键发布到线上
+- 点击 **Build & Deploy** 一键发布到线上（所有城市同时构建）
 
 ### 本地预览网站（不启动 admin）
 
@@ -59,18 +60,19 @@ python3 -m http.server 8080 --directory docs
 
 ```bash
 cd /Users/yaner/Developer/Waypoints
-# 先手动编辑 japan_places.json 添加条目，再：
+# 先手动编辑 cities/tokyo_places.json 添加条目，再：
 ./update.sh "add new cafe in Harajuku"
 ```
 
 ### 方式 C — 完全手动
 
 ```bash
-# 1. 编辑地点数据
-nano japan_places.json   # 或用任意编辑器
+# 1. 编辑地点数据（以 tokyo 为例）
+nano cities/tokyo_places.json   # 或用任意编辑器
 
-# 2. 拉取 API 数据（只处理新增地点，不重复调用旧地点）
-venv/bin/python scripts/enrich_places.py
+# 2. 拉取 API 数据（增量，只处理新增地点）
+venv/bin/python scripts/enrich_places.py             # 所有城市
+venv/bin/python scripts/enrich_places.py --city tokyo # 仅 tokyo
 
 # 3. 重新生成 HTML
 venv/bin/python scripts/build_site.py
@@ -83,23 +85,43 @@ git push
 
 ---
 
-## 四、`japan_places.json` 字段说明
+## 四、添加新城市
+
+**方式 A（推荐）**：Admin UI → 点击 **+ City** → 输入城市名称 → 切换到新城市 → 添加地点 → Build & Deploy
+
+**方式 B（手动）**：
+```bash
+# 在 cities/ 目录下创建新城市文件（参考 tokyo_places.json 格式）
+cp cities/tokyo_places.json cities/paris_places.json
+# 编辑 paris_places.json：修改 meta.city="Paris", meta.city_key="paris"，清空 places 数组
+nano cities/paris_places.json
+```
+
+---
+
+## 五、`cities/<city>_places.json` 字段说明
 
 ```json
 {
-  "id": 61,
-  "name": "地点名称",
-  "category": "food",          // food / cafe / shopping / vintage / sightseeing / hotel / spa / neighborhood
-  "neighborhood": "Shibuya",   // 街区（可选）
-  "notes": "个人备注",         // 显示在卡片底部（可选）
-  "maps_url": "https://maps.google.com/...",  // Google Maps 链接
-  "place_id": ""               // 留空，enrich 脚本会自动填充
+  "meta": {
+    "city": "Tokyo",
+    "city_key": "tokyo"
+  },
+  "places": [{
+    "id": 61,
+    "name": "地点名称",
+    "category": "food",          // food / cafe / shopping / vintage / sightseeing / hotel / spa / neighborhood
+    "neighborhood": "Shibuya",   // 街区（可选）
+    "notes": "个人备注",         // 显示在卡片底部（可选）
+    "maps_url": "https://maps.google.com/...",  // Google Maps 链接
+    "place_id": ""               // 留空，enrich 脚本会自动填充
+  }]
 }
 ```
 
 ---
 
-## 五、换电脑部署（新环境完整配置）
+## 六、换电脑部署（新环境完整配置）
 
 ```bash
 # 1. 克隆仓库
@@ -134,7 +156,7 @@ venv/bin/python scripts/admin.py
 
 ---
 
-## 六、Google Places API Key 申请（首次 / 换账号时）
+## 七、Google Places API Key 申请（首次 / 换账号时）
 
 1. 打开 [console.cloud.google.com](https://console.cloud.google.com)
 2. 创建项目（或选已有项目）
@@ -148,7 +170,7 @@ venv/bin/python scripts/admin.py
 
 ---
 
-## 七、常见问题
+## 八、常见问题
 
 **Q: Admin UI 提示端口 5001 被占用**
 ```bash
@@ -177,20 +199,20 @@ venv/bin/python scripts/enrich_places.py
 
 ---
 
-## 八、文件速查
+## 九、文件速查
 
 | 文件 | 作用 |
 |------|------|
-| `japan_places.json` | 地点数据源，手动维护 |
-| `data/places_enriched.json` | API 丰富后的数据缓存，自动生成 |
+| `cities/<key>_places.json` | 各城市地点数据源，手动维护（如 `cities/tokyo_places.json`） |
+| `data/cities/<key>.json` | API 丰富后的数据缓存，自动生成（如 `data/cities/tokyo.json`） |
 | `docs/index.html` | 构建产物，自动生成，不要手动改 |
 | `docs/images/places/` | 地点照片，自动下载 |
 | `scripts/admin.py` | 本地 Admin UI 服务器 |
-| `scripts/enrich_places.py` | Places API 数据拉取（增量） |
-| `scripts/build_site.py` | HTML 生成脚本 |
+| `scripts/enrich_places.py` | Places API 数据拉取（增量，支持 `--city` 参数） |
+| `scripts/build_site.py` | HTML 生成脚本（扫描所有城市） |
 | `update.sh` | 一键 enrich + build + push |
 | `.env` | API Key 和密码（不进 git） |
 
 ---
 
-*最后更新：2026-03-16*
+*最后更新：2026-03-21 — 多城市切换功能*

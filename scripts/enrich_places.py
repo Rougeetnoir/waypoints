@@ -1,14 +1,14 @@
 """
-Enrich japan_places.json with Google Places API (New).
+Enrich city place data with Google Places API (New).
 Fills: place_id, coordinates, address, website, opening_hours, photo_url (local path).
 Photos are downloaded to public/images/places/.
 
 Usage:
-  1. Copy .env.example to .env and add your API key
-  2. pip install -r requirements.txt
-  3. python scripts/enrich_places.py
+  python scripts/enrich_places.py                # process all cities
+  python scripts/enrich_places.py --city tokyo   # process one city
 """
 
+import argparse
 import json
 import os
 import time
@@ -19,16 +19,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 API_KEY = os.getenv("GOOGLE_PLACES_API_KEY")
-if not API_KEY:
-    raise EnvironmentError("Missing GOOGLE_PLACES_API_KEY in .env file")
 
 BASE_URL = "https://places.googleapis.com/v1"
-INPUT_FILE = Path("japan_places.json")
-OUTPUT_FILE = Path("data/places_enriched.json")
+CITIES_SRC_DIR = Path("cities")
+CITIES_OUT_DIR = Path("data/cities")
 PHOTOS_DIR = Path("public/images/places")
 
 PHOTOS_DIR.mkdir(parents=True, exist_ok=True)
-OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+CITIES_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def text_search(query: str) -> dict | None:
@@ -156,23 +154,31 @@ def enrich(place: dict) -> dict:
     return place
 
 
-def main():
-    with open(INPUT_FILE, encoding="utf-8") as f:
+def enrich_city(city_key: str):
+    """Enrich all places for a single city."""
+    input_file = CITIES_SRC_DIR / f"{city_key}_places.json"
+    output_file = CITIES_OUT_DIR / f"{city_key}.json"
+
+    if not input_file.exists():
+        print(f"  ✗ {input_file} not found, skipping")
+        return
+
+    with open(input_file, encoding="utf-8") as f:
         source = json.load(f)
 
     cache: dict[int, dict] = {}
-    if OUTPUT_FILE.exists():
-        with open(OUTPUT_FILE, encoding="utf-8") as f:
+    if output_file.exists():
+        with open(output_file, encoding="utf-8") as f:
             cached = json.load(f)
         cache = {p["id"]: p for p in cached.get("places", [])}
-        print(f"Loaded cache: {len(cache)} previously enriched places")
+        print(f"  Loaded cache: {len(cache)} previously enriched places")
 
     places = source["places"]
     total = len(places)
     new_count = sum(1 for p in places if p["id"] not in cache or not cache[p["id"]].get("place_id"))
-    print(f"\nTotal: {total} places | New/unenriched: {new_count}\n")
+    print(f"  Total: {total} places | New/unenriched: {new_count}\n")
 
-    enriched = []
+    enriched_list = []
     api_calls = 0
     for i, place in enumerate(places):
         if place["id"] in cache and cache[place["id"]].get("place_id"):
@@ -184,29 +190,53 @@ def main():
             merged["website"] = cache[place["id"]].get("website", "")
             merged["opening_hours"] = cache[place["id"]].get("opening_hours", [])
             print(f"  [{place['id']:02d}] {place['name']} → cached ✓")
-            enriched.append(merged)
+            enriched_list.append(merged)
             continue
 
         try:
             enriched_place = enrich(place)
-            enriched.append(enriched_place)
+            enriched_list.append(enriched_place)
             api_calls += 1
         except requests.HTTPError as e:
             print(f"       ✗ HTTP error: {e}")
-            enriched.append(place)
+            enriched_list.append(place)
         except Exception as e:
             print(f"       ✗ unexpected error: {e}")
-            enriched.append(place)
+            enriched_list.append(place)
 
         if api_calls > 0 and i < total - 1:
             time.sleep(0.3)
 
-    source["places"] = enriched
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    source["places"] = enriched_list
+    with open(output_file, "w", encoding="utf-8") as f:
         json.dump(source, f, ensure_ascii=False, indent=2)
 
-    succeeded = sum(1 for p in enriched if p.get("place_id"))
-    print(f"\nDone. {succeeded}/{total} enriched ({api_calls} new API calls) → {OUTPUT_FILE}")
+    succeeded = sum(1 for p in enriched_list if p.get("place_id"))
+    print(f"\n  Done. {succeeded}/{total} enriched ({api_calls} new API calls) → {output_file}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Enrich Waypoints place data via Google Places API")
+    parser.add_argument("--city", help="City key to process (e.g. 'tokyo'). Omit to process all cities.")
+    args = parser.parse_args()
+
+    if not API_KEY:
+        raise EnvironmentError("Missing GOOGLE_PLACES_API_KEY in .env file")
+
+    if args.city:
+        print(f"\nEnriching city: {args.city}\n")
+        enrich_city(args.city)
+    else:
+        city_files = sorted(CITIES_SRC_DIR.glob("*_places.json"))
+        if not city_files:
+            print("No city source files found in cities/. Nothing to enrich.")
+            return
+        print(f"\nEnriching {len(city_files)} city/cities...\n")
+        for cf in city_files:
+            city_key = cf.stem.replace("_places", "")
+            print(f"── {city_key} ──")
+            enrich_city(city_key)
+            print()
 
 
 if __name__ == "__main__":

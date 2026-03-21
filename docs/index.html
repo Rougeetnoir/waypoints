@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A personal guide to my favorite places in Japan.">
-  <title>Waypoints — Japan</title>
+  <meta name="description" content="A personal guide to my favorite places around the world.">
+  <title>Waypoints</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Cormorant:wght@700&family=DM+Sans:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
@@ -24,10 +24,19 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-b);
 /* NAV */
 .nav{background:var(--bg);
   border-bottom:1px solid var(--border);padding:.85rem 2rem;
-  display:flex;justify-content:space-between;align-items:center}
+  display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
 .nav-brand{font-family:var(--font-m);font-size:.7rem;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--ink);text-decoration:none}
-.nav-right{font-family:var(--font-m);font-size:.65rem;color:var(--ink-light)}
+  text-transform:uppercase;color:var(--ink);text-decoration:none;margin-right:.6rem}
+.city-switcher{display:flex;gap:.35rem;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.city-switcher::-webkit-scrollbar{display:none}
+.city-btn{flex-shrink:0;font-family:var(--font-m);font-size:.6rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.28rem .75rem;border:1px solid var(--border);
+  border-radius:100px;background:transparent;color:var(--ink-mid);
+  cursor:pointer;transition:all var(--t);white-space:nowrap}
+.city-btn:hover{border-color:var(--ink);color:var(--ink)}
+.city-btn.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.nav-right{font-family:var(--font-m);font-size:.65rem;color:var(--ink-light);
+  white-space:nowrap;margin-left:auto}
 /* HERO */
 .hero{padding:3.5rem 2rem 2.5rem;max-width:1400px;margin:0 auto;
   border-bottom:1px solid var(--border)}
@@ -107,31 +116,34 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
   <div class="sticky-header">
     <nav class="nav">
       <a class="nav-brand" href="#">Waypoints</a>
-      <span class="nav-right">Japan · 57 places</span>
+      <div class="city-switcher">
+        <button class="city-btn  active" data-city="tokyo" onclick="switchCity('tokyo')">Tokyo</button>
+      </div>
+      <span class="nav-right" id="nav-count">Tokyo · 57 places</span>
     </nav>
     <div class="filters-wrap">
-      <div class="filters">
-        <button class="filter-btn active" data-filter="all">All<span class="count">57</span></button>
-      <button class="filter-btn" data-filter="food">🍜 Food<span class="count">14</span></button>
-      <button class="filter-btn" data-filter="cafe">☕ Cafe<span class="count">3</span></button>
-      <button class="filter-btn" data-filter="shopping">🛍️ Shopping<span class="count">20</span></button>
-      <button class="filter-btn" data-filter="vintage">👗 Vintage<span class="count">4</span></button>
-      <button class="filter-btn" data-filter="sightseeing">🏛️ Sightseeing<span class="count">10</span></button>
-      <button class="filter-btn" data-filter="hotel">🏨 Hotel<span class="count">2</span></button>
-      <button class="filter-btn" data-filter="spa">♨️ Spa<span class="count">2</span></button>
-      <button class="filter-btn" data-filter="neighborhood">📍 Neighborhood<span class="count">2</span></button>
+      <div class="filters" id="filter-list">
+        <button class="filter-btn active" data-filter="all" onclick="filterCards('all',this)">All<span class="count">57</span></button>
+      <button class="filter-btn" data-filter="food" onclick="filterCards('food',this)">🍜 Food<span class="count">14</span></button>
+      <button class="filter-btn" data-filter="cafe" onclick="filterCards('cafe',this)">☕ Cafe<span class="count">3</span></button>
+      <button class="filter-btn" data-filter="shopping" onclick="filterCards('shopping',this)">🛍️ Shopping<span class="count">20</span></button>
+      <button class="filter-btn" data-filter="vintage" onclick="filterCards('vintage',this)">👗 Vintage<span class="count">4</span></button>
+      <button class="filter-btn" data-filter="sightseeing" onclick="filterCards('sightseeing',this)">🏛️ Sightseeing<span class="count">10</span></button>
+      <button class="filter-btn" data-filter="hotel" onclick="filterCards('hotel',this)">🏨 Hotel<span class="count">2</span></button>
+      <button class="filter-btn" data-filter="spa" onclick="filterCards('spa',this)">♨️ Spa<span class="count">2</span></button>
+      <button class="filter-btn" data-filter="neighborhood" onclick="filterCards('neighborhood',this)">📍 Neighborhood<span class="count">2</span></button>
       </div>
     </div>
   </div>
   <section class="hero">
     <p class="hero-eye">Personal City Guide</p>
-    <h1 class="hero-title">TO<em>KY</em>O</h1>
+    <h1 class="hero-title" id="hero-title">T<em>OK</em>YO</h1>
     <p class="hero-sub">A curated collection of places I love — restaurants, cafés, shops, and hidden corners across the city.</p>
   </section>
   <div class="grid-wrap">
     <div class="grid">
       
-    <article class="place-card" data-category="hotel">
+    <article class="place-card" data-category="hotel" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJMaPOWLyLGGARFOVqlEWmQU8.jpg" alt="Section L Hamamatsucho" loading="lazy"><span class="card-tag">🏨 hotel</span></div>
       <div class="card-body">
         <h3 class="card-name">Section L Hamamatsucho<a href="https://www.google.com/maps/place/?q=place_id:ChIJMaPOWLyLGGARFOVqlEWmQU8" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -139,7 +151,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="spa">
+    <article class="place-card" data-category="spa" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJgepJJO6LGGARV9GPnmgvL7E.jpg" alt="Raffine Neo Running Style" loading="lazy"><span class="card-tag">♨️ spa</span></div>
       <div class="card-body">
         <h3 class="card-name">Raffine Neo Running Style<a href="https://www.google.com/maps/place/?q=place_id:ChIJgepJJO6LGGARV9GPnmgvL7E" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -147,7 +159,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ35Bjcn3yGGARkjlKvKP4SWA.jpg" alt="Koenji Pal Shopping Street" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">Koenji Pal Shopping Street<a href="https://www.google.com/maps/place/?q=place_id:ChIJ35Bjcn3yGGARkjlKvKP4SWA" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -155,7 +167,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ14NLjn3yGGAR8iXQTRvmipM.jpg" alt="Shinkoenji-dori Shopping Street Promotion Union" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">Shinkoenji-dori Shopping Street Promotion Union<a href="https://www.google.com/maps/place/?q=place_id:ChIJ14NLjn3yGGAR8iXQTRvmipM" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -163,7 +175,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJF6xTyvmJGGARU8t5NIqkNeI.jpg" alt="Unicorn Gundam" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">Unicorn Gundam<a href="https://www.google.com/maps/place/?q=place_id:ChIJF6xTyvmJGGARU8t5NIqkNeI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -171,7 +183,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJsYT-eNGIGGARrtlQxrayK0M.jpg" alt="Kameido Tenjin Shrine" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">Kameido Tenjin Shrine<a href="https://www.google.com/maps/place/?q=place_id:ChIJsYT-eNGIGGARrtlQxrayK0M" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -179,7 +191,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJLWaVdDXuGGART_Pg1R3CZ4A.jpg" alt="Inokashira Park" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">Inokashira Park<a href="https://www.google.com/maps/place/?q=place_id:ChIJLWaVdDXuGGART_Pg1R3CZ4A" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -187,7 +199,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJSeco5wiJGGARItbTS8lQ5G0.jpg" alt="teamLab Planets TOKYO DMM" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">teamLab Planets TOKYO DMM<a href="https://www.google.com/maps/place/?q=place_id:ChIJSeco5wiJGGARItbTS8lQ5G0" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -195,7 +207,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJEwlemnqLGGARhwMuRpwpkBI.jpg" alt="Gonpachi Nishi-Azabu" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Gonpachi Nishi-Azabu<a href="https://www.google.com/maps/place/?q=place_id:ChIJEwlemnqLGGARhwMuRpwpkBI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -203,7 +215,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="cafe">
+    <article class="place-card" data-category="cafe" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJe-TeakzuGGAR7ZrlpUdY69g.jpg" alt="LIGHT UP COFFEE" loading="lazy"><span class="card-tag">☕ cafe</span></div>
       <div class="card-body">
         <h3 class="card-name">LIGHT UP COFFEE<a href="https://www.google.com/maps/place/?q=place_id:ChIJe-TeakzuGGAR7ZrlpUdY69g" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -211,7 +223,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="cafe">
+    <article class="place-card" data-category="cafe" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJsVS_UR3vGGARPwNQXIrgCiw.jpg" alt="andoh coffee" loading="lazy"><span class="card-tag">☕ cafe</span></div>
       <div class="card-body">
         <h3 class="card-name">andoh coffee<a href="https://www.google.com/maps/place/?q=place_id:ChIJsVS_UR3vGGARPwNQXIrgCiw" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -219,7 +231,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJf7a7MkbuGGARStMrfqCB-wQ.jpg" alt="Ishii Sports Kichijoji store" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">Ishii Sports Kichijoji store<a href="https://www.google.com/maps/place/?q=place_id:ChIJf7a7MkbuGGARStMrfqCB-wQ" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -227,7 +239,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJw84Z1kfuGGARbVChsJKNMPg.jpg" alt="L-Breath Kichijoji" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">L-Breath Kichijoji<a href="https://www.google.com/maps/place/?q=place_id:ChIJw84Z1kfuGGARbVChsJKNMPg" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -235,7 +247,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJaW5hxEDvGGARybZcAlw9SrQ.jpg" alt="Satou Kichijoji Steak House" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Satou Kichijoji Steak House<a href="https://www.google.com/maps/place/?q=place_id:ChIJaW5hxEDvGGARybZcAlw9SrQ" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -243,7 +255,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJw7WmnVmLGGAR4Wsx5HEgkok.jpg" alt="Joto Curry" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Joto Curry<a href="https://www.google.com/maps/place/?q=place_id:ChIJw7WmnVmLGGAR4Wsx5HEgkok" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -251,7 +263,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJicJRNfqLGGARNGjsR4YYRoQ.jpg" alt="OVERRIDE 丸の内 KITTE" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">OVERRIDE 丸の内 KITTE<a href="https://www.google.com/maps/place/?q=place_id:ChIJicJRNfqLGGARNGjsR4YYRoQ" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -259,7 +271,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJOTomjuaLGGARuDO6i8ce8hA.jpg" alt="いさみや 銀座本店" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">いさみや 銀座本店<a href="https://www.google.com/maps/place/?q=place_id:ChIJOTomjuaLGGARuDO6i8ce8hA" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -267,7 +279,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="spa">
+    <article class="place-card" data-category="spa" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ0-FaM23gG2ARDFben2v-Hsc.jpg" alt="Onsen - Fuji Yurari Hot Spring" loading="lazy"><span class="card-tag">♨️ spa</span></div>
       <div class="card-body">
         <h3 class="card-name">Onsen - Fuji Yurari Hot Spring<a href="https://www.google.com/maps/place/?q=place_id:ChIJ0-FaM23gG2ARDFben2v-Hsc" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -275,7 +287,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ5VahuViLGGARdhxzaSEMQ6w.jpg" alt="Katsuo Shokudo" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Katsuo Shokudo<a href="https://www.google.com/maps/place/?q=place_id:ChIJ5VahuViLGGARdhxzaSEMQ6w" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -283,7 +295,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJnz4efCpdGGARAh_AS6Z-4sI.jpg" alt="焼肉 豪じ" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">焼肉 豪じ<a href="https://www.google.com/maps/place/?q=place_id:ChIJnz4efCpdGGARAh_AS6Z-4sI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -291,7 +303,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJLYBZsFeLGGARXVSJXBBVeWc.jpg" alt="Parfaiteria bel" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Parfaiteria bel<a href="https://www.google.com/maps/place/?q=place_id:ChIJLYBZsFeLGGARXVSJXBBVeWc" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -299,7 +311,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJPaf2cwCNGGARe3KSU_p8GyI.jpg" alt="KEEN GARAGE SHINJUKU" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">KEEN GARAGE SHINJUKU<a href="https://www.google.com/maps/place/?q=place_id:ChIJPaf2cwCNGGARe3KSU_p8GyI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -307,7 +319,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ_TibA9qMGGARNYmVIFyGU9k.jpg" alt="LUMINE EST Shinjuku" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">LUMINE EST Shinjuku<a href="https://www.google.com/maps/place/?q=place_id:ChIJ_TibA9qMGGARNYmVIFyGU9k" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -315,7 +327,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ_VYfhdSNGGARpG4sfHX889w.jpg" alt="Sports wear Disc. Alpen Tokyo" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">Sports wear Disc. Alpen Tokyo<a href="https://www.google.com/maps/place/?q=place_id:ChIJ_VYfhdSNGGARpG4sfHX889w" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -323,7 +335,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ7-cJ_wiMGGAR_wayVide6uo.jpg" alt="Ōte-mon Gate (Gate to the East Gardens)" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">Ōte-mon Gate (Gate to the East Gardens)<a href="https://www.google.com/maps/place/?q=place_id:ChIJ7-cJ_wiMGGAR_wayVide6uo" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -331,7 +343,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJs0NXE76LGGARlTz2BYUVO-4.jpg" alt="Sakurada-mon Gate" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">Sakurada-mon Gate<a href="https://www.google.com/maps/place/?q=place_id:ChIJs0NXE76LGGARlTz2BYUVO-4" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -339,7 +351,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ9TsfyNqMGGAR-KTtGjzQRtI.jpg" alt="NEWoMan Shinjuku" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">NEWoMan Shinjuku<a href="https://www.google.com/maps/place/?q=place_id:ChIJ9TsfyNqMGGAR-KTtGjzQRtI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -347,7 +359,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJcTrPWNqMGGARC40MUiaSAcw.jpg" alt="BILLY'S ENT 新宿店" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">BILLY'S ENT 新宿店<a href="https://www.google.com/maps/place/?q=place_id:ChIJcTrPWNqMGGARC40MUiaSAcw" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -355,7 +367,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="hotel">
+    <article class="place-card" data-category="hotel" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJCV-IMH6MGGAR2n7SEK0AMTI.jpg" alt="Hotel Monterey Akasaka" loading="lazy"><span class="card-tag">🏨 hotel</span></div>
       <div class="card-body">
         <h3 class="card-name">Hotel Monterey Akasaka<a href="https://www.google.com/maps/place/?q=place_id:ChIJCV-IMH6MGGAR2n7SEK0AMTI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -363,7 +375,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJdUbpSvqLGGARCmbc6R7hZJ8.jpg" alt="KITTE Marunouchi" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">KITTE Marunouchi<a href="https://www.google.com/maps/place/?q=place_id:ChIJdUbpSvqLGGARCmbc6R7hZJ8" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -371,7 +383,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ7aW7w0WLGGARmjwTSTXf9sU.jpg" alt="LE LABO Daikanyama Store" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">LE LABO Daikanyama Store<a href="https://www.google.com/maps/place/?q=place_id:ChIJ7aW7w0WLGGARmjwTSTXf9sU" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -379,7 +391,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJMapDROaLGGARrmYecHqJKsg.jpg" alt="LE LABO Ginza Six Store" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">LE LABO Ginza Six Store<a href="https://www.google.com/maps/place/?q=place_id:ChIJMapDROaLGGARrmYecHqJKsg" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -387,7 +399,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJXYV-6JWOGGAR85vIZbM1RCE.jpg" alt="Kappabashi Kitchen Supply Town" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">Kappabashi Kitchen Supply Town<a href="https://www.google.com/maps/place/?q=place_id:ChIJXYV-6JWOGGAR85vIZbM1RCE" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -395,7 +407,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ2Ry8cNqMGGARvPoEDF20qlY.jpg" alt="Ainz & Tulpe" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">Ainz & Tulpe<a href="https://www.google.com/maps/place/?q=place_id:ChIJ2Ry8cNqMGGARvPoEDF20qlY" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -403,7 +415,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJZzaqB9GMGGARsUnZ_rlb_9Y.jpg" alt="Daikoku Drug" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">Daikoku Drug<a href="https://www.google.com/maps/place/?q=place_id:ChIJZzaqB9GMGGARsUnZ_rlb_9Y" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -411,7 +423,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ5UsboeaLGGARV2ODxt0ic1I.jpg" alt="Matsuya Ginza" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">Matsuya Ginza<a href="https://www.google.com/maps/place/?q=place_id:ChIJ5UsboeaLGGARV2ODxt0ic1I" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -419,7 +431,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ35ov0dCOGGARKvdDH7NPHX0.jpg" alt="Tokyo Skytree" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">Tokyo Skytree<a href="https://www.google.com/maps/place/?q=place_id:ChIJ35ov0dCOGGARKvdDH7NPHX0" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -427,7 +439,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJCewJkL2LGGAR3Qmk0vCTGkg.jpg" alt="Tokyo Tower" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">Tokyo Tower<a href="https://www.google.com/maps/place/?q=place_id:ChIJCewJkL2LGGAR3Qmk0vCTGkg" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -435,7 +447,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJK2jpINqMGGARsz4nu4kYF_w.jpg" alt="KOMEHYO SHINJUKU MEN" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">KOMEHYO SHINJUKU MEN<a href="https://www.google.com/maps/place/?q=place_id:ChIJK2jpINqMGGARsz4nu4kYF_w" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -443,7 +455,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="vintage">
+    <article class="place-card" data-category="vintage" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJDePlg2nzGGARofCnYZae0MI.jpg" alt="Treasure Factory Style Shimokitazawa" loading="lazy"><span class="card-tag">👗 vintage</span></div>
       <div class="card-body">
         <h3 class="card-name">Treasure Factory Style Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJDePlg2nzGGARofCnYZae0MI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -451,7 +463,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJF2KYfWnzGGARIKXShg9zVsU.jpg" alt="Ichiran Shimokitazawa" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Ichiran Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJF2KYfWnzGGARIKXShg9zVsU" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -459,7 +471,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="neighborhood">
+    <article class="place-card" data-category="neighborhood" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJWRK3eBSLGGARCdO8OgKkE5w.jpg" alt="Ebisu" loading="lazy"><span class="card-tag">📍 neighborhood</span></div>
       <div class="card-body">
         <h3 class="card-name">Ebisu<a href="https://www.google.com/maps/place/?q=place_id:ChIJWRK3eBSLGGARCdO8OgKkE5w" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -467,7 +479,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="neighborhood">
+    <article class="place-card" data-category="neighborhood" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ68vK5kSLGGARoiBaKr3YZgU.jpg" alt="Daikanyamacho" loading="lazy"><span class="card-tag">📍 neighborhood</span></div>
       <div class="card-body">
         <h3 class="card-name">Daikanyamacho<a href="https://www.google.com/maps/place/?q=place_id:ChIJ68vK5kSLGGARoiBaKr3YZgU" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -475,7 +487,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="vintage">
+    <article class="place-card" data-category="vintage" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ923ya2vzGGARELac70tm-9A.jpg" alt="WEGO Shimokitazawa" loading="lazy"><span class="card-tag">👗 vintage</span></div>
       <div class="card-body">
         <h3 class="card-name">WEGO Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJ923ya2vzGGARELac70tm-9A" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -483,7 +495,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="vintage">
+    <article class="place-card" data-category="vintage" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJ4c2l1WvzGGARYSNOYhVDEKk.jpg" alt="KINJI Shimokitazawaten" loading="lazy"><span class="card-tag">👗 vintage</span></div>
       <div class="card-body">
         <h3 class="card-name">KINJI Shimokitazawaten<a href="https://www.google.com/maps/place/?q=place_id:ChIJ4c2l1WvzGGARYSNOYhVDEKk" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -491,7 +503,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJVVVFv17aGGAR9Vh1Jo1q4qs.jpg" alt="Koedo Kurari" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">Koedo Kurari<a href="https://www.google.com/maps/place/?q=place_id:ChIJVVVFv17aGGAR9Vh1Jo1q4qs" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -499,7 +511,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="vintage">
+    <article class="place-card" data-category="vintage" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJQeShDWnzGGARA5rH2wwnK4s.jpg" alt="Harajuku Chicago Shimokitazawa" loading="lazy"><span class="card-tag">👗 vintage</span></div>
       <div class="card-body">
         <h3 class="card-name">Harajuku Chicago Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJQeShDWnzGGARA5rH2wwnK4s" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -507,7 +519,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJXfBKDWvzGGARAYcIMEpXUlo.jpg" alt="Flipper's Shimokitazawa" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Flipper's Shimokitazawa<a href="https://www.google.com/maps/place/?q=place_id:ChIJXfBKDWvzGGARAYcIMEpXUlo" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -515,7 +527,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="cafe">
+    <article class="place-card" data-category="cafe" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJTyq_cmnzGGAR-chummv7Hus.png" alt="NeRoLi herb" loading="lazy"><span class="card-tag">☕ cafe</span></div>
       <div class="card-body">
         <h3 class="card-name">NeRoLi herb<a href="https://www.google.com/maps/place/?q=place_id:ChIJTyq_cmnzGGAR-chummv7Hus" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -523,7 +535,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="shopping">
+    <article class="place-card" data-category="shopping" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJQx3MyhTzGGARtxwgu2Zn6_4.jpg" alt="Shimokita garage department" loading="lazy"><span class="card-tag">🛍️ shopping</span></div>
       <div class="card-body">
         <h3 class="card-name">Shimokita garage department<a href="https://www.google.com/maps/place/?q=place_id:ChIJQx3MyhTzGGARtxwgu2Zn6_4" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -531,7 +543,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="sightseeing">
+    <article class="place-card" data-category="sightseeing" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJLYwD5TTuGGARBZKEP5BV4U0.jpg" alt="Ghibli Museum" loading="lazy"><span class="card-tag">🏛️ sightseeing</span></div>
       <div class="card-body">
         <h3 class="card-name">Ghibli Museum<a href="https://www.google.com/maps/place/?q=place_id:ChIJLYwD5TTuGGARBZKEP5BV4U0" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -539,7 +551,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJoSq01FyNGGARuu4izIPSdRs.jpg" alt="Tsukishima Monja Okoge Shibuya" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Tsukishima Monja Okoge Shibuya<a href="https://www.google.com/maps/place/?q=place_id:ChIJoSq01FyNGGARuu4izIPSdRs" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -547,7 +559,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJPwGlGtqMGGARS67p3v_g9XQ.jpg" alt="Shinjuku Takano Fruits Parlor" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Shinjuku Takano Fruits Parlor<a href="https://www.google.com/maps/place/?q=place_id:ChIJPwGlGtqMGGARS67p3v_g9XQ" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -555,7 +567,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJdxHrqiCNGGARn8UB_-VKmqw.jpg" alt="SHIBIRE-NOODLES Rousokuya Omotesando Hills-ten" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">SHIBIRE-NOODLES Rousokuya Omotesando Hills-ten<a href="https://www.google.com/maps/place/?q=place_id:ChIJdxHrqiCNGGARn8UB_-VKmqw" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -563,7 +575,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJCfTo27qLGGAR3DrjadbjfL4.jpg" alt="Sushi Azabu 鮨麻布" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Sushi Azabu 鮨麻布<a href="https://www.google.com/maps/place/?q=place_id:ChIJCfTo27qLGGAR3DrjadbjfL4" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -571,7 +583,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJVVUlOmSLGGARGqkXwDpR7PI.jpg" alt="Yoroniku" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Yoroniku<a href="https://www.google.com/maps/place/?q=place_id:ChIJVVUlOmSLGGARGqkXwDpR7PI" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -579,7 +591,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       </div>
     </article>
 
-    <article class="place-card" data-category="food">
+    <article class="place-card" data-category="food" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJI5iLqGqLGGARqF9I9Ccnh3E.jpg" alt="Yoroniku Ebisu" loading="lazy"><span class="card-tag">🍜 food</span></div>
       <div class="card-body">
         <h3 class="card-name">Yoroniku Ebisu<a href="https://www.google.com/maps/place/?q=place_id:ChIJI5iLqGqLGGARqF9I9Ccnh3E" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
@@ -588,21 +600,64 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
     </article>
     </div>
   </div>
-  <footer>Waypoints · Built with love · 57 places in Japan</footer>
+  <footer>Waypoints · Built with love · 57 places across 1 city</footer>
   <script>
-const btns = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.place-card');
-btns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const f = btn.dataset.filter;
-    btns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    cards.forEach(c => {
-      const show = f === 'all' || c.dataset.category === f;
-      c.classList.toggle('hidden', !show);
-    });
+    
+const CITY_META = {"tokyo": {"name": "Tokyo", "total": 57, "counts": {"hotel": 2, "spa": 2, "shopping": 20, "sightseeing": 10, "food": 14, "cafe": 3, "vintage": 4, "neighborhood": 2}}};
+const CAT_EMOJI = {"food": "\ud83c\udf5c", "cafe": "\u2615", "shopping": "\ud83d\udecd", "vintage": "\ud83d\udc57", "sightseeing": "\u26e9", "hotel": "\ud83c\udfe8", "spa": "\u2668\ufe0f", "neighborhood": "\ud83c\udfd8", "other": "\ud83d\udccd"};
+const CAT_ORDER = ["food", "cafe", "shopping", "vintage", "sightseeing", "hotel", "spa", "neighborhood", "other"];
+let activeCity = 'tokyo';
+let activeCat = 'all';
+
+function switchCity(key) {
+  if (key === activeCity) return;
+  activeCity = key;
+  activeCat = 'all';
+
+  document.querySelectorAll('.city-btn').forEach(b => b.classList.toggle('active', b.dataset.city === key));
+
+  const meta = CITY_META[key];
+  const name = meta.name.toUpperCase();
+  const mid = Math.floor(name.length / 2);
+  const midChars = name.length >= 2 ? name.slice(Math.max(0, mid-1), mid+1) : name[0];
+  const prefix = name.slice(0, Math.max(0, mid-1));
+  const suffix = name.slice(mid+1);
+  document.getElementById('hero-title').innerHTML = prefix + '<em>' + midChars + '</em>' + suffix;
+
+  document.getElementById('nav-count').textContent = meta.name + ' · ' + meta.total + ' places';
+
+  rebuildFilters(key);
+
+  document.querySelectorAll('.place-card').forEach(c => {
+    c.classList.toggle('hidden', c.dataset.city !== key);
   });
-});
-</script>
+}
+
+function rebuildFilters(cityKey) {
+  const meta = CITY_META[cityKey];
+  const counts = meta.counts;
+  const total = meta.total;
+  const wrap = document.getElementById('filter-list');
+  let html = '<button class="filter-btn active" data-filter="all" onclick="filterCards(\'all\',this)">All<span class="count">' + total + '</span></button>';
+  CAT_ORDER.forEach(cat => {
+    if (counts[cat]) {
+      const e = CAT_EMOJI[cat] || '📍';
+      html += '<button class="filter-btn" data-filter="' + cat + '" onclick="filterCards(\'' + cat + '\',this)">' + e + ' ' + cat.charAt(0).toUpperCase() + cat.slice(1) + '<span class="count">' + counts[cat] + '</span></button>';
+    }
+  });
+  wrap.innerHTML = html;
+}
+
+function filterCards(f, btn) {
+  activeCat = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.place-card').forEach(c => {
+    if (c.dataset.city !== activeCity) { c.classList.add('hidden'); return; }
+    c.classList.toggle('hidden', f !== 'all' && c.dataset.category !== f);
+  });
+}
+
+  </script>
 </body>
 </html>
