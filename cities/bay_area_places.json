@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "list_name": "Bay Area",
+    "city": "Bay Area",
+    "city_key": "bay_area",
+    "source": "manual",
+    "total": 1
+  },
+  "places": [
+    {
+      "id": 1,
+      "name": "TANTO Japanese Restaurant",
+      "category": "food",
+      "type": "",
+      "rating": null,
+      "review_count": null,
+      "neighborhood": "",
+      "notes": "鱿鱼包饭有点腻,海胆饭不能外带",
+      "place_id": "",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "photo_url": "",
+      "maps_search": "TANTO Japanese Restaurant Bay Area"
+    }
+  ]
+}

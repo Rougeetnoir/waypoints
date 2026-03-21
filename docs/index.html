@@ -117,32 +117,34 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
     <nav class="nav">
       <a class="nav-brand" href="#">Waypoints</a>
       <div class="city-switcher">
-        <button class="city-btn  active" data-city="tokyo" onclick="switchCity('tokyo')">Tokyo</button>
+        <button class="city-btn  active" data-city="bay_area" onclick="switchCity('bay_area')">Bay Area</button>
+      <button class="city-btn" data-city="tokyo" onclick="switchCity('tokyo')">Tokyo</button>
       </div>
-      <span class="nav-right" id="nav-count">Tokyo · 57 places</span>
+      <span class="nav-right" id="nav-count">Bay Area · 1 places</span>
     </nav>
     <div class="filters-wrap">
       <div class="filters" id="filter-list">
-        <button class="filter-btn active" data-filter="all" onclick="filterCards('all',this)">All<span class="count">57</span></button>
-      <button class="filter-btn" data-filter="food" onclick="filterCards('food',this)">🍜 Food<span class="count">14</span></button>
-      <button class="filter-btn" data-filter="cafe" onclick="filterCards('cafe',this)">☕ Cafe<span class="count">3</span></button>
-      <button class="filter-btn" data-filter="shopping" onclick="filterCards('shopping',this)">🛍️ Shopping<span class="count">20</span></button>
-      <button class="filter-btn" data-filter="vintage" onclick="filterCards('vintage',this)">👗 Vintage<span class="count">4</span></button>
-      <button class="filter-btn" data-filter="sightseeing" onclick="filterCards('sightseeing',this)">🏛️ Sightseeing<span class="count">10</span></button>
-      <button class="filter-btn" data-filter="hotel" onclick="filterCards('hotel',this)">🏨 Hotel<span class="count">2</span></button>
-      <button class="filter-btn" data-filter="spa" onclick="filterCards('spa',this)">♨️ Spa<span class="count">2</span></button>
-      <button class="filter-btn" data-filter="neighborhood" onclick="filterCards('neighborhood',this)">📍 Neighborhood<span class="count">2</span></button>
+        <button class="filter-btn active" data-filter="all" onclick="filterCards('all',this)">All<span class="count">1</span></button>
+      <button class="filter-btn" data-filter="food" onclick="filterCards('food',this)">🍜 Food<span class="count">1</span></button>
       </div>
     </div>
   </div>
   <section class="hero">
     <p class="hero-eye">Personal City Guide</p>
-    <h1 class="hero-title" id="hero-title">T<em>OK</em>YO</h1>
+    <h1 class="hero-title" id="hero-title">BAY<em> A</em>REA</h1>
     <p class="hero-sub">A curated collection of places I love — restaurants, cafés, shops, and hidden corners across the city.</p>
   </section>
   <div class="grid-wrap">
     <div class="grid">
       
+    <article class="place-card" data-category="food" data-city="bay_area">
+      <div class="card-photo"><img src="images/places/ChIJd9TXHPC1j4ARszU6xMtr_Vs.jpg" alt="TANTO Japanese Restaurant" loading="lazy"><span class="card-tag">🍜 food</span></div>
+      <div class="card-body">
+        <h3 class="card-name">TANTO Japanese Restaurant<a href="https://www.google.com/maps/place/?q=place_id:ChIJd9TXHPC1j4ARszU6xMtr_Vs" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.4</span><span class="rcnt"> (1,214)</span></div><p class="card-notes">鱿鱼包饭有点腻,海胆饭不能外带</p>
+      </div>
+    </article>
+
     <article class="place-card" data-category="hotel" data-city="tokyo">
       <div class="card-photo"><img src="images/places/ChIJMaPOWLyLGGARFOVqlEWmQU8.jpg" alt="Section L Hamamatsucho" loading="lazy"><span class="card-tag">🏨 hotel</span></div>
       <div class="card-body">
@@ -155,7 +157,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
       <div class="card-photo"><img src="images/places/ChIJgepJJO6LGGARV9GPnmgvL7E.jpg" alt="Raffine Neo Running Style" loading="lazy"><span class="card-tag">♨️ spa</span></div>
       <div class="card-body">
         <h3 class="card-name">Raffine Neo Running Style<a href="https://www.google.com/maps/place/?q=place_id:ChIJgepJJO6LGGARV9GPnmgvL7E" target="_blank" rel="noopener" class="maps-icon" title="Open in Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></a></h3>
-        <div class="card-meta">Foot care</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.2</span><span class="rcnt"> (368)</span></div>
+        <div class="card-meta">Foot care</div><div class="card-rating"><span class="stars">★★★★☆</span><span class="rnum">4.2</span><span class="rcnt"> (368)</span></div><p class="card-notes">只要租任意一件其他物品，跑鞋就免费。比如只租一条浴巾¥150，鞋子随便挑，合计入场+浴巾+鞋 = ¥1,000搞定全套。
+
+鞋子品牌： 时期不同型号不同，2025年曾有耐克 Vomero、Pegasus Plus、Zoom Fly 等可借。都是专业跑鞋，完全够用。
+
+一个小提醒：鞋子有一定使用感，鞋底有磨损痕迹。介意的话可以自己带鞋，其他衣物在那边租即可。
+
+所以你出门只需要带：换洗的普通便服 + 内衣袜子，跑步装备全部现场解决，跑完洗好换上便服出门逛，完美！</p>
       </div>
     </article>
 
@@ -600,13 +608,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;
     </article>
     </div>
   </div>
-  <footer>Waypoints · Built with love · 57 places across 1 city</footer>
+  <footer>Waypoints · Built with love · 58 places across 2 cities</footer>
   <script>
     
-const CITY_META = {"tokyo": {"name": "Tokyo", "total": 57, "counts": {"hotel": 2, "spa": 2, "shopping": 20, "sightseeing": 10, "food": 14, "cafe": 3, "vintage": 4, "neighborhood": 2}}};
+const CITY_META = {"bay_area": {"name": "Bay Area", "total": 1, "counts": {"food": 1}}, "tokyo": {"name": "Tokyo", "total": 57, "counts": {"hotel": 2, "spa": 2, "shopping": 20, "sightseeing": 10, "food": 14, "cafe": 3, "vintage": 4, "neighborhood": 2}}};
 const CAT_EMOJI = {"food": "\ud83c\udf5c", "cafe": "\u2615", "shopping": "\ud83d\udecd", "vintage": "\ud83d\udc57", "sightseeing": "\u26e9", "hotel": "\ud83c\udfe8", "spa": "\u2668\ufe0f", "neighborhood": "\ud83c\udfd8", "other": "\ud83d\udccd"};
 const CAT_ORDER = ["food", "cafe", "shopping", "vintage", "sightseeing", "hotel", "spa", "neighborhood", "other"];
-let activeCity = 'tokyo';
+let activeCity = 'bay_area';
 let activeCat = 'all';
 
 function switchCity(key) {

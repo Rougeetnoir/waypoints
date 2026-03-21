@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "list_name": "Bay Area",
+    "city": "Bay Area",
+    "city_key": "bay_area",
+    "source": "manual",
+    "total": 1
+  },
+  "places": [
+    {
+      "id": 1,
+      "name": "TANTO Japanese Restaurant",
+      "category": "food",
+      "type": "",
+      "rating": 4.4,
+      "review_count": 1214,
+      "neighborhood": "",
+      "notes": "鱿鱼包饭有点腻,海胆饭不能外带",
+      "place_id": "ChIJd9TXHPC1j4ARszU6xMtr_Vs",
+      "coordinates": {
+        "lat": 37.352633,
+        "lng": -122.00395370000001
+      },
+      "photo_url": "/images/places/ChIJd9TXHPC1j4ARszU6xMtr_Vs.jpg",
+      "maps_search": "TANTO Japanese Restaurant Bay Area",
+      "address": "1063 E El Camino Real, Sunnyvale, CA 94087, USA",
+      "website": "https://tantoizakayasunnyvale.com/",
+      "opening_hours": [
+        "Monday: 5:30 – 8:30 PM",
+        "Tuesday: 11:30 AM – 1:00 PM, 5:30 – 8:30 PM",
+        "Wednesday: 11:30 AM – 1:00 PM, 5:30 – 8:30 PM",
+        "Thursday: 11:30 AM – 1:00 PM, 5:30 – 8:30 PM",
+        "Friday: 11:30 AM – 1:00 PM, 5:30 – 8:30 PM",
+        "Saturday: 5:30 – 8:30 PM",
+        "Sunday: Closed"
+      ]
+    }
+  ]
+}
